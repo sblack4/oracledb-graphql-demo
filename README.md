@@ -1,6 +1,16 @@
-# Join Monster with Oracle DB
+# Oracle db with GraphQl 
 
 GraphQL seems cool. Oracle database is cool. Let's combine them. 
+
+## About 
+These materials go along with the [Oracle Friday Stand-Up - Database Cloud Service](https://t.co/XcjjTWZ6Qu) 
+Given by [@sblack4](https://sblack4.github.io/) for @Oracle
+
+## Get Started 
+1. Watch the recording of [Oracle Friday Stand-Up - Database Cloud Service](https://t.co/XcjjTWZ6Qu)
+1. Clone this Repo with `git clone https://github.com/unofficialoraclecloudhub/oracledb-graphql-demo.git`
+1. Head to [unofficialoraclecloudhub.github.io/oracledb-graphql-demo/](https://unofficialoraclecloudhub.github.io/oracledb-graphql-demo/) 
+1. Fire up your text editor and get playing!
 
 ## Test with Docker
 If you have docker, you can run database and the server
@@ -17,20 +27,12 @@ Start with the database running in docker and node locally:
 - Serve the GraphQL with [koa](https://github.com/koajs/koa)
 - Visualize cool GraphQL browser with [graphiql](https://github.com/graphql/graphiql)
 
-*Original README.md Below*
----- 
-### A Live Demo of [Join Monster](https://github.com/stems/join-monster)
 
-[https://join-monster.herokuapp.com/graphql](https://join-monster.herokuapp.com/graphql)
+## Acknowledgements 
+The open source community has been overly generous with software and documentation (as always)
 
-
-This is an example of setting up an API using [Join Monster](https://github.com/stems/join-monster). Two Schemas are shown, one with and one without Relay compliance. Example data are provided as SQLite files in the `data` directory. A [custom version of GraphiQL](https://github.com/acarl005/graphsiql) is used to display the SQL being generated.
-
-
-### To run locally
-
-Clone the repo and `cd` into it. Then run
-```shell
-$ npm install
-$ npm start
-```
+Special thanks to 
+- [oracle/node-oracledb](https://github.com/oracle/node-oracledb) (also known as just `oracledb`)
+- [stems/join-monster-demo](https://github.com/stems/join-monster-demo)
+- [MaksymBilenko/docker-oracle-12c](https://github.com/MaksymBilenko/docker-oracle-12c)
+- [Github](https://github.com)

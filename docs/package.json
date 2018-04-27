@@ -27,6 +27,7 @@
     "gatsby-source-filesystem": "^1.4.2",
     "gatsby-transformer-json": "^1.0.16",
     "gatsby-transformer-remark": "^1.7.0",
+    "gh-pages": "^1.1.0",
     "lodash": "^4.17.4",
     "lodash-webpack-plugin": "^0.11.4",
     "react": "^15.6.1",
@@ -70,7 +71,8 @@
     "lint:md": "remark content/posts/",
     "lint": "npm run lint:js && npm run lint:md",
     "write-good": "write-good $(glob 'content/posts/**/*.md')",
-    "format:js": "prettier 'src/**/*.{js,jsx}' --write"
+    "format:js": "prettier 'src/**/*.{js,jsx}' --write", 
+    "deploy": "npm run build:gh"
   },
   "remarkConfig": {
     "plugins": [

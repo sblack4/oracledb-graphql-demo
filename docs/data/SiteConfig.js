@@ -3,7 +3,7 @@ module.exports = {
   lessonsDir: "lessons", // The name of the directory that contains lessons or docs.
   siteTitle: "oracle db, graphql, docker, & cloud", // Site title.
   siteTitleAlt: "OracleDB-GraphQL", // Alternative site title for SEO.
-  siteLogo: "/logos/hub-logo-white.png", // Logo used for SEO and manifest.
+  siteLogo: "/oracledb-graphql-demo/logos/hub-logo-white.png", // Logo used for SEO and manifest.
   siteUrl: "https://ericwindmill.com", // Domain of your website without pathPrefix.
   pathPrefix: "/oracledb-graphql-demo/", // Prefixes all links. For cases when deployed to example.github.io/gatsby-advanced-starter/.
   siteDescription: "docs to explain the docker-oracledb-graphql demo :)", // Website description used for RSS feeds/meta description tag.
