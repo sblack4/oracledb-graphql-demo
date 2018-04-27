@@ -1,0 +1,14 @@
+version: '3'
+services:
+  # web:
+  #   build: ./web
+  #   ports:
+  #    - "5000:5000"
+  #   volumes:
+  #    - .:/code
+  db:
+    # build: ./db
+    image: sath89/oracle-12c
+    ports:
+      - "8080:8080"
+      - "1521:1521"
