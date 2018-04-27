@@ -1,0 +1,78 @@
+{
+  "assetsByChunkName": {
+    "path---": [
+      "path----557518bd178906f8d58a.js",
+      "path----557518bd178906f8d58a.js.map"
+    ],
+    "path---lesson-one": [
+      "path---lesson-one-a90225508ccecbd5914c.js",
+      "path---lesson-one-a90225508ccecbd5914c.js.map"
+    ],
+    "path---lesson-four": [
+      "path---lesson-four-d05afd354af6d70a0d51.js",
+      "path---lesson-four-d05afd354af6d70a0d51.js.map"
+    ],
+    "component---src-layouts-index-jsx": [
+      "component---src-layouts-index-jsx-020987f53bf102005c8a.js",
+      "component---src-layouts-index-jsx-020987f53bf102005c8a.js.map"
+    ],
+    "path---categories-tech": [
+      "path---categories-tech-b53b68288f3e8b92d546.js",
+      "path---categories-tech-b53b68288f3e8b92d546.js.map"
+    ],
+    "path---lesson-five": [
+      "path---lesson-five-75411210035b4e8677e1.js",
+      "path---lesson-five-75411210035b4e8677e1.js.map"
+    ],
+    "component---src-templates-lesson-jsx": [
+      "component---src-templates-lesson-jsx-f960ecfa51e112e1515e.js",
+      "component---src-templates-lesson-jsx-f960ecfa51e112e1515e.js.map"
+    ],
+    "path---lesson-two": [
+      "path---lesson-two-516c10dda631a417ab0d.js",
+      "path---lesson-two-516c10dda631a417ab0d.js.map"
+    ],
+    "component---src-templates-category-jsx": [
+      "component---src-templates-category-jsx-79f394448ef5d1ff97f1.js",
+      "component---src-templates-category-jsx-79f394448ef5d1ff97f1.js.map"
+    ],
+    "path---index": [
+      "path---index-afef2d07d33d683b3291.js",
+      "path---index-afef2d07d33d683b3291.js.map"
+    ],
+    "component---src-pages-about-jsx": [
+      "component---src-pages-about-jsx-22886aa5fb05bfc1c03e.js",
+      "component---src-pages-about-jsx-22886aa5fb05bfc1c03e.js.map"
+    ],
+    "path---post-one": [
+      "path---post-one-a6cf5a1b532c2da31260.js",
+      "path---post-one-a6cf5a1b532c2da31260.js.map"
+    ],
+    "path---lesson-six": [
+      "path---lesson-six-8e81985fcd3364255253.js",
+      "path---lesson-six-8e81985fcd3364255253.js.map"
+    ],
+    "commons": [
+      "commons-cf272b24ef58dd35e342.js",
+      "commons-cf272b24ef58dd35e342.js.map"
+    ],
+    "path---lesson-three": [
+      "path---lesson-three-ba059c0acf5e18624ec4.js",
+      "path---lesson-three-ba059c0acf5e18624ec4.js.map"
+    ],
+    "component---src-pages-index-jsx": [
+      "component---src-pages-index-jsx-edeb1aff80a6bbdb546b.js",
+      "component---src-pages-index-jsx-edeb1aff80a6bbdb546b.js.map"
+    ],
+    "app": [
+      "app-f252e06ac0faccdb8c35.js",
+      "build-js-styles.css",
+      "app-f252e06ac0faccdb8c35.js.map",
+      "build-js-styles.css.map"
+    ],
+    "path---about": [
+      "path---about-a0e39f21c11f6a62c5ab.js",
+      "path---about-a0e39f21c11f6a62c5ab.js.map"
+    ]
+  }
+}
