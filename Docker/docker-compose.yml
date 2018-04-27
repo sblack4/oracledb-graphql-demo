@@ -3,28 +3,19 @@
 # run with `docker-compose up`
 #
 
-# docker-compose version
-version: '3'
-
-# service = cointainer
-services:
-
-  # service name 
-  web:
-
-    # path to Dockerfile
-    build: ./web
-
-    # list of port map
-    ports:
-     - "3000:3000"
-    # volumes:
+version: '3'    # docker-compose version
+services:       # service = cointainer
+  web:          # service name 
+    build: ./web/Docker   # path to Dockerfile
+    ports:                # list of port map  
+     - "3000:3000"        # port our graphql server runs on 
+    # volumes:            # you can mount local folders 
     #  - .:/code
+
+# basically `docker run -it -p 1521:1521 sath89/oracle-12c /bin/bash /entrypoint.sh`
   db:
     # build: ./dbase
-
-    # the image can also be specified
-    image: sath89/oracle-12c
+    image: sath89/oracle-12c  # the image can also be specified
     ports:
-      # - "8080:8080"
-      - "1521:1521"
+      # - "8080:8080"         # Port for Enterprise Manager
+      - "1521:1521"           # Port for tnslistener (database connection)

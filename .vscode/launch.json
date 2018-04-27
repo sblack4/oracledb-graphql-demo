@@ -5,6 +5,14 @@
     "version": "0.2.0",
     "configurations": [
         {
+            "type": "bashdb",
+            "request": "launch",
+            "pathBash": "C:\\Windows\\System32\\bash.exe",
+            "name": "Bash-Debug (simplest configuration)",
+            "program": "${file}",
+            "args": []
+        },
+        {
             "type": "node",
             "request": "launch",
             "name": "Launch via NPM",
