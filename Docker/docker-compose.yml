@@ -1,13 +1,29 @@
+# docker-compose 
+# https://docs.docker.com/compose/
+# run with `docker-compose up`
+#
+
+# docker-compose version
 version: '3'
+
+# service = cointainer
 services:
+
+  # service name 
   web:
+
+    # path to Dockerfile
     build: ./web
+
+    # list of port map
     ports:
      - "3000:3000"
     # volumes:
     #  - .:/code
   db:
     # build: ./dbase
+
+    # the image can also be specified
     image: sath89/oracle-12c
     ports:
       # - "8080:8080"
