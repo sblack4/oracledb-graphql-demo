@@ -1,3 +1,7 @@
+##
+# from https://github.com/tgriesser/knex/blob/master/scripts/oracle-tests-Dockerfile
+# 
+
 FROM wnameless/oracle-xe-11g
 
 # Replace shell with bash so we can source files
