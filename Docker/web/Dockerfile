@@ -13,11 +13,6 @@ FROM store/oracle/database-instantclient:12.2.0.1
 # SET THIS 
 ARG SRC_PATH=./src
 
-# proxy at the office :) 
-# for yum
-ARG http_proxy=http://www-proxy.us.oracle.com:80
-ARG https_proxy=http://www-proxy.us.oracle.com:80
-
 # get linux binaries 
 # from https://nodejs.org/en/blog/release/v6.11.1/
 RUN yum install -y wget 
@@ -38,16 +33,14 @@ ENV NODE_PATH=/opt/node-v6.11.1-linux-x64/lib/node_modules/
 RUN npm install -g oracledb
 
 # copy our built webapp
-COPY /${basedir}/src .
+COPY ${SRC_PATH} ./src
 
 # open the port 
 EXPOSE 3000
 
 # where are my node_modules
-RUN npm install
-
-# where is that package.json
 RUN cd src
+RUN npm install
 
 # start it!
 CMD ["npm", "start"]
