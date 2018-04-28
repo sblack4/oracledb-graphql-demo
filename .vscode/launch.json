@@ -15,13 +15,14 @@
         {
             "type": "node",
             "request": "launch",
-            "name": "Launch via NPM",
+            "name": "Launch docs via NPM",
             "runtimeExecutable": "npm",
+            "cwd": "${workspaceFolder}/docs",
+            "stopOnEntry": true,
             "runtimeArgs": [
                 "run", 
-                "start"
-            ],
-            "port": 9229
+                "debug"
+            ]
         },
         {
             "type": "node",
