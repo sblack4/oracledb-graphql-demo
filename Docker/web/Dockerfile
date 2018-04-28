@@ -21,29 +21,26 @@ RUN cd opt
 COPY node* .
 
 # install them
-RUN yum -y install tar* gcc* gcc-c++ unzip libaio* make curl \
+RUN yum -y install tar* gcc* gcc-c++ unzip libaio* make curl dos2unix \
     && tar -xJf node-v6.11.1-linux-x64.tar.xz -C /usr/local --strip-components=1 --no-same-owner \
     && yum clean all
 
 ENV PATH=/opt/node-v6.11.1-linux-x64/bin:$PATH
 ENV NODE_PATH=/opt/node-v6.11.1-linux-x64/lib/node_modules/
 
-# make sure the big stuff gets installed first
-# in case of error
-RUN npm install -g oracledb
-
 # copy our built webapp
-COPY ${SRC_PATH} ./src
+COPY ${SRC_PATH} /src
+
+# make sure files are unix
+RUN find /src -type f -print0 | xargs -0 dos2unix
+
+# where are my node_modules
+WORKDIR src
+RUN npm i -g oracledb
+RUN npm install
 
 # open the port 
 EXPOSE 3000
 
-# where are my node_modules
-RUN cd src
-RUN npm install
-
 # start it!
-CMD ["npm", "start"]
-
-## DEBUG
-# CMD ["/bin/bash"]
+ENTRYPOINT [ "npm", "start"] 
