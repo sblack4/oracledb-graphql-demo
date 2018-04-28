@@ -1,21 +1,43 @@
+#
 # docker-compose 
 # https://docs.docker.com/compose/
 # run with `docker-compose up`
 #
 
-version: '3'    # docker-compose version
-services:       # service = cointainer
-  web:          # service name 
-    build: ./web/Docker   # path to Dockerfile
-    ports:                # list of port map  
-     - "3000:3000"        # port our graphql server runs on 
-    # volumes:            # you can mount local folders 
-    #  - .:/code
+# extra comments have been added
+# for those, like me, who are new to docker
 
+version: '3'    # docker-compose version
+services:       # service = container
+
+# build our own oracle xe 12c on ubuntu
 # basically `docker run -it -p 1521:1521 sath89/oracle-12c /bin/bash /entrypoint.sh`
   db:
-    # build: ./dbase
-    image: sath89/oracle-12c  # the image can also be specified
+    image: sath89/oracle-12c
+    # volumes: 
+      # - ./dbase:/db
     ports:
-      # - "8080:8080"         # Port for Enterprise Manager
       - "1521:1521"           # Port for tnslistener (database connection)
+    entrypoint:
+      - bash
+      - /entrypoint.sh
+      # - "8080:8080"         # Port for Enterprise Manager
+
+# builds our graphql app
+# basicaly `docker run -it -p 3000:3000 /bin/bash `
+  web:          
+    build: ./web
+    image: node-oracledb
+    volumes:
+      - ../src:/src
+    # depends_on:
+    #   - db
+    working_dir: /src
+    # command:
+      # - npm
+      # - install
+    # entrypoint:
+      # - npm
+      # - start
+    # ports:                
+    #  - "3000:3000"        # port our graphql server runs on 

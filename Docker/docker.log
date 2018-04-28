@@ -1,0 +1,1193 @@
+Step 1/10 : FROM sath89/oracle-12c-base
+ ---> bbf9626baa61
+Step 2/10 : ENV WEB_CONSOLE false
+ ---> Using cache
+ ---> 5e1755cceb61
+Step 3/10 : ENV DBCA_TOTAL_MEMORY 2048
+ ---> Using cache
+ ---> af6222cf5251
+Step 4/10 : ENV PATH /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/u01/app/oracle/product/12.1.0/xe/bin
+ ---> Using cache
+ ---> deb040e0efb6
+Step 5/10 : ENV USE_UTF8_IF_CHARSET_EMPTY true
+ ---> Using cache
+ ---> 75e3aaf1fc7f
+Step 6/10 : ADD entrypoint.sh /db/entrypoint.sh
+ ---> Using cache
+ ---> 4b63a84f569a
+Step 7/10 : RUN apt-get update && apt-get -y install curl && apt-get clean && rm -rf /tmp/* /var/lib/apt/lists/* /var/tmp/*
+ ---> Using cache
+ ---> 99d72a3d678f
+Step 8/10 : EXPOSE 1521
+ ---> Using cache
+ ---> b1d0ba774087
+Step 9/10 : VOLUME ["/docker-entrypoint-initdb.d"]
+ ---> Using cache
+ ---> bb1a4b38239d
+Step 10/10 : ENTRYPOINT ["/db/entrypoint.sh"]
+ ---> Using cache
+ ---> c42be7bb6023
+Successfully built c42be7bb6023
+Successfully tagged oracledb-12c:latest
+Step 1/14 : FROM store/oracle/database-instantclient:12.2.0.1
+ ---> 916033cf06bf
+Step 2/14 : ARG SRC_PATH=./src
+ ---> Using cache
+ ---> f66e3b456a2a
+Step 3/14 : RUN yum install -y wget
+ ---> Using cache
+ ---> 8e06a4a6e4ef
+Step 4/14 : RUN cd opt
+ ---> Using cache
+ ---> 7d60b1b8a104
+Step 5/14 : COPY node* .
+ ---> Using cache
+ ---> 2c82d0345afa
+Step 6/14 : RUN yum -y install tar* gcc* gcc-c++ unzip libaio* make curl dos2unix     && tar -xJf node-v6.11.1-linux-x64.tar.xz -C /usr/local --strip-components=1 --no-same-owner     && yum clean all
+ ---> Using cache
+ ---> 1002d70579d2
+Step 7/14 : ENV PATH=/opt/node-v6.11.1-linux-x64/bin:$PATH
+ ---> Using cache
+ ---> f7ae47243b1d
+Step 8/14 : ENV NODE_PATH=/opt/node-v6.11.1-linux-x64/lib/node_modules/
+ ---> Using cache
+ ---> 80ef2dc4300b
+Step 9/14 : COPY ${SRC_PATH} ./src
+ ---> Using cache
+ ---> 356e4f468c20
+Step 10/14 : RUN find ./src -type f -print0 | xargs -0 dos2unix
+ ---> Using cache
+ ---> a574d84cadbd
+Step 11/14 : EXPOSE 3000
+ ---> Using cache
+ ---> 2c5aeae82ce8
+Step 12/14 : WORKDIR src
+ ---> Using cache
+ ---> eab53c93862f
+Step 13/14 : RUN npm install
+ ---> Using cache
+ ---> 032c69e10f3f
+Step 14/14 : ENTRYPOINT [ "npm", "start" ]
+ ---> Using cache
+ ---> f6ddc972cfe3
+Successfully built f6ddc972cfe3
+Successfully tagged node-oracledb:latest
+Attaching to docker_db_1, docker_web_1
+[36mdb_1   |[0m standard_init_linux.go:190: exec user process caused "no such file or directory"
+[36mdocker_db_1 exited with code 1
+[0mAborting on container exit...
+compose.config.config.find: Using configuration files: .\docker-compose.yml
+docker.utils.config.find_config_file: Trying paths: ['C:\\Users\\gense\\.docker\\config.json', 'C:\\Users\\gense\\.dockercfg']
+docker.utils.config.find_config_file: Found file at path: C:\Users\gense\.docker\config.json
+docker.auth.load_config: Found 'auths' section
+docker.auth.parse_auth: Auth data for https://index.docker.io/v1/ is absent. Client might be using a credentials store instead.
+docker.auth.load_config: Found 'credsStore' section
+urllib3.connectionpool._make_request: http://localhost:None "GET /v1.25/version HTTP/1.1" 200 566
+compose.cli.command.get_client: docker-compose version 1.21.0, build 5920eb08
+docker-py version: 3.2.1
+CPython version: 3.6.4
+OpenSSL version: OpenSSL 1.0.2k  26 Jan 2017
+compose.cli.command.get_client: Docker base_url: http+docker://localnpipe
+compose.cli.command.get_client: Docker version: Platform={'Name': ''}, Components=[{'Name': 'Engine', 'Version': '18.03.1-ce', 'Details': {'ApiVersion': '1.37', 'Arch': 'amd64', 'BuildTime': '2018-04-26T07:22:38.000000000+00:00', 'Experimental': 'true', 'GitCommit': '9ee9f40', 'GoVersion': 'go1.9.5', 'KernelVersion': '4.9.87-linuxkit-aufs', 'MinAPIVersion': '1.12', 'Os': 'linux'}}], Version=18.03.1-ce, ApiVersion=1.37, MinAPIVersion=1.12, GitCommit=9ee9f40, GoVersion=go1.9.5, Os=linux, Arch=amd64, KernelVersion=4.9.87-linuxkit-aufs, Experimental=True, BuildTime=2018-04-26T07:22:38.000000000+00:00
+compose.cli.verbose_proxy.proxy_callable: docker info <- ()
+urllib3.connectionpool._make_request: http://localhost:None "GET /v1.25/info HTTP/1.1" 200 None
+compose.cli.verbose_proxy.proxy_callable: docker info -> {'Architecture': 'x86_64',
+ 'BridgeNfIp6tables': True,
+ 'BridgeNfIptables': True,
+ 'CPUSet': True,
+ 'CPUShares': True,
+ 'CgroupDriver': 'cgroupfs',
+ 'ClusterAdvertise': '',
+ 'ClusterStore': '',
+ 'ContainerdCommit': {'Expected': '773c489c9c1b21a6d78b5c538cd395416ec50f88',
+                      'ID': '773c489c9c1b21a6d78b5c538cd395416ec50f88'},
+...
+compose.cli.verbose_proxy.proxy_callable: docker inspect_network <- ('docker_default')
+urllib3.connectionpool._make_request: http://localhost:None "GET /v1.25/networks/docker_default HTTP/1.1" 200 511
+compose.cli.verbose_proxy.proxy_callable: docker inspect_network -> {'Attachable': True,
+ 'ConfigFrom': {'Network': ''},
+ 'ConfigOnly': False,
+ 'Containers': {},
+ 'Created': '2018-04-27T02:07:35.9972573Z',
+ 'Driver': 'bridge',
+ 'EnableIPv6': False,
+ 'IPAM': {'Config': [{'Gateway': '172.18.0.1', 'Subnet': '172.18.0.0/16'}],
+          'Driver': 'default',
+          'Options': None},
+...
+compose.cli.verbose_proxy.proxy_callable: docker containers <- (all=False, filters={'label': ['com.docker.compose.project=docker', 'com.docker.compose.oneoff=False']})
+urllib3.connectionpool._make_request: http://localhost:None "GET /v1.25/containers/json?limit=-1&all=0&size=0&trunc_cmd=0&filters=%7B%22label%22%3A+%5B%22com.docker.compose.project%3Ddocker%22%2C+%22com.docker.compose.oneoff%3DFalse%22%5D%7D HTTP/1.1" 200 3
+compose.cli.verbose_proxy.proxy_callable: docker containers -> (list with 0 items)
+compose.cli.verbose_proxy.proxy_callable: docker containers <- (all=True, filters={'label': ['com.docker.compose.project=docker', 'com.docker.compose.service=db', 'com.docker.compose.oneoff=False']})
+urllib3.connectionpool._make_request: http://localhost:None "GET /v1.25/containers/json?limit=-1&all=1&size=0&trunc_cmd=0&filters=%7B%22label%22%3A+%5B%22com.docker.compose.project%3Ddocker%22%2C+%22com.docker.compose.service%3Ddb%22%2C+%22com.docker.compose.oneoff%3DFalse%22%5D%7D HTTP/1.1" 200 1469
+compose.cli.verbose_proxy.proxy_callable: docker containers -> (list with 1 items)
+compose.cli.verbose_proxy.proxy_callable: docker inspect_container <- ('3b21305a57ea348d68c1d75d19695bb3f1f43d9ba943f59008e0d4ba1ae7c541')
+urllib3.connectionpool._make_request: http://localhost:None "GET /v1.25/containers/3b21305a57ea348d68c1d75d19695bb3f1f43d9ba943f59008e0d4ba1ae7c541/json HTTP/1.1" 200 None
+compose.cli.verbose_proxy.proxy_callable: docker inspect_container -> {'AppArmorProfile': '',
+ 'Args': [],
+ 'Config': {'AttachStderr': False,
+            'AttachStdin': False,
+            'AttachStdout': False,
+            'Cmd': None,
+            'Domainname': '',
+            'Entrypoint': ['/db/entrypoint.sh'],
+            'Env': ['affinity:container==8dcd71bbf63515dedac640764ed54b4ffbbec7cc436c589127b286b15c44383e',
+                    'PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/u01/app/oracle/product/12.1.0/xe/bin',
+...
+compose.cli.verbose_proxy.proxy_callable: docker containers <- (all=True, filters={'label': ['com.docker.compose.project=docker', 'com.docker.compose.service=web', 'com.docker.compose.oneoff=False']})
+urllib3.connectionpool._make_request: http://localhost:None "GET /v1.25/containers/json?limit=-1&all=1&size=0&trunc_cmd=0&filters=%7B%22label%22%3A+%5B%22com.docker.compose.project%3Ddocker%22%2C+%22com.docker.compose.service%3Dweb%22%2C+%22com.docker.compose.oneoff%3DFalse%22%5D%7D HTTP/1.1" 200 1158
+compose.cli.verbose_proxy.proxy_callable: docker containers -> (list with 1 items)
+compose.cli.verbose_proxy.proxy_callable: docker inspect_container <- ('3902a49d36a4d073ce90ecb4e17297f697feb41cfff544e05110fe180fb406e2')
+urllib3.connectionpool._make_request: http://localhost:None "GET /v1.25/containers/3902a49d36a4d073ce90ecb4e17297f697feb41cfff544e05110fe180fb406e2/json HTTP/1.1" 200 None
+compose.cli.verbose_proxy.proxy_callable: docker inspect_container -> {'AppArmorProfile': '',
+ 'Args': ['start'],
+ 'Config': {'ArgsEscaped': True,
+            'AttachStderr': False,
+            'AttachStdin': False,
+            'AttachStdout': False,
+            'Cmd': None,
+            'Domainname': '',
+            'Entrypoint': ['npm', 'start'],
+            'Env': ['PATH=/opt/node-v6.11.1-linux-x64/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/lib/oracle/12.2/client64/bin',
+...
+compose.service.build: Building db
+compose.cli.verbose_proxy.proxy_callable: docker build <- (path='C:\\Users\\gense\\git\\oracledb-graphql-demo\\Docker\\dbase', tag='oracledb-12c', rm=True, forcerm=False, pull=False, nocache=False, dockerfile=None, cache_from=None, labels=None, buildargs={}, network_mode=None, target=None, shmsize=None, extra_hosts=None, container_limits={'memory': None}, gzip=False, isolation=None, platform=None)
+docker.api.build._set_auth_headers: Looking for auth config
+docker.auth.resolve_authconfig: Using credentials store "wincred"
+docker.auth._resolve_authconfig_credstore: Looking for auth entry for 'https://index.docker.io/v1/'
+docker.api.build._set_auth_headers: Sending auth config ('https://index.docker.io/v1/')
+urllib3.connectionpool._make_request: http://localhost:None "POST /v1.25/build?t=oracledb-12c&q=False&nocache=False&rm=True&forcerm=False&pull=False HTTP/1.1" 200 None
+compose.cli.verbose_proxy.proxy_callable: docker build -> <generator object APIClient._stream_helper at 0x000001DC68B7A3B8>
+Step 1/10 : FROM sath89/oracle-12c-base
+ ---> bbf9626baa61
+Step 2/10 : ENV WEB_CONSOLE false
+ ---> Using cache
+ ---> 5e1755cceb61
+Step 3/10 : ENV DBCA_TOTAL_MEMORY 2048
+ ---> Using cache
+ ---> af6222cf5251
+Step 4/10 : ENV PATH /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/u01/app/oracle/product/12.1.0/xe/bin
+ ---> Using cache
+ ---> deb040e0efb6
+Step 5/10 : ENV USE_UTF8_IF_CHARSET_EMPTY true
+ ---> Using cache
+ ---> 75e3aaf1fc7f
+Step 6/10 : ADD entrypoint.sh /db/entrypoint.sh
+ ---> Using cache
+ ---> 4b63a84f569a
+Step 7/10 : RUN apt-get update && apt-get -y install curl && apt-get clean && rm -rf /tmp/* /var/lib/apt/lists/* /var/tmp/*
+ ---> Using cache
+ ---> 99d72a3d678f
+Step 8/10 : EXPOSE 1521
+ ---> Using cache
+ ---> b1d0ba774087
+Step 9/10 : VOLUME ["/docker-entrypoint-initdb.d"]
+ ---> Using cache
+ ---> bb1a4b38239d
+Step 10/10 : ENTRYPOINT ["/db/entrypoint.sh"]
+ ---> Using cache
+ ---> c42be7bb6023
+Successfully built c42be7bb6023
+Successfully tagged oracledb-12c:latest
+compose.cli.verbose_proxy.proxy_callable: docker close <- ()
+compose.cli.verbose_proxy.proxy_callable: docker close -> None
+compose.service.build: Building web
+compose.cli.verbose_proxy.proxy_callable: docker build <- (path='C:\\Users\\gense\\git\\oracledb-graphql-demo\\Docker\\web', tag='node-oracledb', rm=True, forcerm=False, pull=False, nocache=False, dockerfile=None, cache_from=None, labels=None, buildargs={}, network_mode=None, target=None, shmsize=None, extra_hosts=None, container_limits={'memory': None}, gzip=False, isolation=None, platform=None)
+docker.api.build._set_auth_headers: Looking for auth config
+docker.auth.resolve_authconfig: Using credentials store "wincred"
+docker.auth._resolve_authconfig_credstore: Looking for auth entry for 'https://index.docker.io/v1/'
+docker.api.build._set_auth_headers: Sending auth config ('https://index.docker.io/v1/')
+urllib3.connectionpool._make_request: http://localhost:None "POST /v1.25/build?t=node-oracledb&q=False&nocache=False&rm=True&forcerm=False&pull=False HTTP/1.1" 200 None
+compose.cli.verbose_proxy.proxy_callable: docker build -> <generator object APIClient._stream_helper at 0x000001DC68BD81A8>
+Step 1/14 : FROM store/oracle/database-instantclient:12.2.0.1
+ ---> 916033cf06bf
+Step 2/14 : ARG SRC_PATH=./src
+ ---> Using cache
+ ---> f66e3b456a2a
+Step 3/14 : RUN yum install -y wget
+ ---> Using cache
+ ---> 8e06a4a6e4ef
+Step 4/14 : RUN cd opt
+ ---> Using cache
+ ---> 7d60b1b8a104
+Step 5/14 : COPY node* .
+ ---> Using cache
+ ---> 2c82d0345afa
+Step 6/14 : RUN yum -y install tar* gcc* gcc-c++ unzip libaio* make curl dos2unix     && tar -xJf node-v6.11.1-linux-x64.tar.xz -C /usr/local --strip-components=1 --no-same-owner     && yum clean all
+ ---> Using cache
+ ---> 1002d70579d2
+Step 7/14 : ENV PATH=/opt/node-v6.11.1-linux-x64/bin:$PATH
+ ---> Using cache
+ ---> f7ae47243b1d
+Step 8/14 : ENV NODE_PATH=/opt/node-v6.11.1-linux-x64/lib/node_modules/
+ ---> Using cache
+ ---> 80ef2dc4300b
+Step 9/14 : COPY ${SRC_PATH} ./src
+ ---> Using cache
+ ---> 356e4f468c20
+Step 10/14 : RUN find ./src -type f -print0 | xargs -0 dos2unix
+ ---> Using cache
+ ---> a574d84cadbd
+Step 11/14 : EXPOSE 3000
+ ---> Using cache
+ ---> 2c5aeae82ce8
+Step 12/14 : WORKDIR src
+ ---> Using cache
+ ---> eab53c93862f
+Step 13/14 : RUN npm install
+ ---> Using cache
+ ---> 032c69e10f3f
+Step 14/14 : ENTRYPOINT [ "npm", "start" ]
+ ---> Using cache
+ ---> f6ddc972cfe3
+Successfully built f6ddc972cfe3
+Successfully tagged node-oracledb:latest
+compose.cli.verbose_proxy.proxy_callable: docker close <- ()
+compose.cli.verbose_proxy.proxy_callable: docker close -> None
+compose.cli.verbose_proxy.proxy_callable: docker containers <- (all=True, filters={'label': ['com.docker.compose.project=docker', 'com.docker.compose.service=db', 'com.docker.compose.oneoff=False']})
+urllib3.connectionpool._make_request: http://localhost:None "GET /v1.25/containers/json?limit=-1&all=1&size=0&trunc_cmd=0&filters=%7B%22label%22%3A+%5B%22com.docker.compose.project%3Ddocker%22%2C+%22com.docker.compose.service%3Ddb%22%2C+%22com.docker.compose.oneoff%3DFalse%22%5D%7D HTTP/1.1" 200 1469
+compose.cli.verbose_proxy.proxy_callable: docker containers -> (list with 1 items)
+compose.project._get_convergence_plans: web has upstream changes (db)
+compose.cli.verbose_proxy.proxy_callable: docker containers <- (all=True, filters={'status': ['created', 'exited'], 'label': ['com.docker.compose.project=docker', 'com.docker.compose.service=web', 'com.docker.compose.oneoff=False']})
+urllib3.connectionpool._make_request: http://localhost:None "GET /v1.25/containers/json?limit=-1&all=1&size=0&trunc_cmd=0&filters=%7B%22status%22%3A+%5B%22created%22%2C+%22exited%22%5D%2C+%22label%22%3A+%5B%22com.docker.compose.project%3Ddocker%22%2C+%22com.docker.compose.service%3Dweb%22%2C+%22com.docker.compose.oneoff%3DFalse%22%5D%7D HTTP/1.1" 200 1158
+compose.cli.verbose_proxy.proxy_callable: docker containers -> (list with 1 items)
+compose.cli.verbose_proxy.proxy_callable: docker containers <- (all=False, filters={'label': ['com.docker.compose.project=docker', 'com.docker.compose.service=web', 'com.docker.compose.oneoff=False']})
+urllib3.connectionpool._make_request: http://localhost:None "GET /v1.25/containers/json?limit=-1&all=0&size=0&trunc_cmd=0&filters=%7B%22label%22%3A+%5B%22com.docker.compose.project%3Ddocker%22%2C+%22com.docker.compose.service%3Dweb%22%2C+%22com.docker.compose.oneoff%3DFalse%22%5D%7D HTTP/1.1" 200 3
+compose.cli.verbose_proxy.proxy_callable: docker containers -> (list with 0 items)
+compose.cli.verbose_proxy.proxy_callable: docker containers <- (all=True, filters={'label': ['com.docker.compose.project=docker', 'com.docker.compose.service=web', 'com.docker.compose.oneoff=False']})
+urllib3.connectionpool._make_request: http://localhost:None "GET /v1.25/containers/json?limit=-1&all=1&size=0&trunc_cmd=0&filters=%7B%22label%22%3A+%5B%22com.docker.compose.project%3Ddocker%22%2C+%22com.docker.compose.service%3Dweb%22%2C+%22com.docker.compose.oneoff%3DFalse%22%5D%7D HTTP/1.1" 200 1158
+compose.cli.verbose_proxy.proxy_callable: docker containers -> (list with 1 items)
+compose.parallel.feed_queue: Pending: {<Service: web>, <Service: db>}
+compose.parallel.feed_queue: Starting producer thread for <Service: db>
+compose.cli.verbose_proxy.proxy_callable: docker inspect_container <- ('3b21305a57ea348d68c1d75d19695bb3f1f43d9ba943f59008e0d4ba1ae7c541')
+urllib3.connectionpool._make_request: http://localhost:None "GET /v1.25/containers/3b21305a57ea348d68c1d75d19695bb3f1f43d9ba943f59008e0d4ba1ae7c541/json HTTP/1.1" 200 None
+compose.cli.verbose_proxy.proxy_callable: docker inspect_container -> {'AppArmorProfile': '',
+ 'Args': [],
+ 'Config': {'AttachStderr': False,
+            'AttachStdin': False,
+            'AttachStdout': False,
+            'Cmd': None,
+            'Domainname': '',
+            'Entrypoint': ['/db/entrypoint.sh'],
+            'Env': ['affinity:container==8dcd71bbf63515dedac640764ed54b4ffbbec7cc436c589127b286b15c44383e',
+                    'PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/u01/app/oracle/product/12.1.0/xe/bin',
+...
+Recreating docker_db_1 ... 
+compose.parallel.feed_queue: Pending: {<Container: docker_db_1 (3b2130)>}
+compose.parallel.feed_queue: Starting producer thread for <Container: docker_db_1 (3b2130)>
+compose.cli.verbose_proxy.proxy_callable: docker stop <- ('3b21305a57ea348d68c1d75d19695bb3f1f43d9ba943f59008e0d4ba1ae7c541', timeout=10)
+urllib3.connectionpool._make_request: http://localhost:None "POST /v1.25/containers/3b21305a57ea348d68c1d75d19695bb3f1f43d9ba943f59008e0d4ba1ae7c541/stop?t=10 HTTP/1.1" 304 0
+compose.cli.verbose_proxy.proxy_callable: docker stop -> None
+compose.cli.verbose_proxy.proxy_callable: docker rename <- ('3b21305a57ea348d68c1d75d19695bb3f1f43d9ba943f59008e0d4ba1ae7c541', '3b21305a57ea_docker_db_1')
+urllib3.connectionpool._make_request: http://localhost:None "POST /v1.25/containers/3b21305a57ea348d68c1d75d19695bb3f1f43d9ba943f59008e0d4ba1ae7c541/rename?name=3b21305a57ea_docker_db_1 HTTP/1.1" 204 0
+compose.cli.verbose_proxy.proxy_callable: docker rename -> None
+compose.cli.verbose_proxy.proxy_callable: docker inspect_image <- ('oracledb-12c')
+urllib3.connectionpool._make_request: http://localhost:None "GET /v1.25/images/oracledb-12c/json HTTP/1.1" 200 None
+compose.cli.verbose_proxy.proxy_callable: docker inspect_image -> {'Architecture': 'amd64',
+ 'Author': '',
+ 'Comment': '',
+ 'Config': {'AttachStderr': False,
+            'AttachStdin': False,
+            'AttachStdout': False,
+            'Cmd': None,
+            'Domainname': '',
+            'Entrypoint': ['/db/entrypoint.sh'],
+            'Env': ['PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/u01/app/oracle/product/12.1.0/xe/bin',
+...
+compose.cli.verbose_proxy.proxy_callable: docker inspect_image <- ('sha256:c42be7bb6023caf1865b0c3c50eaa578f95399900121468bf3bd4e6abde1a1af')
+urllib3.connectionpool._make_request: http://localhost:None "GET /v1.25/images/sha256:c42be7bb6023caf1865b0c3c50eaa578f95399900121468bf3bd4e6abde1a1af/json HTTP/1.1" 200 None
+compose.cli.verbose_proxy.proxy_callable: docker inspect_image -> {'Architecture': 'amd64',
+ 'Author': '',
+ 'Comment': '',
+ 'Config': {'AttachStderr': False,
+            'AttachStdin': False,
+            'AttachStdout': False,
+            'Cmd': None,
+            'Domainname': '',
+            'Entrypoint': ['/db/entrypoint.sh'],
+            'Env': ['PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/u01/app/oracle/product/12.1.0/xe/bin',
+...
+compose.cli.verbose_proxy.proxy_callable: docker inspect_image <- ('oracledb-12c')
+urllib3.connectionpool._make_request: http://localhost:None "GET /v1.25/images/oracledb-12c/json HTTP/1.1" 200 None
+compose.cli.verbose_proxy.proxy_callable: docker inspect_image -> {'Architecture': 'amd64',
+ 'Author': '',
+ 'Comment': '',
+ 'Config': {'AttachStderr': False,
+            'AttachStdin': False,
+            'AttachStdout': False,
+            'Cmd': None,
+            'Domainname': '',
+            'Entrypoint': ['/db/entrypoint.sh'],
+            'Env': ['PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/u01/app/oracle/product/12.1.0/xe/bin',
+...
+compose.service.build_container_labels: Added config hash: f4812e3f5e6e71debf79a9ee7de2624d8009b3845d169aa236ddad7e4c58d421
+compose.cli.verbose_proxy.proxy_callable: docker create_host_config <- (links=[], port_bindings={'1521/tcp': ['1521']}, binds=['C:\\Users\\gense\\git\\oracledb-graphql-demo\\Docker\\dbase:/db:rw', '87599a361553e11351a2ab93890f31f242b17e48397996802a120bc04a8e6caf:/docker-entrypoint-initdb.d:rw'], volumes_from=[], privileged=False, network_mode='docker_default', devices=None, dns=None, dns_opt=None, dns_search=None, restart_policy=None, runtime=None, cap_add=None, cap_drop=None, mem_limit=None, mem_reservation=None, memswap_limit=None, ulimits=None, log_config={'Type': '', 'Config': {}}, extra_hosts=None, read_only=None, pid_mode=None, security_opt=None, ipc_mode=None, cgroup_parent=None, cpu_quota=None, shm_size=None, sysctls=None, pids_limit=None, tmpfs=[], oom_kill_disable=None, oom_score_adj=None, mem_swappiness=None, group_add=None, userns_mode=None, init=None, init_path=None, isolation=None, cpu_count=None, cpu_percent=None, nano_cpus=None, volume_driver=None, cpuset_cpus=None, cpu_shares=None, storage_opt=None, blkio_weight=None, blkio_weight_device=None, device_read_bps=None, device_read_iops=None, device_write_bps=None, device_write_iops=None, mounts=None, device_cgroup_rules=None, cpu_period=None, cpu_rt_period=None, cpu_rt_runtime=None)
+compose.cli.verbose_proxy.proxy_callable: docker create_host_config -> {'Binds': ['C:\\Users\\gense\\git\\oracledb-graphql-demo\\Docker\\dbase:/db:rw',
+           '87599a361553e11351a2ab93890f31f242b17e48397996802a120bc04a8e6caf:/docker-entrypoint-initdb.d:rw'],
+ 'Links': [],
+ 'LogConfig': {'Config': {}, 'Type': ''},
+ 'NetworkMode': 'docker_default',
+ 'PortBindings': {'1521/tcp': [{'HostIp': '', 'HostPort': '1521'}]},
+ 'VolumesFrom': []}
+compose.cli.verbose_proxy.proxy_callable: docker create_container <- (image='oracledb-12c', ports=[('1521', 'tcp')], volumes={'/db': {}}, name='docker_db_1', detach=True, environment=['affinity:container==3b21305a57ea348d68c1d75d19695bb3f1f43d9ba943f59008e0d4ba1ae7c541'], labels={'com.docker.compose.project': 'docker', 'com.docker.compose.service': 'db', 'com.docker.compose.oneoff': 'False', 'com.docker.compose.container-number': '1', 'com.docker.compose.version': '1.21.0', 'com.docker.compose.config-hash': 'f4812e3f5e6e71debf79a9ee7de2624d8009b3845d169aa236ddad7e4c58d421'}, host_config={'NetworkMode': 'docker_default', 'VolumesFrom': [], 'Binds': ['C:\\Users\\gense\\git\\oracledb-graphql-demo\\Docker\\dbase:/db:rw', '87599a361553e11351a2ab93890f31f242b17e48397996802a120bc04a8e6caf:/docker-entrypoint-initdb.d:rw'], 'PortBindings': {'1521/tcp': [{'HostIp': '', 'HostPort': '1521'}]}, 'Links': [], 'LogConfig': {'Type': '', 'Config': {}}}, networking_config={'EndpointsConfig': {'docker_default': {'Aliases': ['db'], 'IPAMConfig': {}}}})
+compose.parallel.feed_queue: Pending: {<Service: web>}
+compose.parallel.feed_queue: Pending: set()
+urllib3.connectionpool._make_request: http://localhost:None "POST /v1.25/containers/create?name=docker_db_1 HTTP/1.1" 201 90
+compose.cli.verbose_proxy.proxy_callable: docker create_container -> {'Id': '9989bc60db585cd5f85af58ff9a8add4085a08c499f2f468443d8de36f77e64b',
+ 'Warnings': None}
+compose.cli.verbose_proxy.proxy_callable: docker inspect_container <- ('9989bc60db585cd5f85af58ff9a8add4085a08c499f2f468443d8de36f77e64b')
+urllib3.connectionpool._make_request: http://localhost:None "GET /v1.25/containers/9989bc60db585cd5f85af58ff9a8add4085a08c499f2f468443d8de36f77e64b/json HTTP/1.1" 200 None
+compose.cli.verbose_proxy.proxy_callable: docker inspect_container -> {'AppArmorProfile': '',
+ 'Args': [],
+ 'Config': {'AttachStderr': False,
+            'AttachStdin': False,
+            'AttachStdout': False,
+            'Cmd': None,
+            'Domainname': '',
+            'Entrypoint': ['/db/entrypoint.sh'],
+            'Env': ['affinity:container==3b21305a57ea348d68c1d75d19695bb3f1f43d9ba943f59008e0d4ba1ae7c541',
+                    'PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/u01/app/oracle/product/12.1.0/xe/bin',
+...
+compose.cli.verbose_proxy.proxy_callable: docker attach <- ('9989bc60db585cd5f85af58ff9a8add4085a08c499f2f468443d8de36f77e64b', stdout=True, stderr=True, stream=True)
+urllib3.connectionpool._make_request: http://localhost:None "POST /v1.25/containers/9989bc60db585cd5f85af58ff9a8add4085a08c499f2f468443d8de36f77e64b/attach?logs=0&stdout=1&stderr=1&stream=1 HTTP/1.1" 101 0
+urllib3.connectionpool._make_request: http://localhost:None "GET /v1.25/containers/9989bc60db585cd5f85af58ff9a8add4085a08c499f2f468443d8de36f77e64b/json HTTP/1.1" 200 None
+compose.cli.verbose_proxy.proxy_callable: docker attach -> <docker.types.daemon.CancellableStream object at 0x000001DC68C1DD68>
+compose.cli.verbose_proxy.proxy_callable: docker disconnect_container_from_network <- ('9989bc60db585cd5f85af58ff9a8add4085a08c499f2f468443d8de36f77e64b', 'docker_default')
+urllib3.connectionpool._make_request: http://localhost:None "POST /v1.25/networks/docker_default/disconnect HTTP/1.1" 200 0
+compose.cli.verbose_proxy.proxy_callable: docker disconnect_container_from_network -> None
+compose.cli.verbose_proxy.proxy_callable: docker connect_container_to_network <- ('9989bc60db585cd5f85af58ff9a8add4085a08c499f2f468443d8de36f77e64b', 'docker_default', aliases=['db', '9989bc60db58'], ipv4_address=None, ipv6_address=None, links=[], link_local_ips=None)
+compose.parallel.feed_queue: Pending: {<Service: web>}
+urllib3.connectionpool._make_request: http://localhost:None "POST /v1.25/networks/docker_default/connect HTTP/1.1" 200 0
+compose.cli.verbose_proxy.proxy_callable: docker connect_container_to_network -> None
+compose.cli.verbose_proxy.proxy_callable: docker start <- ('9989bc60db585cd5f85af58ff9a8add4085a08c499f2f468443d8de36f77e64b')
+compose.parallel.feed_queue: Pending: set()
+compose.parallel.feed_queue: Pending: {<Service: web>}
+compose.parallel.feed_queue: Pending: set()
+compose.parallel.feed_queue: Pending: {<Service: web>}
+compose.parallel.feed_queue: Pending: set()
+compose.parallel.feed_queue: Pending: {<Service: web>}
+compose.parallel.feed_queue: Pending: set()
+compose.parallel.feed_queue: Pending: {<Service: web>}
+compose.parallel.feed_queue: Pending: set()
+compose.parallel.feed_queue: Pending: {<Service: web>}
+compose.parallel.feed_queue: Pending: set()
+compose.parallel.feed_queue: Pending: {<Service: web>}
+compose.parallel.feed_queue: Pending: set()
+compose.parallel.feed_queue: Pending: {<Service: web>}
+compose.parallel.feed_queue: Pending: set()
+urllib3.connectionpool._make_request: http://localhost:None "POST /v1.25/containers/9989bc60db585cd5f85af58ff9a8add4085a08c499f2f468443d8de36f77e64b/start HTTP/1.1" 204 0
+compose.cli.verbose_proxy.proxy_callable: docker start -> None
+compose.cli.verbose_proxy.proxy_callable: docker remove_container <- ('3b21305a57ea348d68c1d75d19695bb3f1f43d9ba943f59008e0d4ba1ae7c541')
+urllib3.connectionpool._make_request: http://localhost:None "DELETE /v1.25/containers/3b21305a57ea348d68c1d75d19695bb3f1f43d9ba943f59008e0d4ba1ae7c541?v=False&link=False&force=False HTTP/1.1" 204 0
+compose.cli.verbose_proxy.proxy_callable: docker remove_container -> None
+compose.parallel.parallel_execute_iter: Finished processing: <Container: docker_db_1 (3b2130)>
+[1A[2KRecreating docker_db_1 ... [32mdone[0m[1Bcompose.parallel.feed_queue: Pending: set()
+compose.parallel.parallel_execute_iter: Finished processing: <Service: db>
+compose.parallel.feed_queue: Pending: {<Service: web>}
+compose.parallel.feed_queue: Starting producer thread for <Service: web>
+compose.cli.verbose_proxy.proxy_callable: docker inspect_container <- ('3902a49d36a4d073ce90ecb4e17297f697feb41cfff544e05110fe180fb406e2')
+urllib3.connectionpool._make_request: http://localhost:None "GET /v1.25/containers/3902a49d36a4d073ce90ecb4e17297f697feb41cfff544e05110fe180fb406e2/json HTTP/1.1" 200 None
+compose.cli.verbose_proxy.proxy_callable: docker inspect_container -> {'AppArmorProfile': '',
+ 'Args': ['start'],
+ 'Config': {'ArgsEscaped': True,
+            'AttachStderr': False,
+            'AttachStdin': False,
+            'AttachStdout': False,
+            'Cmd': None,
+            'Domainname': '',
+            'Entrypoint': ['npm', 'start'],
+            'Env': ['PATH=/opt/node-v6.11.1-linux-x64/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/lib/oracle/12.2/client64/bin',
+...
+Recreating docker_web_1 ... 
+compose.parallel.feed_queue: Pending: {<Container: docker_web_1 (3902a4)>}
+compose.parallel.feed_queue: Starting producer thread for <Container: docker_web_1 (3902a4)>
+compose.cli.verbose_proxy.proxy_callable: docker stop <- ('3902a49d36a4d073ce90ecb4e17297f697feb41cfff544e05110fe180fb406e2', timeout=10)
+urllib3.connectionpool._make_request: http://localhost:None "POST /v1.25/containers/3902a49d36a4d073ce90ecb4e17297f697feb41cfff544e05110fe180fb406e2/stop?t=10 HTTP/1.1" 304 0
+compose.cli.verbose_proxy.proxy_callable: docker stop -> None
+compose.cli.verbose_proxy.proxy_callable: docker rename <- ('3902a49d36a4d073ce90ecb4e17297f697feb41cfff544e05110fe180fb406e2', '3902a49d36a4_docker_web_1')
+urllib3.connectionpool._make_request: http://localhost:None "POST /v1.25/containers/3902a49d36a4d073ce90ecb4e17297f697feb41cfff544e05110fe180fb406e2/rename?name=3902a49d36a4_docker_web_1 HTTP/1.1" 204 0
+compose.cli.verbose_proxy.proxy_callable: docker rename -> None
+compose.cli.verbose_proxy.proxy_callable: docker inspect_image <- ('node-oracledb')
+urllib3.connectionpool._make_request: http://localhost:None "GET /v1.25/images/node-oracledb/json HTTP/1.1" 200 None
+compose.cli.verbose_proxy.proxy_callable: docker inspect_image -> {'Architecture': 'amd64',
+ 'Author': '',
+ 'Comment': '',
+ 'Config': {'ArgsEscaped': True,
+            'AttachStderr': False,
+            'AttachStdin': False,
+            'AttachStdout': False,
+            'Cmd': None,
+            'Domainname': '',
+            'Entrypoint': ['npm', 'start'],
+...
+compose.cli.verbose_proxy.proxy_callable: docker inspect_image <- ('sha256:f6ddc972cfe331e44fce6f78122fcd41fdb86c2c0c40e053677108f60586045c')
+urllib3.connectionpool._make_request: http://localhost:None "GET /v1.25/images/sha256:f6ddc972cfe331e44fce6f78122fcd41fdb86c2c0c40e053677108f60586045c/json HTTP/1.1" 200 None
+compose.cli.verbose_proxy.proxy_callable: docker inspect_image -> {'Architecture': 'amd64',
+ 'Author': '',
+ 'Comment': '',
+ 'Config': {'ArgsEscaped': True,
+            'AttachStderr': False,
+            'AttachStdin': False,
+            'AttachStdout': False,
+            'Cmd': None,
+            'Domainname': '',
+            'Entrypoint': ['npm', 'start'],
+...
+compose.cli.verbose_proxy.proxy_callable: docker inspect_image <- ('node-oracledb')
+urllib3.connectionpool._make_request: http://localhost:None "GET /v1.25/images/node-oracledb/json HTTP/1.1" 200 None
+compose.cli.verbose_proxy.proxy_callable: docker inspect_image -> {'Architecture': 'amd64',
+ 'Author': '',
+ 'Comment': '',
+ 'Config': {'ArgsEscaped': True,
+            'AttachStderr': False,
+            'AttachStdin': False,
+            'AttachStdout': False,
+            'Cmd': None,
+            'Domainname': '',
+            'Entrypoint': ['npm', 'start'],
+...
+compose.service.build_container_labels: Added config hash: 6125aa434a3bf4079792c7987842c86ce4ea7146b9c3453eada7c6d27ed42cb2
+compose.cli.verbose_proxy.proxy_callable: docker create_host_config <- (links=[], port_bindings={'3000/tcp': ['3000']}, binds=['C:\\Users\\gense\\git\\oracledb-graphql-demo\\src:/src:rw'], volumes_from=[], privileged=False, network_mode='docker_default', devices=None, dns=None, dns_opt=None, dns_search=None, restart_policy=None, runtime=None, cap_add=None, cap_drop=None, mem_limit=None, mem_reservation=None, memswap_limit=None, ulimits=None, log_config={'Type': '', 'Config': {}}, extra_hosts=None, read_only=None, pid_mode=None, security_opt=None, ipc_mode=None, cgroup_parent=None, cpu_quota=None, shm_size=None, sysctls=None, pids_limit=None, tmpfs=[], oom_kill_disable=None, oom_score_adj=None, mem_swappiness=None, group_add=None, userns_mode=None, init=None, init_path=None, isolation=None, cpu_count=None, cpu_percent=None, nano_cpus=None, volume_driver=None, cpuset_cpus=None, cpu_shares=None, storage_opt=None, blkio_weight=None, blkio_weight_device=None, device_read_bps=None, device_read_iops=None, device_write_bps=None, device_write_iops=None, mounts=None, device_cgroup_rules=None, cpu_period=None, cpu_rt_period=None, cpu_rt_runtime=None)
+compose.cli.verbose_proxy.proxy_callable: docker create_host_config -> {'Binds': ['C:\\Users\\gense\\git\\oracledb-graphql-demo\\src:/src:rw'],
+ 'Links': [],
+ 'LogConfig': {'Config': {}, 'Type': ''},
+ 'NetworkMode': 'docker_default',
+ 'PortBindings': {'3000/tcp': [{'HostIp': '', 'HostPort': '3000'}]},
+ 'VolumesFrom': []}
+compose.cli.verbose_proxy.proxy_callable: docker create_container <- (image='node-oracledb', ports=[('3000', 'tcp')], volumes={'/src': {}}, working_dir='/src', name='docker_web_1', detach=True, environment=[], labels={'com.docker.compose.project': 'docker', 'com.docker.compose.service': 'web', 'com.docker.compose.oneoff': 'False', 'com.docker.compose.container-number': '1', 'com.docker.compose.version': '1.21.0', 'com.docker.compose.config-hash': '6125aa434a3bf4079792c7987842c86ce4ea7146b9c3453eada7c6d27ed42cb2'}, host_config={'NetworkMode': 'docker_default', 'VolumesFrom': [], 'Binds': ['C:\\Users\\gense\\git\\oracledb-graphql-demo\\src:/src:rw'], 'PortBindings': {'3000/tcp': [{'HostIp': '', 'HostPort': '3000'}]}, 'Links': [], 'LogConfig': {'Type': '', 'Config': {}}}, networking_config={'EndpointsConfig': {'docker_default': {'Aliases': ['web'], 'IPAMConfig': {}}}})
+compose.parallel.feed_queue: Pending: set()
+compose.parallel.feed_queue: Pending: set()
+compose.parallel.feed_queue: Pending: set()
+compose.parallel.feed_queue: Pending: set()
+urllib3.connectionpool._make_request: http://localhost:None "POST /v1.25/containers/create?name=docker_web_1 HTTP/1.1" 201 90
+compose.cli.verbose_proxy.proxy_callable: docker create_container -> {'Id': 'c600f067ca5fb371f92ee69f3a485f321b76f4f12765e1f17b031be17236d7c1',
+ 'Warnings': None}
+compose.cli.verbose_proxy.proxy_callable: docker inspect_container <- ('c600f067ca5fb371f92ee69f3a485f321b76f4f12765e1f17b031be17236d7c1')
+urllib3.connectionpool._make_request: http://localhost:None "GET /v1.25/containers/c600f067ca5fb371f92ee69f3a485f321b76f4f12765e1f17b031be17236d7c1/json HTTP/1.1" 200 None
+compose.cli.verbose_proxy.proxy_callable: docker inspect_container -> {'AppArmorProfile': '',
+ 'Args': ['start'],
+ 'Config': {'ArgsEscaped': True,
+            'AttachStderr': False,
+            'AttachStdin': False,
+            'AttachStdout': False,
+            'Cmd': None,
+            'Domainname': '',
+            'Entrypoint': ['npm', 'start'],
+            'Env': ['PATH=/opt/node-v6.11.1-linux-x64/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/lib/oracle/12.2/client64/bin',
+...
+compose.cli.verbose_proxy.proxy_callable: docker attach <- ('c600f067ca5fb371f92ee69f3a485f321b76f4f12765e1f17b031be17236d7c1', stdout=True, stderr=True, stream=True)
+urllib3.connectionpool._make_request: http://localhost:None "POST /v1.25/containers/c600f067ca5fb371f92ee69f3a485f321b76f4f12765e1f17b031be17236d7c1/attach?logs=0&stdout=1&stderr=1&stream=1 HTTP/1.1" 101 0
+urllib3.connectionpool._make_request: http://localhost:None "GET /v1.25/containers/c600f067ca5fb371f92ee69f3a485f321b76f4f12765e1f17b031be17236d7c1/json HTTP/1.1" 200 None
+compose.cli.verbose_proxy.proxy_callable: docker attach -> <docker.types.daemon.CancellableStream object at 0x000001DC68C39438>
+compose.cli.verbose_proxy.proxy_callable: docker disconnect_container_from_network <- ('c600f067ca5fb371f92ee69f3a485f321b76f4f12765e1f17b031be17236d7c1', 'docker_default')
+urllib3.connectionpool._make_request: http://localhost:None "POST /v1.25/networks/docker_default/disconnect HTTP/1.1" 200 0
+compose.cli.verbose_proxy.proxy_callable: docker disconnect_container_from_network -> None
+compose.cli.verbose_proxy.proxy_callable: docker connect_container_to_network <- ('c600f067ca5fb371f92ee69f3a485f321b76f4f12765e1f17b031be17236d7c1', 'docker_default', aliases=['c600f067ca5f', 'web'], ipv4_address=None, ipv6_address=None, links=[], link_local_ips=None)
+urllib3.connectionpool._make_request: http://localhost:None "POST /v1.25/networks/docker_default/connect HTTP/1.1" 200 0
+compose.cli.verbose_proxy.proxy_callable: docker connect_container_to_network -> None
+compose.cli.verbose_proxy.proxy_callable: docker start <- ('c600f067ca5fb371f92ee69f3a485f321b76f4f12765e1f17b031be17236d7c1')
+compose.parallel.feed_queue: Pending: set()
+compose.parallel.feed_queue: Pending: set()
+compose.parallel.feed_queue: Pending: set()
+compose.parallel.feed_queue: Pending: set()
+compose.parallel.feed_queue: Pending: set()
+compose.parallel.feed_queue: Pending: set()
+compose.parallel.feed_queue: Pending: set()
+compose.parallel.feed_queue: Pending: set()
+compose.parallel.feed_queue: Pending: set()
+compose.parallel.feed_queue: Pending: set()
+compose.parallel.feed_queue: Pending: set()
+compose.parallel.feed_queue: Pending: set()
+compose.parallel.feed_queue: Pending: set()
+compose.parallel.feed_queue: Pending: set()
+compose.parallel.feed_queue: Pending: set()
+compose.parallel.feed_queue: Pending: set()
+compose.parallel.feed_queue: Pending: set()
+compose.parallel.feed_queue: Pending: set()
+compose.parallel.feed_queue: Pending: set()
+compose.parallel.feed_queue: Pending: set()
+compose.parallel.feed_queue: Pending: set()
+compose.parallel.feed_queue: Pending: set()
+compose.parallel.feed_queue: Pending: set()
+compose.parallel.feed_queue: Pending: set()
+compose.parallel.feed_queue: Pending: set()
+compose.parallel.feed_queue: Pending: set()
+compose.parallel.feed_queue: Pending: set()
+compose.parallel.feed_queue: Pending: set()
+compose.parallel.feed_queue: Pending: set()
+compose.parallel.feed_queue: Pending: set()
+compose.parallel.feed_queue: Pending: set()
+compose.parallel.feed_queue: Pending: set()
+compose.parallel.feed_queue: Pending: set()
+compose.parallel.feed_queue: Pending: set()
+compose.parallel.feed_queue: Pending: set()
+compose.parallel.feed_queue: Pending: set()
+urllib3.connectionpool._make_request: http://localhost:None "POST /v1.25/containers/c600f067ca5fb371f92ee69f3a485f321b76f4f12765e1f17b031be17236d7c1/start HTTP/1.1" 204 0
+compose.cli.verbose_proxy.proxy_callable: docker start -> None
+compose.cli.verbose_proxy.proxy_callable: docker remove_container <- ('3902a49d36a4d073ce90ecb4e17297f697feb41cfff544e05110fe180fb406e2')
+urllib3.connectionpool._make_request: http://localhost:None "DELETE /v1.25/containers/3902a49d36a4d073ce90ecb4e17297f697feb41cfff544e05110fe180fb406e2?v=False&link=False&force=False HTTP/1.1" 204 0
+compose.cli.verbose_proxy.proxy_callable: docker remove_container -> None
+compose.parallel.parallel_execute_iter: Finished processing: <Container: docker_web_1 (3902a4)>
+[1A[2KRecreating docker_web_1 ... [32mdone[0m[1Bcompose.parallel.feed_queue: Pending: set()
+compose.parallel.parallel_execute_iter: Finished processing: <Service: web>
+compose.parallel.feed_queue: Pending: set()
+compose.cli.verbose_proxy.proxy_callable: docker wait <- ('9989bc60db585cd5f85af58ff9a8add4085a08c499f2f468443d8de36f77e64b')
+compose.cli.verbose_proxy.proxy_callable: docker events <- (filters={'label': ['com.docker.compose.project=docker', 'com.docker.compose.oneoff=False']}, decode=True)
+Attaching to docker_db_1, docker_web_1
+[36mdb_1   |[0m standard_init_linux.go:190: exec user process caused "no such file or directory"
+urllib3.connectionpool._make_request: http://localhost:None "POST /v1.25/containers/9989bc60db585cd5f85af58ff9a8add4085a08c499f2f468443d8de36f77e64b/wait HTTP/1.1" 200 30
+urllib3.connectionpool._make_request: http://localhost:None "GET /v1.25/events?filters=%7B%22label%22%3A+%5B%22com.docker.compose.project%3Ddocker%22%2C+%22com.docker.compose.oneoff%3DFalse%22%5D%7D HTTP/1.1" 200 None
+compose.cli.verbose_proxy.proxy_callable: docker wait -> {'Error': None, 'StatusCode': 1}
+compose.cli.verbose_proxy.proxy_callable: docker events -> <docker.types.daemon.CancellableStream object at 0x000001DC68C35668>
+[36mdocker_db_1 exited with code 1
+[0mcompose.cli.verbose_proxy.proxy_callable: docker containers <- (all=True, filters={'label': ['com.docker.compose.project=docker', 'com.docker.compose.oneoff=False']})
+urllib3.connectionpool._make_request: http://localhost:None "GET /v1.25/containers/json?limit=-1&all=1&size=0&trunc_cmd=0&filters=%7B%22label%22%3A+%5B%22com.docker.compose.project%3Ddocker%22%2C+%22com.docker.compose.oneoff%3DFalse%22%5D%7D HTTP/1.1" 200 2791
+compose.cli.verbose_proxy.proxy_callable: docker containers -> (list with 2 items)
+compose.cli.verbose_proxy.proxy_callable: docker inspect_container <- ('c600f067ca5fb371f92ee69f3a485f321b76f4f12765e1f17b031be17236d7c1')
+urllib3.connectionpool._make_request: http://localhost:None "GET /v1.25/containers/c600f067ca5fb371f92ee69f3a485f321b76f4f12765e1f17b031be17236d7c1/json HTTP/1.1" 200 None
+compose.cli.verbose_proxy.proxy_callable: docker inspect_container -> {'AppArmorProfile': '',
+ 'Args': ['start'],
+ 'Config': {'ArgsEscaped': True,
+            'AttachStderr': False,
+            'AttachStdin': False,
+            'AttachStdout': False,
+            'Cmd': None,
+            'Domainname': '',
+            'Entrypoint': ['npm', 'start'],
+            'Env': ['PATH=/opt/node-v6.11.1-linux-x64/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/lib/oracle/12.2/client64/bin',
+...
+compose.cli.verbose_proxy.proxy_callable: docker inspect_container <- ('9989bc60db585cd5f85af58ff9a8add4085a08c499f2f468443d8de36f77e64b')
+urllib3.connectionpool._make_request: http://localhost:None "GET /v1.25/containers/9989bc60db585cd5f85af58ff9a8add4085a08c499f2f468443d8de36f77e64b/json HTTP/1.1" 200 None
+compose.cli.verbose_proxy.proxy_callable: docker inspect_container -> {'AppArmorProfile': '',
+ 'Args': [],
+ 'Config': {'AttachStderr': False,
+            'AttachStdin': False,
+            'AttachStdout': False,
+            'Cmd': None,
+            'Domainname': '',
+            'Entrypoint': ['/db/entrypoint.sh'],
+            'Env': ['affinity:container==3b21305a57ea348d68c1d75d19695bb3f1f43d9ba943f59008e0d4ba1ae7c541',
+                    'PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/u01/app/oracle/product/12.1.0/xe/bin',
+...
+compose.cli.verbose_proxy.proxy_callable: docker containers <- (all=False, filters={'label': ['com.docker.compose.project=docker', 'com.docker.compose.oneoff=False']})
+urllib3.connectionpool._make_request: http://localhost:None "GET /v1.25/containers/json?limit=-1&all=0&size=0&trunc_cmd=0&filters=%7B%22label%22%3A+%5B%22com.docker.compose.project%3Ddocker%22%2C+%22com.docker.compose.oneoff%3DFalse%22%5D%7D HTTP/1.1" 200 1324
+compose.cli.verbose_proxy.proxy_callable: docker containers -> (list with 1 items)
+compose.cli.verbose_proxy.proxy_callable: docker inspect_container <- ('c600f067ca5fb371f92ee69f3a485f321b76f4f12765e1f17b031be17236d7c1')
+urllib3.connectionpool._make_request: http://localhost:None "GET /v1.25/containers/c600f067ca5fb371f92ee69f3a485f321b76f4f12765e1f17b031be17236d7c1/json HTTP/1.1" 200 None
+compose.cli.verbose_proxy.proxy_callable: docker inspect_container -> {'AppArmorProfile': '',
+ 'Args': ['start'],
+ 'Config': {'ArgsEscaped': True,
+            'AttachStderr': False,
+            'AttachStdin': False,
+            'AttachStdout': False,
+            'Cmd': None,
+            'Domainname': '',
+            'Entrypoint': ['npm', 'start'],
+            'Env': ['PATH=/opt/node-v6.11.1-linux-x64/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/lib/oracle/12.2/client64/bin',
+...
+Stopping docker_web_1   ... 
+compose.parallel.feed_queue: Pending: {<Container: docker_web_1 (c600f0)>}
+compose.parallel.feed_queue: Starting producer thread for <Container: docker_web_1 (c600f0)>
+compose.cli.verbose_proxy.proxy_callable: docker stop <- ('c600f067ca5fb371f92ee69f3a485f321b76f4f12765e1f17b031be17236d7c1', timeout=10)
+compose.cli.verbose_proxy.proxy_callable: docker inspect_container <- ('c600f067ca5fb371f92ee69f3a485f321b76f4f12765e1f17b031be17236d7c1')
+urllib3.connectionpool._make_request: http://localhost:None "GET /v1.25/containers/c600f067ca5fb371f92ee69f3a485f321b76f4f12765e1f17b031be17236d7c1/json HTTP/1.1" 200 None
+compose.cli.verbose_proxy.proxy_callable: docker inspect_container -> {'AppArmorProfile': '',
+ 'Args': ['start'],
+ 'Config': {'ArgsEscaped': True,
+            'AttachStderr': False,
+            'AttachStdin': False,
+            'AttachStdout': False,
+            'Cmd': None,
+            'Domainname': '',
+            'Entrypoint': ['npm', 'start'],
+            'Env': ['PATH=/opt/node-v6.11.1-linux-x64/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/lib/oracle/12.2/client64/bin',
+...
+compose.parallel.feed_queue: Pending: set()
+compose.parallel.feed_queue: Pending: set()
+compose.parallel.feed_queue: Pending: set()
+compose.parallel.feed_queue: Pending: set()
+compose.parallel.feed_queue: Pending: set()
+compose.cli.verbose_proxy.proxy_callable: docker wait <- ('c600f067ca5fb371f92ee69f3a485f321b76f4f12765e1f17b031be17236d7c1')
+compose.cli.verbose_proxy.proxy_callable: docker inspect_container <- ('c600f067ca5fb371f92ee69f3a485f321b76f4f12765e1f17b031be17236d7c1')
+compose.parallel.feed_queue: Pending: set()
+compose.parallel.feed_queue: Pending: set()
+compose.parallel.feed_queue: Pending: set()
+compose.parallel.feed_queue: Pending: set()
+compose.parallel.feed_queue: Pending: set()
+urllib3.connectionpool._make_request: http://localhost:None "GET /v1.25/containers/c600f067ca5fb371f92ee69f3a485f321b76f4f12765e1f17b031be17236d7c1/json HTTP/1.1" 200 None
+compose.cli.verbose_proxy.proxy_callable: docker inspect_container -> {'AppArmorProfile': '',
+ 'Args': ['start'],
+ 'Config': {'ArgsEscaped': True,
+            'AttachStderr': False,
+            'AttachStdin': False,
+            'AttachStdout': False,
+            'Cmd': None,
+            'Domainname': '',
+            'Entrypoint': ['npm', 'start'],
+            'Env': ['PATH=/opt/node-v6.11.1-linux-x64/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/lib/oracle/12.2/client64/bin',
+...
+urllib3.connectionpool._make_request: http://localhost:None "POST /v1.25/containers/c600f067ca5fb371f92ee69f3a485f321b76f4f12765e1f17b031be17236d7c1/stop?t=10 HTTP/1.1" 204 0
+urllib3.connectionpool._make_request: http://localhost:None "POST /v1.25/containers/c600f067ca5fb371f92ee69f3a485f321b76f4f12765e1f17b031be17236d7c1/wait HTTP/1.1" 200 30
+compose.cli.verbose_proxy.proxy_callable: docker inspect_container <- ('c600f067ca5fb371f92ee69f3a485f321b76f4f12765e1f17b031be17236d7c1')
+compose.cli.verbose_proxy.proxy_callable: docker stop -> None
+compose.cli.verbose_proxy.proxy_callable: docker wait -> {'Error': None, 'StatusCode': 1}
+compose.parallel.parallel_execute_iter: Finished processing: <Container: docker_web_1 (c600f0)>
+[1A[2KStopping docker_web_1   ... [32mdone[0m[1Bcompose.parallel.feed_queue: Pending: set()
+Aborting on container exit...
+compose.config.config.find: Using configuration files: .\docker-compose.yml
+docker.utils.config.find_config_file: Trying paths: ['C:\\Users\\gense\\.docker\\config.json', 'C:\\Users\\gense\\.dockercfg']
+docker.utils.config.find_config_file: Found file at path: C:\Users\gense\.docker\config.json
+docker.auth.load_config: Found 'auths' section
+docker.auth.parse_auth: Auth data for https://index.docker.io/v1/ is absent. Client might be using a credentials store instead.
+docker.auth.load_config: Found 'credsStore' section
+urllib3.connectionpool._make_request: http://localhost:None "GET /v1.25/version HTTP/1.1" 200 566
+compose.cli.command.get_client: docker-compose version 1.21.0, build 5920eb08
+docker-py version: 3.2.1
+CPython version: 3.6.4
+OpenSSL version: OpenSSL 1.0.2k  26 Jan 2017
+compose.cli.command.get_client: Docker base_url: http+docker://localnpipe
+compose.cli.command.get_client: Docker version: Platform={'Name': ''}, Components=[{'Name': 'Engine', 'Version': '18.03.1-ce', 'Details': {'ApiVersion': '1.37', 'Arch': 'amd64', 'BuildTime': '2018-04-26T07:22:38.000000000+00:00', 'Experimental': 'true', 'GitCommit': '9ee9f40', 'GoVersion': 'go1.9.5', 'KernelVersion': '4.9.87-linuxkit-aufs', 'MinAPIVersion': '1.12', 'Os': 'linux'}}], Version=18.03.1-ce, ApiVersion=1.37, MinAPIVersion=1.12, GitCommit=9ee9f40, GoVersion=go1.9.5, Os=linux, Arch=amd64, KernelVersion=4.9.87-linuxkit-aufs, Experimental=True, BuildTime=2018-04-26T07:22:38.000000000+00:00
+compose.cli.verbose_proxy.proxy_callable: docker info <- ()
+urllib3.connectionpool._make_request: http://localhost:None "GET /v1.25/info HTTP/1.1" 200 None
+compose.cli.verbose_proxy.proxy_callable: docker info -> {'Architecture': 'x86_64',
+ 'BridgeNfIp6tables': True,
+ 'BridgeNfIptables': True,
+ 'CPUSet': True,
+ 'CPUShares': True,
+ 'CgroupDriver': 'cgroupfs',
+ 'ClusterAdvertise': '',
+ 'ClusterStore': '',
+ 'ContainerdCommit': {'Expected': '773c489c9c1b21a6d78b5c538cd395416ec50f88',
+                      'ID': '773c489c9c1b21a6d78b5c538cd395416ec50f88'},
+...
+compose.cli.verbose_proxy.proxy_callable: docker inspect_network <- ('docker_default')
+urllib3.connectionpool._make_request: http://localhost:None "GET /v1.25/networks/docker_default HTTP/1.1" 200 511
+compose.cli.verbose_proxy.proxy_callable: docker inspect_network -> {'Attachable': True,
+ 'ConfigFrom': {'Network': ''},
+ 'ConfigOnly': False,
+ 'Containers': {},
+ 'Created': '2018-04-27T02:07:35.9972573Z',
+ 'Driver': 'bridge',
+ 'EnableIPv6': False,
+ 'IPAM': {'Config': [{'Gateway': '172.18.0.1', 'Subnet': '172.18.0.0/16'}],
+          'Driver': 'default',
+          'Options': None},
+...
+compose.cli.verbose_proxy.proxy_callable: docker containers <- (all=False, filters={'label': ['com.docker.compose.project=docker', 'com.docker.compose.oneoff=False']})
+urllib3.connectionpool._make_request: http://localhost:None "GET /v1.25/containers/json?limit=-1&all=0&size=0&trunc_cmd=0&filters=%7B%22label%22%3A+%5B%22com.docker.compose.project%3Ddocker%22%2C+%22com.docker.compose.oneoff%3DFalse%22%5D%7D HTTP/1.1" 200 3
+compose.cli.verbose_proxy.proxy_callable: docker containers -> (list with 0 items)
+compose.cli.verbose_proxy.proxy_callable: docker containers <- (all=True, filters={'label': ['com.docker.compose.project=docker', 'com.docker.compose.service=db', 'com.docker.compose.oneoff=False']})
+urllib3.connectionpool._make_request: http://localhost:None "GET /v1.25/containers/json?limit=-1&all=1&size=0&trunc_cmd=0&filters=%7B%22label%22%3A+%5B%22com.docker.compose.project%3Ddocker%22%2C+%22com.docker.compose.service%3Ddb%22%2C+%22com.docker.compose.oneoff%3DFalse%22%5D%7D HTTP/1.1" 200 1469
+compose.cli.verbose_proxy.proxy_callable: docker containers -> (list with 1 items)
+compose.cli.verbose_proxy.proxy_callable: docker inspect_container <- ('9989bc60db585cd5f85af58ff9a8add4085a08c499f2f468443d8de36f77e64b')
+urllib3.connectionpool._make_request: http://localhost:None "GET /v1.25/containers/9989bc60db585cd5f85af58ff9a8add4085a08c499f2f468443d8de36f77e64b/json HTTP/1.1" 200 None
+compose.cli.verbose_proxy.proxy_callable: docker inspect_container -> {'AppArmorProfile': '',
+ 'Args': [],
+ 'Config': {'AttachStderr': False,
+            'AttachStdin': False,
+            'AttachStdout': False,
+            'Cmd': None,
+            'Domainname': '',
+            'Entrypoint': ['/db/entrypoint.sh'],
+            'Env': ['affinity:container==3b21305a57ea348d68c1d75d19695bb3f1f43d9ba943f59008e0d4ba1ae7c541',
+                    'PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/u01/app/oracle/product/12.1.0/xe/bin',
+...
+compose.cli.verbose_proxy.proxy_callable: docker containers <- (all=True, filters={'label': ['com.docker.compose.project=docker', 'com.docker.compose.service=web', 'com.docker.compose.oneoff=False']})
+urllib3.connectionpool._make_request: http://localhost:None "GET /v1.25/containers/json?limit=-1&all=1&size=0&trunc_cmd=0&filters=%7B%22label%22%3A+%5B%22com.docker.compose.project%3Ddocker%22%2C+%22com.docker.compose.service%3Dweb%22%2C+%22com.docker.compose.oneoff%3DFalse%22%5D%7D HTTP/1.1" 200 1158
+compose.cli.verbose_proxy.proxy_callable: docker containers -> (list with 1 items)
+compose.cli.verbose_proxy.proxy_callable: docker inspect_container <- ('c600f067ca5fb371f92ee69f3a485f321b76f4f12765e1f17b031be17236d7c1')
+urllib3.connectionpool._make_request: http://localhost:None "GET /v1.25/containers/c600f067ca5fb371f92ee69f3a485f321b76f4f12765e1f17b031be17236d7c1/json HTTP/1.1" 200 None
+compose.cli.verbose_proxy.proxy_callable: docker inspect_container -> {'AppArmorProfile': '',
+ 'Args': ['start'],
+ 'Config': {'ArgsEscaped': True,
+            'AttachStderr': False,
+            'AttachStdin': False,
+            'AttachStdout': False,
+            'Cmd': None,
+            'Domainname': '',
+            'Entrypoint': ['npm', 'start'],
+            'Env': ['PATH=/opt/node-v6.11.1-linux-x64/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/lib/oracle/12.2/client64/bin',
+...
+compose.service.build: Building db
+compose.cli.verbose_proxy.proxy_callable: docker build <- (path='C:\\Users\\gense\\git\\oracledb-graphql-demo\\Docker\\dbase', tag='oracledb-12c', rm=True, forcerm=False, pull=False, nocache=False, dockerfile=None, cache_from=None, labels=None, buildargs={}, network_mode=None, target=None, shmsize=None, extra_hosts=None, container_limits={'memory': None}, gzip=False, isolation=None, platform=None)
+docker.api.build._set_auth_headers: Looking for auth config
+docker.auth.resolve_authconfig: Using credentials store "wincred"
+docker.auth._resolve_authconfig_credstore: Looking for auth entry for 'https://index.docker.io/v1/'
+docker.api.build._set_auth_headers: Sending auth config ('https://index.docker.io/v1/')
+urllib3.connectionpool._make_request: http://localhost:None "POST /v1.25/build?t=oracledb-12c&q=False&nocache=False&rm=True&forcerm=False&pull=False HTTP/1.1" 200 None
+compose.cli.verbose_proxy.proxy_callable: docker build -> <generator object APIClient._stream_helper at 0x00000239B5A2A3B8>
+Step 1/10 : FROM sath89/oracle-12c-base
+ ---> bbf9626baa61
+Step 2/10 : ENV WEB_CONSOLE false
+ ---> Using cache
+ ---> 5e1755cceb61
+Step 3/10 : ENV DBCA_TOTAL_MEMORY 2048
+ ---> Using cache
+ ---> af6222cf5251
+Step 4/10 : ENV PATH /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/u01/app/oracle/product/12.1.0/xe/bin
+ ---> Using cache
+ ---> deb040e0efb6
+Step 5/10 : ENV USE_UTF8_IF_CHARSET_EMPTY true
+ ---> Using cache
+ ---> 75e3aaf1fc7f
+Step 6/10 : ADD ./entrypoint.sh /db/entrypoint.sh
+ ---> Using cache
+ ---> 4b63a84f569a
+Step 7/10 : RUN apt-get update && apt-get -y install curl && apt-get clean && rm -rf /tmp/* /var/lib/apt/lists/* /var/tmp/*
+ ---> Using cache
+ ---> 99d72a3d678f
+Step 8/10 : EXPOSE 1521
+ ---> Using cache
+ ---> b1d0ba774087
+Step 9/10 : VOLUME ["/docker-entrypoint-initdb.d"]
+ ---> Using cache
+ ---> bb1a4b38239d
+Step 10/10 : ENTRYPOINT ["/db/entrypoint.sh"]
+ ---> Using cache
+ ---> c42be7bb6023
+Successfully built c42be7bb6023
+Successfully tagged oracledb-12c:latest
+compose.cli.verbose_proxy.proxy_callable: docker close <- ()
+compose.cli.verbose_proxy.proxy_callable: docker close -> None
+compose.service.build: Building web
+compose.cli.verbose_proxy.proxy_callable: docker build <- (path='C:\\Users\\gense\\git\\oracledb-graphql-demo\\Docker\\web', tag='node-oracledb', rm=True, forcerm=False, pull=False, nocache=False, dockerfile=None, cache_from=None, labels=None, buildargs={}, network_mode=None, target=None, shmsize=None, extra_hosts=None, container_limits={'memory': None}, gzip=False, isolation=None, platform=None)
+docker.api.build._set_auth_headers: Looking for auth config
+docker.auth.resolve_authconfig: Using credentials store "wincred"
+docker.auth._resolve_authconfig_credstore: Looking for auth entry for 'https://index.docker.io/v1/'
+docker.api.build._set_auth_headers: Sending auth config ('https://index.docker.io/v1/')
+urllib3.connectionpool._make_request: http://localhost:None "POST /v1.25/build?t=node-oracledb&q=False&nocache=False&rm=True&forcerm=False&pull=False HTTP/1.1" 200 None
+compose.cli.verbose_proxy.proxy_callable: docker build -> <generator object APIClient._stream_helper at 0x00000239B5A881A8>
+Step 1/14 : FROM store/oracle/database-instantclient:12.2.0.1
+ ---> 916033cf06bf
+Step 2/14 : ARG SRC_PATH=./src
+ ---> Using cache
+ ---> f66e3b456a2a
+Step 3/14 : RUN yum install -y wget
+ ---> Using cache
+ ---> 8e06a4a6e4ef
+Step 4/14 : RUN cd opt
+ ---> Using cache
+ ---> 7d60b1b8a104
+Step 5/14 : COPY node* .
+ ---> Using cache
+ ---> 2c82d0345afa
+Step 6/14 : RUN yum -y install tar* gcc* gcc-c++ unzip libaio* make curl dos2unix     && tar -xJf node-v6.11.1-linux-x64.tar.xz -C /usr/local --strip-components=1 --no-same-owner     && yum clean all
+ ---> Using cache
+ ---> 1002d70579d2
+Step 7/14 : ENV PATH=/opt/node-v6.11.1-linux-x64/bin:$PATH
+ ---> Using cache
+ ---> f7ae47243b1d
+Step 8/14 : ENV NODE_PATH=/opt/node-v6.11.1-linux-x64/lib/node_modules/
+ ---> Using cache
+ ---> 80ef2dc4300b
+Step 9/14 : COPY ${SRC_PATH} ./src
+ ---> Using cache
+ ---> 356e4f468c20
+Step 10/14 : RUN find ./src -type f -print0 | xargs -0 dos2unix
+ ---> Using cache
+ ---> a574d84cadbd
+Step 11/14 : EXPOSE 3000
+ ---> Using cache
+ ---> 2c5aeae82ce8
+Step 12/14 : WORKDIR src
+ ---> Using cache
+ ---> eab53c93862f
+Step 13/14 : RUN npm install
+ ---> Using cache
+ ---> 032c69e10f3f
+Step 14/14 : ENTRYPOINT [ "npm", "start" ]
+ ---> Using cache
+ ---> f6ddc972cfe3
+Successfully built f6ddc972cfe3
+Successfully tagged node-oracledb:latest
+compose.cli.verbose_proxy.proxy_callable: docker close <- ()
+compose.cli.verbose_proxy.proxy_callable: docker close -> None
+compose.cli.verbose_proxy.proxy_callable: docker containers <- (all=True, filters={'label': ['com.docker.compose.project=docker', 'com.docker.compose.service=db', 'com.docker.compose.oneoff=False']})
+urllib3.connectionpool._make_request: http://localhost:None "GET /v1.25/containers/json?limit=-1&all=1&size=0&trunc_cmd=0&filters=%7B%22label%22%3A+%5B%22com.docker.compose.project%3Ddocker%22%2C+%22com.docker.compose.service%3Ddb%22%2C+%22com.docker.compose.oneoff%3DFalse%22%5D%7D HTTP/1.1" 200 1469
+compose.cli.verbose_proxy.proxy_callable: docker containers -> (list with 1 items)
+compose.project._get_convergence_plans: web has upstream changes (db)
+compose.cli.verbose_proxy.proxy_callable: docker containers <- (all=True, filters={'status': ['created', 'exited'], 'label': ['com.docker.compose.project=docker', 'com.docker.compose.service=web', 'com.docker.compose.oneoff=False']})
+urllib3.connectionpool._make_request: http://localhost:None "GET /v1.25/containers/json?limit=-1&all=1&size=0&trunc_cmd=0&filters=%7B%22status%22%3A+%5B%22created%22%2C+%22exited%22%5D%2C+%22label%22%3A+%5B%22com.docker.compose.project%3Ddocker%22%2C+%22com.docker.compose.service%3Dweb%22%2C+%22com.docker.compose.oneoff%3DFalse%22%5D%7D HTTP/1.1" 200 1158
+compose.cli.verbose_proxy.proxy_callable: docker containers -> (list with 1 items)
+compose.cli.verbose_proxy.proxy_callable: docker containers <- (all=False, filters={'label': ['com.docker.compose.project=docker', 'com.docker.compose.service=web', 'com.docker.compose.oneoff=False']})
+urllib3.connectionpool._make_request: http://localhost:None "GET /v1.25/containers/json?limit=-1&all=0&size=0&trunc_cmd=0&filters=%7B%22label%22%3A+%5B%22com.docker.compose.project%3Ddocker%22%2C+%22com.docker.compose.service%3Dweb%22%2C+%22com.docker.compose.oneoff%3DFalse%22%5D%7D HTTP/1.1" 200 3
+compose.cli.verbose_proxy.proxy_callable: docker containers -> (list with 0 items)
+compose.cli.verbose_proxy.proxy_callable: docker containers <- (all=True, filters={'label': ['com.docker.compose.project=docker', 'com.docker.compose.service=web', 'com.docker.compose.oneoff=False']})
+urllib3.connectionpool._make_request: http://localhost:None "GET /v1.25/containers/json?limit=-1&all=1&size=0&trunc_cmd=0&filters=%7B%22label%22%3A+%5B%22com.docker.compose.project%3Ddocker%22%2C+%22com.docker.compose.service%3Dweb%22%2C+%22com.docker.compose.oneoff%3DFalse%22%5D%7D HTTP/1.1" 200 1158
+compose.cli.verbose_proxy.proxy_callable: docker containers -> (list with 1 items)
+compose.parallel.feed_queue: Pending: {<Service: db>, <Service: web>}
+compose.parallel.feed_queue: Starting producer thread for <Service: db>
+compose.cli.verbose_proxy.proxy_callable: docker inspect_container <- ('9989bc60db585cd5f85af58ff9a8add4085a08c499f2f468443d8de36f77e64b')
+urllib3.connectionpool._make_request: http://localhost:None "GET /v1.25/containers/9989bc60db585cd5f85af58ff9a8add4085a08c499f2f468443d8de36f77e64b/json HTTP/1.1" 200 None
+compose.cli.verbose_proxy.proxy_callable: docker inspect_container -> {'AppArmorProfile': '',
+ 'Args': [],
+ 'Config': {'AttachStderr': False,
+            'AttachStdin': False,
+            'AttachStdout': False,
+            'Cmd': None,
+            'Domainname': '',
+            'Entrypoint': ['/db/entrypoint.sh'],
+            'Env': ['affinity:container==3b21305a57ea348d68c1d75d19695bb3f1f43d9ba943f59008e0d4ba1ae7c541',
+                    'PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/u01/app/oracle/product/12.1.0/xe/bin',
+...
+Recreating docker_db_1 ... 
+compose.parallel.feed_queue: Pending: {<Container: docker_db_1 (9989bc)>}
+compose.parallel.feed_queue: Starting producer thread for <Container: docker_db_1 (9989bc)>
+compose.cli.verbose_proxy.proxy_callable: docker stop <- ('9989bc60db585cd5f85af58ff9a8add4085a08c499f2f468443d8de36f77e64b', timeout=10)
+urllib3.connectionpool._make_request: http://localhost:None "POST /v1.25/containers/9989bc60db585cd5f85af58ff9a8add4085a08c499f2f468443d8de36f77e64b/stop?t=10 HTTP/1.1" 304 0
+compose.cli.verbose_proxy.proxy_callable: docker stop -> None
+compose.cli.verbose_proxy.proxy_callable: docker rename <- ('9989bc60db585cd5f85af58ff9a8add4085a08c499f2f468443d8de36f77e64b', '9989bc60db58_docker_db_1')
+urllib3.connectionpool._make_request: http://localhost:None "POST /v1.25/containers/9989bc60db585cd5f85af58ff9a8add4085a08c499f2f468443d8de36f77e64b/rename?name=9989bc60db58_docker_db_1 HTTP/1.1" 204 0
+compose.cli.verbose_proxy.proxy_callable: docker rename -> None
+compose.cli.verbose_proxy.proxy_callable: docker inspect_image <- ('oracledb-12c')
+urllib3.connectionpool._make_request: http://localhost:None "GET /v1.25/images/oracledb-12c/json HTTP/1.1" 200 None
+compose.cli.verbose_proxy.proxy_callable: docker inspect_image -> {'Architecture': 'amd64',
+ 'Author': '',
+ 'Comment': '',
+ 'Config': {'AttachStderr': False,
+            'AttachStdin': False,
+            'AttachStdout': False,
+            'Cmd': None,
+            'Domainname': '',
+            'Entrypoint': ['/db/entrypoint.sh'],
+            'Env': ['PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/u01/app/oracle/product/12.1.0/xe/bin',
+...
+compose.cli.verbose_proxy.proxy_callable: docker inspect_image <- ('sha256:c42be7bb6023caf1865b0c3c50eaa578f95399900121468bf3bd4e6abde1a1af')
+urllib3.connectionpool._make_request: http://localhost:None "GET /v1.25/images/sha256:c42be7bb6023caf1865b0c3c50eaa578f95399900121468bf3bd4e6abde1a1af/json HTTP/1.1" 200 None
+compose.cli.verbose_proxy.proxy_callable: docker inspect_image -> {'Architecture': 'amd64',
+ 'Author': '',
+ 'Comment': '',
+ 'Config': {'AttachStderr': False,
+            'AttachStdin': False,
+            'AttachStdout': False,
+            'Cmd': None,
+            'Domainname': '',
+            'Entrypoint': ['/db/entrypoint.sh'],
+            'Env': ['PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/u01/app/oracle/product/12.1.0/xe/bin',
+...
+compose.cli.verbose_proxy.proxy_callable: docker inspect_image <- ('oracledb-12c')
+urllib3.connectionpool._make_request: http://localhost:None "GET /v1.25/images/oracledb-12c/json HTTP/1.1" 200 None
+compose.cli.verbose_proxy.proxy_callable: docker inspect_image -> {'Architecture': 'amd64',
+ 'Author': '',
+ 'Comment': '',
+ 'Config': {'AttachStderr': False,
+            'AttachStdin': False,
+            'AttachStdout': False,
+            'Cmd': None,
+            'Domainname': '',
+            'Entrypoint': ['/db/entrypoint.sh'],
+            'Env': ['PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/u01/app/oracle/product/12.1.0/xe/bin',
+...
+compose.service.build_container_labels: Added config hash: f4812e3f5e6e71debf79a9ee7de2624d8009b3845d169aa236ddad7e4c58d421
+compose.cli.verbose_proxy.proxy_callable: docker create_host_config <- (links=[], port_bindings={'1521/tcp': ['1521']}, binds=['C:\\Users\\gense\\git\\oracledb-graphql-demo\\Docker\\dbase:/db:rw', '87599a361553e11351a2ab93890f31f242b17e48397996802a120bc04a8e6caf:/docker-entrypoint-initdb.d:rw'], volumes_from=[], privileged=False, network_mode='docker_default', devices=None, dns=None, dns_opt=None, dns_search=None, restart_policy=None, runtime=None, cap_add=None, cap_drop=None, mem_limit=None, mem_reservation=None, memswap_limit=None, ulimits=None, log_config={'Type': '', 'Config': {}}, extra_hosts=None, read_only=None, pid_mode=None, security_opt=None, ipc_mode=None, cgroup_parent=None, cpu_quota=None, shm_size=None, sysctls=None, pids_limit=None, tmpfs=[], oom_kill_disable=None, oom_score_adj=None, mem_swappiness=None, group_add=None, userns_mode=None, init=None, init_path=None, isolation=None, cpu_count=None, cpu_percent=None, nano_cpus=None, volume_driver=None, cpuset_cpus=None, cpu_shares=None, storage_opt=None, blkio_weight=None, blkio_weight_device=None, device_read_bps=None, device_read_iops=None, device_write_bps=None, device_write_iops=None, mounts=None, device_cgroup_rules=None, cpu_period=None, cpu_rt_period=None, cpu_rt_runtime=None)
+compose.cli.verbose_proxy.proxy_callable: docker create_host_config -> {'Binds': ['C:\\Users\\gense\\git\\oracledb-graphql-demo\\Docker\\dbase:/db:rw',
+           '87599a361553e11351a2ab93890f31f242b17e48397996802a120bc04a8e6caf:/docker-entrypoint-initdb.d:rw'],
+ 'Links': [],
+ 'LogConfig': {'Config': {}, 'Type': ''},
+ 'NetworkMode': 'docker_default',
+ 'PortBindings': {'1521/tcp': [{'HostIp': '', 'HostPort': '1521'}]},
+ 'VolumesFrom': []}
+compose.cli.verbose_proxy.proxy_callable: docker create_container <- (image='oracledb-12c', ports=[('1521', 'tcp')], volumes={'/db': {}}, name='docker_db_1', detach=True, environment=['affinity:container==9989bc60db585cd5f85af58ff9a8add4085a08c499f2f468443d8de36f77e64b'], labels={'com.docker.compose.project': 'docker', 'com.docker.compose.service': 'db', 'com.docker.compose.oneoff': 'False', 'com.docker.compose.container-number': '1', 'com.docker.compose.version': '1.21.0', 'com.docker.compose.config-hash': 'f4812e3f5e6e71debf79a9ee7de2624d8009b3845d169aa236ddad7e4c58d421'}, host_config={'NetworkMode': 'docker_default', 'VolumesFrom': [], 'Binds': ['C:\\Users\\gense\\git\\oracledb-graphql-demo\\Docker\\dbase:/db:rw', '87599a361553e11351a2ab93890f31f242b17e48397996802a120bc04a8e6caf:/docker-entrypoint-initdb.d:rw'], 'PortBindings': {'1521/tcp': [{'HostIp': '', 'HostPort': '1521'}]}, 'Links': [], 'LogConfig': {'Type': '', 'Config': {}}}, networking_config={'EndpointsConfig': {'docker_default': {'Aliases': ['db'], 'IPAMConfig': {}}}})
+compose.parallel.feed_queue: Pending: {<Service: web>}
+compose.parallel.feed_queue: Pending: set()
+urllib3.connectionpool._make_request: http://localhost:None "POST /v1.25/containers/create?name=docker_db_1 HTTP/1.1" 201 90
+compose.cli.verbose_proxy.proxy_callable: docker create_container -> {'Id': '2bb85930b147972919997e9e0deaecc7b4b2ad395be470f161f114bcf88b62ec',
+ 'Warnings': None}
+compose.cli.verbose_proxy.proxy_callable: docker inspect_container <- ('2bb85930b147972919997e9e0deaecc7b4b2ad395be470f161f114bcf88b62ec')
+urllib3.connectionpool._make_request: http://localhost:None "GET /v1.25/containers/2bb85930b147972919997e9e0deaecc7b4b2ad395be470f161f114bcf88b62ec/json HTTP/1.1" 200 None
+compose.cli.verbose_proxy.proxy_callable: docker inspect_container -> {'AppArmorProfile': '',
+ 'Args': [],
+ 'Config': {'AttachStderr': False,
+            'AttachStdin': False,
+            'AttachStdout': False,
+            'Cmd': None,
+            'Domainname': '',
+            'Entrypoint': ['/db/entrypoint.sh'],
+            'Env': ['affinity:container==9989bc60db585cd5f85af58ff9a8add4085a08c499f2f468443d8de36f77e64b',
+                    'PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/u01/app/oracle/product/12.1.0/xe/bin',
+...
+compose.cli.verbose_proxy.proxy_callable: docker attach <- ('2bb85930b147972919997e9e0deaecc7b4b2ad395be470f161f114bcf88b62ec', stdout=True, stderr=True, stream=True)
+compose.parallel.feed_queue: Pending: {<Service: web>}
+urllib3.connectionpool._make_request: http://localhost:None "POST /v1.25/containers/2bb85930b147972919997e9e0deaecc7b4b2ad395be470f161f114bcf88b62ec/attach?logs=0&stdout=1&stderr=1&stream=1 HTTP/1.1" 101 0
+urllib3.connectionpool._make_request: http://localhost:None "GET /v1.25/containers/2bb85930b147972919997e9e0deaecc7b4b2ad395be470f161f114bcf88b62ec/json HTTP/1.1" 200 None
+compose.parallel.feed_queue: Pending: set()
+compose.cli.verbose_proxy.proxy_callable: docker attach -> <docker.types.daemon.CancellableStream object at 0x00000239B5ACD080>
+compose.cli.verbose_proxy.proxy_callable: docker disconnect_container_from_network <- ('2bb85930b147972919997e9e0deaecc7b4b2ad395be470f161f114bcf88b62ec', 'docker_default')
+urllib3.connectionpool._make_request: http://localhost:None "POST /v1.25/networks/docker_default/disconnect HTTP/1.1" 200 0
+compose.cli.verbose_proxy.proxy_callable: docker disconnect_container_from_network -> None
+compose.cli.verbose_proxy.proxy_callable: docker connect_container_to_network <- ('2bb85930b147972919997e9e0deaecc7b4b2ad395be470f161f114bcf88b62ec', 'docker_default', aliases=['db', '2bb85930b147'], ipv4_address=None, ipv6_address=None, links=[], link_local_ips=None)
+urllib3.connectionpool._make_request: http://localhost:None "POST /v1.25/networks/docker_default/connect HTTP/1.1" 200 0
+compose.cli.verbose_proxy.proxy_callable: docker connect_container_to_network -> None
+compose.cli.verbose_proxy.proxy_callable: docker start <- ('2bb85930b147972919997e9e0deaecc7b4b2ad395be470f161f114bcf88b62ec')
+compose.parallel.feed_queue: Pending: {<Service: web>}
+compose.parallel.feed_queue: Pending: set()
+compose.parallel.feed_queue: Pending: {<Service: web>}
+compose.parallel.feed_queue: Pending: set()
+compose.parallel.feed_queue: Pending: {<Service: web>}
+compose.parallel.feed_queue: Pending: set()
+compose.parallel.feed_queue: Pending: {<Service: web>}
+compose.parallel.feed_queue: Pending: set()
+compose.parallel.feed_queue: Pending: {<Service: web>}
+compose.parallel.feed_queue: Pending: set()
+compose.parallel.feed_queue: Pending: {<Service: web>}
+compose.parallel.feed_queue: Pending: set()
+compose.parallel.feed_queue: Pending: {<Service: web>}
+compose.parallel.feed_queue: Pending: set()
+urllib3.connectionpool._make_request: http://localhost:None "POST /v1.25/containers/2bb85930b147972919997e9e0deaecc7b4b2ad395be470f161f114bcf88b62ec/start HTTP/1.1" 204 0
+compose.cli.verbose_proxy.proxy_callable: docker start -> None
+compose.cli.verbose_proxy.proxy_callable: docker remove_container <- ('9989bc60db585cd5f85af58ff9a8add4085a08c499f2f468443d8de36f77e64b')
+urllib3.connectionpool._make_request: http://localhost:None "DELETE /v1.25/containers/9989bc60db585cd5f85af58ff9a8add4085a08c499f2f468443d8de36f77e64b?v=False&link=False&force=False HTTP/1.1" 204 0
+compose.cli.verbose_proxy.proxy_callable: docker remove_container -> None
+compose.parallel.parallel_execute_iter: Finished processing: <Container: docker_db_1 (9989bc)>
+[1A[2KRecreating docker_db_1 ... [32mdone[0m[1Bcompose.parallel.feed_queue: Pending: set()
+compose.parallel.parallel_execute_iter: Finished processing: <Service: db>
+compose.parallel.feed_queue: Pending: {<Service: web>}
+compose.parallel.feed_queue: Starting producer thread for <Service: web>
+compose.cli.verbose_proxy.proxy_callable: docker inspect_container <- ('c600f067ca5fb371f92ee69f3a485f321b76f4f12765e1f17b031be17236d7c1')
+urllib3.connectionpool._make_request: http://localhost:None "GET /v1.25/containers/c600f067ca5fb371f92ee69f3a485f321b76f4f12765e1f17b031be17236d7c1/json HTTP/1.1" 200 None
+compose.cli.verbose_proxy.proxy_callable: docker inspect_container -> {'AppArmorProfile': '',
+ 'Args': ['start'],
+ 'Config': {'ArgsEscaped': True,
+            'AttachStderr': False,
+            'AttachStdin': False,
+            'AttachStdout': False,
+            'Cmd': None,
+            'Domainname': '',
+            'Entrypoint': ['npm', 'start'],
+            'Env': ['PATH=/opt/node-v6.11.1-linux-x64/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/lib/oracle/12.2/client64/bin',
+...
+Recreating docker_web_1 ... 
+compose.parallel.feed_queue: Pending: {<Container: docker_web_1 (c600f0)>}
+compose.parallel.feed_queue: Starting producer thread for <Container: docker_web_1 (c600f0)>
+compose.cli.verbose_proxy.proxy_callable: docker stop <- ('c600f067ca5fb371f92ee69f3a485f321b76f4f12765e1f17b031be17236d7c1', timeout=10)
+urllib3.connectionpool._make_request: http://localhost:None "POST /v1.25/containers/c600f067ca5fb371f92ee69f3a485f321b76f4f12765e1f17b031be17236d7c1/stop?t=10 HTTP/1.1" 304 0
+compose.cli.verbose_proxy.proxy_callable: docker stop -> None
+compose.cli.verbose_proxy.proxy_callable: docker rename <- ('c600f067ca5fb371f92ee69f3a485f321b76f4f12765e1f17b031be17236d7c1', 'c600f067ca5f_docker_web_1')
+urllib3.connectionpool._make_request: http://localhost:None "POST /v1.25/containers/c600f067ca5fb371f92ee69f3a485f321b76f4f12765e1f17b031be17236d7c1/rename?name=c600f067ca5f_docker_web_1 HTTP/1.1" 204 0
+compose.cli.verbose_proxy.proxy_callable: docker rename -> None
+compose.cli.verbose_proxy.proxy_callable: docker inspect_image <- ('node-oracledb')
+urllib3.connectionpool._make_request: http://localhost:None "GET /v1.25/images/node-oracledb/json HTTP/1.1" 200 None
+compose.cli.verbose_proxy.proxy_callable: docker inspect_image -> {'Architecture': 'amd64',
+ 'Author': '',
+ 'Comment': '',
+ 'Config': {'ArgsEscaped': True,
+            'AttachStderr': False,
+            'AttachStdin': False,
+            'AttachStdout': False,
+            'Cmd': None,
+            'Domainname': '',
+            'Entrypoint': ['npm', 'start'],
+...
+compose.cli.verbose_proxy.proxy_callable: docker inspect_image <- ('sha256:f6ddc972cfe331e44fce6f78122fcd41fdb86c2c0c40e053677108f60586045c')
+urllib3.connectionpool._make_request: http://localhost:None "GET /v1.25/images/sha256:f6ddc972cfe331e44fce6f78122fcd41fdb86c2c0c40e053677108f60586045c/json HTTP/1.1" 200 None
+compose.cli.verbose_proxy.proxy_callable: docker inspect_image -> {'Architecture': 'amd64',
+ 'Author': '',
+ 'Comment': '',
+ 'Config': {'ArgsEscaped': True,
+            'AttachStderr': False,
+            'AttachStdin': False,
+            'AttachStdout': False,
+            'Cmd': None,
+            'Domainname': '',
+            'Entrypoint': ['npm', 'start'],
+...
+compose.cli.verbose_proxy.proxy_callable: docker inspect_image <- ('node-oracledb')
+urllib3.connectionpool._make_request: http://localhost:None "GET /v1.25/images/node-oracledb/json HTTP/1.1" 200 None
+compose.cli.verbose_proxy.proxy_callable: docker inspect_image -> {'Architecture': 'amd64',
+ 'Author': '',
+ 'Comment': '',
+ 'Config': {'ArgsEscaped': True,
+            'AttachStderr': False,
+            'AttachStdin': False,
+            'AttachStdout': False,
+            'Cmd': None,
+            'Domainname': '',
+            'Entrypoint': ['npm', 'start'],
+...
+compose.service.build_container_labels: Added config hash: 6125aa434a3bf4079792c7987842c86ce4ea7146b9c3453eada7c6d27ed42cb2
+compose.cli.verbose_proxy.proxy_callable: docker create_host_config <- (links=[], port_bindings={'3000/tcp': ['3000']}, binds=['C:\\Users\\gense\\git\\oracledb-graphql-demo\\src:/src:rw'], volumes_from=[], privileged=False, network_mode='docker_default', devices=None, dns=None, dns_opt=None, dns_search=None, restart_policy=None, runtime=None, cap_add=None, cap_drop=None, mem_limit=None, mem_reservation=None, memswap_limit=None, ulimits=None, log_config={'Type': '', 'Config': {}}, extra_hosts=None, read_only=None, pid_mode=None, security_opt=None, ipc_mode=None, cgroup_parent=None, cpu_quota=None, shm_size=None, sysctls=None, pids_limit=None, tmpfs=[], oom_kill_disable=None, oom_score_adj=None, mem_swappiness=None, group_add=None, userns_mode=None, init=None, init_path=None, isolation=None, cpu_count=None, cpu_percent=None, nano_cpus=None, volume_driver=None, cpuset_cpus=None, cpu_shares=None, storage_opt=None, blkio_weight=None, blkio_weight_device=None, device_read_bps=None, device_read_iops=None, device_write_bps=None, device_write_iops=None, mounts=None, device_cgroup_rules=None, cpu_period=None, cpu_rt_period=None, cpu_rt_runtime=None)
+compose.cli.verbose_proxy.proxy_callable: docker create_host_config -> {'Binds': ['C:\\Users\\gense\\git\\oracledb-graphql-demo\\src:/src:rw'],
+ 'Links': [],
+ 'LogConfig': {'Config': {}, 'Type': ''},
+ 'NetworkMode': 'docker_default',
+ 'PortBindings': {'3000/tcp': [{'HostIp': '', 'HostPort': '3000'}]},
+ 'VolumesFrom': []}
+compose.cli.verbose_proxy.proxy_callable: docker create_container <- (image='node-oracledb', ports=[('3000', 'tcp')], volumes={'/src': {}}, working_dir='/src', name='docker_web_1', detach=True, environment=[], labels={'com.docker.compose.project': 'docker', 'com.docker.compose.service': 'web', 'com.docker.compose.oneoff': 'False', 'com.docker.compose.container-number': '1', 'com.docker.compose.version': '1.21.0', 'com.docker.compose.config-hash': '6125aa434a3bf4079792c7987842c86ce4ea7146b9c3453eada7c6d27ed42cb2'}, host_config={'NetworkMode': 'docker_default', 'VolumesFrom': [], 'Binds': ['C:\\Users\\gense\\git\\oracledb-graphql-demo\\src:/src:rw'], 'PortBindings': {'3000/tcp': [{'HostIp': '', 'HostPort': '3000'}]}, 'Links': [], 'LogConfig': {'Type': '', 'Config': {}}}, networking_config={'EndpointsConfig': {'docker_default': {'Aliases': ['web'], 'IPAMConfig': {}}}})
+compose.parallel.feed_queue: Pending: set()
+compose.parallel.feed_queue: Pending: set()
+urllib3.connectionpool._make_request: http://localhost:None "POST /v1.25/containers/create?name=docker_web_1 HTTP/1.1" 201 90
+compose.cli.verbose_proxy.proxy_callable: docker create_container -> {'Id': '5b5c6027cf95a949601a6f7eee896cea060bd57c22539dde207d785dc685a58f',
+ 'Warnings': None}
+compose.cli.verbose_proxy.proxy_callable: docker inspect_container <- ('5b5c6027cf95a949601a6f7eee896cea060bd57c22539dde207d785dc685a58f')
+urllib3.connectionpool._make_request: http://localhost:None "GET /v1.25/containers/5b5c6027cf95a949601a6f7eee896cea060bd57c22539dde207d785dc685a58f/json HTTP/1.1" 200 None
+compose.cli.verbose_proxy.proxy_callable: docker inspect_container -> {'AppArmorProfile': '',
+ 'Args': ['start'],
+ 'Config': {'ArgsEscaped': True,
+            'AttachStderr': False,
+            'AttachStdin': False,
+            'AttachStdout': False,
+            'Cmd': None,
+            'Domainname': '',
+            'Entrypoint': ['npm', 'start'],
+            'Env': ['PATH=/opt/node-v6.11.1-linux-x64/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/lib/oracle/12.2/client64/bin',
+...
+compose.cli.verbose_proxy.proxy_callable: docker attach <- ('5b5c6027cf95a949601a6f7eee896cea060bd57c22539dde207d785dc685a58f', stdout=True, stderr=True, stream=True)
+urllib3.connectionpool._make_request: http://localhost:None "POST /v1.25/containers/5b5c6027cf95a949601a6f7eee896cea060bd57c22539dde207d785dc685a58f/attach?logs=0&stdout=1&stderr=1&stream=1 HTTP/1.1" 101 0
+urllib3.connectionpool._make_request: http://localhost:None "GET /v1.25/containers/5b5c6027cf95a949601a6f7eee896cea060bd57c22539dde207d785dc685a58f/json HTTP/1.1" 200 None
+compose.parallel.feed_queue: Pending: set()
+compose.cli.verbose_proxy.proxy_callable: docker attach -> <docker.types.daemon.CancellableStream object at 0x00000239B5AEADD8>
+compose.cli.verbose_proxy.proxy_callable: docker disconnect_container_from_network <- ('5b5c6027cf95a949601a6f7eee896cea060bd57c22539dde207d785dc685a58f', 'docker_default')
+compose.parallel.feed_queue: Pending: set()
+urllib3.connectionpool._make_request: http://localhost:None "POST /v1.25/networks/docker_default/disconnect HTTP/1.1" 200 0
+compose.cli.verbose_proxy.proxy_callable: docker disconnect_container_from_network -> None
+compose.cli.verbose_proxy.proxy_callable: docker connect_container_to_network <- ('5b5c6027cf95a949601a6f7eee896cea060bd57c22539dde207d785dc685a58f', 'docker_default', aliases=['5b5c6027cf95', 'web'], ipv4_address=None, ipv6_address=None, links=[], link_local_ips=None)
+urllib3.connectionpool._make_request: http://localhost:None "POST /v1.25/networks/docker_default/connect HTTP/1.1" 200 0
+compose.cli.verbose_proxy.proxy_callable: docker connect_container_to_network -> None
+compose.cli.verbose_proxy.proxy_callable: docker start <- ('5b5c6027cf95a949601a6f7eee896cea060bd57c22539dde207d785dc685a58f')
+compose.parallel.feed_queue: Pending: set()
+compose.parallel.feed_queue: Pending: set()
+compose.parallel.feed_queue: Pending: set()
+compose.parallel.feed_queue: Pending: set()
+compose.parallel.feed_queue: Pending: set()
+compose.parallel.feed_queue: Pending: set()
+compose.parallel.feed_queue: Pending: set()
+compose.parallel.feed_queue: Pending: set()
+compose.parallel.feed_queue: Pending: set()
+compose.parallel.feed_queue: Pending: set()
+compose.parallel.feed_queue: Pending: set()
+compose.parallel.feed_queue: Pending: set()
+compose.parallel.feed_queue: Pending: set()
+compose.parallel.feed_queue: Pending: set()
+compose.parallel.feed_queue: Pending: set()
+compose.parallel.feed_queue: Pending: set()
+compose.parallel.feed_queue: Pending: set()
+compose.parallel.feed_queue: Pending: set()
+compose.parallel.feed_queue: Pending: set()
+compose.parallel.feed_queue: Pending: set()
+compose.parallel.feed_queue: Pending: set()
+compose.parallel.feed_queue: Pending: set()
+compose.parallel.feed_queue: Pending: set()
+compose.parallel.feed_queue: Pending: set()
+compose.parallel.feed_queue: Pending: set()
+compose.parallel.feed_queue: Pending: set()
+compose.parallel.feed_queue: Pending: set()
+compose.parallel.feed_queue: Pending: set()
+compose.parallel.feed_queue: Pending: set()
+compose.parallel.feed_queue: Pending: set()
+compose.parallel.feed_queue: Pending: set()
+compose.parallel.feed_queue: Pending: set()
+compose.parallel.feed_queue: Pending: set()
+compose.parallel.feed_queue: Pending: set()
+compose.parallel.feed_queue: Pending: set()
+compose.parallel.feed_queue: Pending: set()
+urllib3.connectionpool._make_request: http://localhost:None "POST /v1.25/containers/5b5c6027cf95a949601a6f7eee896cea060bd57c22539dde207d785dc685a58f/start HTTP/1.1" 204 0
+compose.cli.verbose_proxy.proxy_callable: docker start -> None
+compose.cli.verbose_proxy.proxy_callable: docker remove_container <- ('c600f067ca5fb371f92ee69f3a485f321b76f4f12765e1f17b031be17236d7c1')
+urllib3.connectionpool._make_request: http://localhost:None "DELETE /v1.25/containers/c600f067ca5fb371f92ee69f3a485f321b76f4f12765e1f17b031be17236d7c1?v=False&link=False&force=False HTTP/1.1" 204 0
+compose.cli.verbose_proxy.proxy_callable: docker remove_container -> None
+compose.parallel.parallel_execute_iter: Finished processing: <Container: docker_web_1 (c600f0)>
+[1A[2KRecreating docker_web_1 ... [32mdone[0m[1Bcompose.parallel.feed_queue: Pending: set()
+compose.parallel.parallel_execute_iter: Finished processing: <Service: web>
+compose.parallel.feed_queue: Pending: set()
+compose.cli.verbose_proxy.proxy_callable: docker wait <- ('2bb85930b147972919997e9e0deaecc7b4b2ad395be470f161f114bcf88b62ec')
+compose.cli.verbose_proxy.proxy_callable: docker events <- (filters={'label': ['com.docker.compose.project=docker', 'com.docker.compose.oneoff=False']}, decode=True)
+Attaching to docker_db_1, docker_web_1
+[36mdb_1   |[0m standard_init_linux.go:190: exec user process caused "no such file or directory"
+urllib3.connectionpool._make_request: http://localhost:None "POST /v1.25/containers/2bb85930b147972919997e9e0deaecc7b4b2ad395be470f161f114bcf88b62ec/wait HTTP/1.1" 200 30
+compose.cli.verbose_proxy.proxy_callable: docker wait -> {'Error': None, 'StatusCode': 1}
+[36mdocker_db_1 exited with code 1
+[0mcompose.cli.verbose_proxy.proxy_callable: docker containers <- (all=True, filters={'label': ['com.docker.compose.project=docker', 'com.docker.compose.oneoff=False']})
+urllib3.connectionpool._make_request: http://localhost:None "GET /v1.25/events?filters=%7B%22label%22%3A+%5B%22com.docker.compose.project%3Ddocker%22%2C+%22com.docker.compose.oneoff%3DFalse%22%5D%7D HTTP/1.1" 200 None
+compose.cli.verbose_proxy.proxy_callable: docker events -> <docker.types.daemon.CancellableStream object at 0x00000239B5AE51D0>
+urllib3.connectionpool._make_request: http://localhost:None "GET /v1.25/containers/json?limit=-1&all=1&size=0&trunc_cmd=0&filters=%7B%22label%22%3A+%5B%22com.docker.compose.project%3Ddocker%22%2C+%22com.docker.compose.oneoff%3DFalse%22%5D%7D HTTP/1.1" 200 2791
+compose.cli.verbose_proxy.proxy_callable: docker containers -> (list with 2 items)
+compose.cli.verbose_proxy.proxy_callable: docker inspect_container <- ('5b5c6027cf95a949601a6f7eee896cea060bd57c22539dde207d785dc685a58f')
+urllib3.connectionpool._make_request: http://localhost:None "GET /v1.25/containers/5b5c6027cf95a949601a6f7eee896cea060bd57c22539dde207d785dc685a58f/json HTTP/1.1" 200 None
+compose.cli.verbose_proxy.proxy_callable: docker inspect_container -> {'AppArmorProfile': '',
+ 'Args': ['start'],
+ 'Config': {'ArgsEscaped': True,
+            'AttachStderr': False,
+            'AttachStdin': False,
+            'AttachStdout': False,
+            'Cmd': None,
+            'Domainname': '',
+            'Entrypoint': ['npm', 'start'],
+            'Env': ['PATH=/opt/node-v6.11.1-linux-x64/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/lib/oracle/12.2/client64/bin',
+...
+compose.cli.verbose_proxy.proxy_callable: docker inspect_container <- ('2bb85930b147972919997e9e0deaecc7b4b2ad395be470f161f114bcf88b62ec')
+urllib3.connectionpool._make_request: http://localhost:None "GET /v1.25/containers/2bb85930b147972919997e9e0deaecc7b4b2ad395be470f161f114bcf88b62ec/json HTTP/1.1" 200 None
+compose.cli.verbose_proxy.proxy_callable: docker inspect_container -> {'AppArmorProfile': '',
+ 'Args': [],
+ 'Config': {'AttachStderr': False,
+            'AttachStdin': False,
+            'AttachStdout': False,
+            'Cmd': None,
+            'Domainname': '',
+            'Entrypoint': ['/db/entrypoint.sh'],
+            'Env': ['affinity:container==9989bc60db585cd5f85af58ff9a8add4085a08c499f2f468443d8de36f77e64b',
+                    'PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/u01/app/oracle/product/12.1.0/xe/bin',
+...
+compose.cli.verbose_proxy.proxy_callable: docker containers <- (all=False, filters={'label': ['com.docker.compose.project=docker', 'com.docker.compose.oneoff=False']})
+urllib3.connectionpool._make_request: http://localhost:None "GET /v1.25/containers/json?limit=-1&all=0&size=0&trunc_cmd=0&filters=%7B%22label%22%3A+%5B%22com.docker.compose.project%3Ddocker%22%2C+%22com.docker.compose.oneoff%3DFalse%22%5D%7D HTTP/1.1" 200 1324
+compose.cli.verbose_proxy.proxy_callable: docker containers -> (list with 1 items)
+compose.cli.verbose_proxy.proxy_callable: docker inspect_container <- ('5b5c6027cf95a949601a6f7eee896cea060bd57c22539dde207d785dc685a58f')
+urllib3.connectionpool._make_request: http://localhost:None "GET /v1.25/containers/5b5c6027cf95a949601a6f7eee896cea060bd57c22539dde207d785dc685a58f/json HTTP/1.1" 200 None
+compose.cli.verbose_proxy.proxy_callable: docker inspect_container -> {'AppArmorProfile': '',
+ 'Args': ['start'],
+ 'Config': {'ArgsEscaped': True,
+            'AttachStderr': False,
+            'AttachStdin': False,
+            'AttachStdout': False,
+            'Cmd': None,
+            'Domainname': '',
+            'Entrypoint': ['npm', 'start'],
+            'Env': ['PATH=/opt/node-v6.11.1-linux-x64/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/lib/oracle/12.2/client64/bin',
+...
+Stopping docker_web_1   ... 
+compose.parallel.feed_queue: Pending: {<Container: docker_web_1 (5b5c60)>}
+compose.parallel.feed_queue: Starting producer thread for <Container: docker_web_1 (5b5c60)>
+compose.cli.verbose_proxy.proxy_callable: docker stop <- ('5b5c6027cf95a949601a6f7eee896cea060bd57c22539dde207d785dc685a58f', timeout=10)
+compose.cli.verbose_proxy.proxy_callable: docker inspect_container <- ('5b5c6027cf95a949601a6f7eee896cea060bd57c22539dde207d785dc685a58f')
+urllib3.connectionpool._make_request: http://localhost:None "GET /v1.25/containers/5b5c6027cf95a949601a6f7eee896cea060bd57c22539dde207d785dc685a58f/json HTTP/1.1" 200 None
+compose.cli.verbose_proxy.proxy_callable: docker inspect_container -> {'AppArmorProfile': '',
+ 'Args': ['start'],
+ 'Config': {'ArgsEscaped': True,
+            'AttachStderr': False,
+            'AttachStdin': False,
+            'AttachStdout': False,
+            'Cmd': None,
+            'Domainname': '',
+            'Entrypoint': ['npm', 'start'],
+            'Env': ['PATH=/opt/node-v6.11.1-linux-x64/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/lib/oracle/12.2/client64/bin',
+...
+compose.parallel.feed_queue: Pending: set()
+compose.parallel.feed_queue: Pending: set()
+compose.parallel.feed_queue: Pending: set()
+compose.parallel.feed_queue: Pending: set()
+compose.cli.verbose_proxy.proxy_callable: docker wait <- ('5b5c6027cf95a949601a6f7eee896cea060bd57c22539dde207d785dc685a58f')
+compose.parallel.feed_queue: Pending: set()
+compose.cli.verbose_proxy.proxy_callable: docker inspect_container <- ('5b5c6027cf95a949601a6f7eee896cea060bd57c22539dde207d785dc685a58f')
+compose.parallel.feed_queue: Pending: set()
+compose.parallel.feed_queue: Pending: set()
+compose.parallel.feed_queue: Pending: set()
+compose.parallel.feed_queue: Pending: set()
+urllib3.connectionpool._make_request: http://localhost:None "POST /v1.25/containers/5b5c6027cf95a949601a6f7eee896cea060bd57c22539dde207d785dc685a58f/wait HTTP/1.1" 200 30
+compose.cli.verbose_proxy.proxy_callable: docker wait -> {'Error': None, 'StatusCode': 1}
+urllib3.connectionpool._make_request: http://localhost:None "GET /v1.25/containers/5b5c6027cf95a949601a6f7eee896cea060bd57c22539dde207d785dc685a58f/json HTTP/1.1" 200 None
+urllib3.connectionpool._make_request: http://localhost:None "POST /v1.25/containers/5b5c6027cf95a949601a6f7eee896cea060bd57c22539dde207d785dc685a58f/stop?t=10 HTTP/1.1" 204 0
+compose.cli.verbose_proxy.proxy_callable: docker stop -> None
+compose.parallel.parallel_execute_iter: Finished processing: <Container: docker_web_1 (5b5c60)>
+[1A[2KStopping docker_web_1   ... [32mdone[0m[1Bcompose.parallel.feed_queue: Pending: set()
+compose.cli.verbose_proxy.proxy_callable: docker inspect_container -> {'AppArmorProfile': '',
+ 'Args': ['start'],
+ 'Config': {'ArgsEscaped': True,
+            'AttachStderr': False,
+            'AttachStdin': False,
+            'AttachStdout': False,
+            'Cmd': None,
+            'Domainname': '',
+            'Entrypoint': ['npm', 'start'],
+            'Env': ['PATH=/opt/node-v6.11.1-linux-x64/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/lib/oracle/12.2/client64/bin',
+...
+compose.cli.verbose_proxy.proxy_callable: docker inspect_container <- ('5b5c6027cf95a949601a6f7eee896cea060bd57c22539dde207d785dc685a58f')
+Aborting on container exit...

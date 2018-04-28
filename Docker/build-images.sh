@@ -2,12 +2,8 @@
 # 
 # Build two docker images
 # nodejs w/ node-oracledb && oracledb 12c
-
 #
-# my bash is on wsl 
-# unset/change these for your runtime
-docker_exec=/mnt/c/Program\ Files/Docker/Docker/resources/bin/docker.exe
-docker_compose=/mnt/c/Program\ Files/Docker/Docker/resources/bin/docker-compose.exe
+
 SRC_PATH=../src
 
 main() {
@@ -16,16 +12,13 @@ main() {
   echo $docker_exec
   echo 
 
-  isdbbuilt=$("$docker_exec" images | grep "sath89/oracle-12c ")
-  isnodebuilt=$("$docker_exec" images | grep "store/oracle/database-instantclient:12.2.0.1")
-
   proxy=${HTTP_PROXY:-""}
-  echo proxy $proxy
+  echo PROXY is: $proxy
 
-  [ -d src ] && rm -rf src
-
+  isdbbuilt=$(docker images | grep "oracledb-12c")
   [ -z "$isdbbuilt" ] && builddb $proxy
 
+  isnodebuilt=$(docker images | grep "node-oracledb")
   [ -z "$isnodebuilt" ] && buildnode $proxy
 
   echo --- DONE BUILDING ---
@@ -44,9 +37,9 @@ builddb() {
   echo --- BUILDING DATABASE DOCKER IMAGE ---
   echo
   {
-    "$docker_exec" pull sath89/oracle-12c
+    docker pull sath89/oracle-12c
   } || {
-    "$docker_exec" build ./dbase --build-arg http_proxy="$1" --build-arg https_proxy="$1"
+    docker build ./dbase --build-arg http_proxy="$1" --build-arg https_proxy="$1"
   }
 
   echo --- ORACLEDB DONE ---
@@ -58,12 +51,18 @@ builddb() {
 # thanks https://github.com/oracle/node-oracledb/blob/master/INSTALL.md
 buildnode() {
   echo --- BUILDING NODE DOCKER IMAGE ---
+
+  # to copy src dir
+  # docker doesn't support symlinks!
+  echo copying src to docker context
+  [ -d src ] && rm -rf src
   cp -r "$SRC_PATH" ./web
+  echo $(ls)
 
   if [ -z "$1" ]; then
-    "$docker_exec" build ./web
+    docker build ./web
   else 
-    "$docker_exec" build ./web --build-arg http_proxy="$1" --build-arg https_proxy="$1"
+    docker build ./web --build-arg http_proxy="$1" --build-arg https_proxy="$1"
   fi 
 
   echo --- NODE DONE ---
@@ -73,7 +72,7 @@ buildnode() {
 # run both containers 
 runcontainers() {
   echo -- RUNNING BOTH ---
-  "$docker_compose" up
+  docker-compose up
 
   echo --- DOCKER-COMPOSE DONE ---
 }

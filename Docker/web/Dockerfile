@@ -36,7 +36,7 @@ RUN find /src -type f -print0 | xargs -0 dos2unix
 
 # where are my node_modules
 WORKDIR src
-RUN npm i -g oracledb
+RUN npm i oracledb
 RUN npm install
 
 # open the port 

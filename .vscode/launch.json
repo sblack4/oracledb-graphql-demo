@@ -7,7 +7,7 @@
         {
             "type": "bashdb",
             "request": "launch",
-            "pathBash": "C:\\Windows\\System32\\bash.exe",
+            "pathBash": "C:\\Tools\\cmder\\vendor\\git-for-windows\\git-bash.exe",
             "name": "Bash-Debug (simplest configuration)",
             "program": "${file}",
             "args": []
