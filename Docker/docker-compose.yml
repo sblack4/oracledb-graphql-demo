@@ -28,8 +28,8 @@ services:       # service = container
   web:          
     build: ./web
     image: node-oracledb
-    volumes:
-      - ../src:/src
+    # volumes:
+      # - ../src:/src
     # depends_on:
     #   - db
     working_dir: /src
@@ -39,5 +39,5 @@ services:       # service = container
     # entrypoint:
       # - npm
       # - start
-    # ports:                
-    #  - "3000:3000"        # port our graphql server runs on 
+    ports:                
+     - "3000:3000"        # port our graphql server runs on 
