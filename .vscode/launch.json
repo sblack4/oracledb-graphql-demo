@@ -5,6 +5,43 @@
     "version": "0.2.0",
     "configurations": [
         {
+            "type": "node",
+            "request": "launch",
+            "name": "ts-node ${file}",
+            "runtimeExecutable": "ts-node",
+            "program": "${file}", 
+            "outFiles": [
+                "foo.txt"
+            ]
+        },
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "node ${file}",
+            "runtimeExecutable": "node",
+            "program": "${file}"
+        },
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "babel-node ${file}",
+            "runtimeExecutable": "babel-node",
+            "program": "${file}"
+        },
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "babel-node server.js",
+            "runtimeExecutable": "babel-node",
+            "program": "${workspaceFolder}/src/server.js",
+            "env": {
+                "DEBUG":"*"
+            },
+            "runtimeArgs": [
+                "--inspect"
+            ]
+        },
+        {
             "type": "bashdb",
             "request": "launch",
             "pathBash": "C:\\Tools\\cmder\\vendor\\git-for-windows\\git-bash.exe",
@@ -15,19 +52,13 @@
         {
             "type": "node",
             "request": "launch",
-            "name": "Launch via NPM",
+            "name": "npm run start",
             "runtimeExecutable": "npm",
             "runtimeArgs": [
-                "run", 
+                "run",
                 "start"
             ],
             "port": 9229
-        },
-        {
-            "type": "node",
-            "request": "launch",
-            "name": "Launch Program",
-            "program": "${workspaceFolder}/server.js"
         }
     ]
 }

@@ -13,11 +13,22 @@ import {
   connectionDefinitions
 } from 'graphql-relay'
 
-import knex from './database'
+// import knex from './database'
 import { PostConnection } from './Post'
 import { CommentConnection } from './Comment'
 import { nodeInterface } from './Node'
 
+const dbConfig={
+    user: "graphql",
+    password: "oracle",
+    connectString: "localhost/xe"
+}
+var knex = require('knex')({
+    dialect: 'oracledb',
+    client: "oracledb",
+    connection: dbConfig
+});
+const options = { dialect: 'oracle' }
 
 const User = new GraphQLObjectType({
   description: 'a stem contract account',

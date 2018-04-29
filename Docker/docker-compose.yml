@@ -10,34 +10,31 @@
 version: '3'    # docker-compose version
 services:       # service = container
 
+#
 # build our own oracle xe 12c on ubuntu
 # basically `docker run -it -p 1521:1521 sath89/oracle-12c /bin/bash /entrypoint.sh`
+# from https://github.com/MaksymBilenko/docker-oracle-12c 
+# see https://github.com/tgriesser/knex/blob/ece2da12cac2906d7ef88e930937e0d3690982af/scripts/oracle-tests-Dockerfile 
   db:
     image: sath89/oracle-12c
-    # volumes: 
-      # - ./dbase:/db
-    ports:
+    environment:
+      - WEB_CONSOLE=false     # disables enterprise manager
+    ports:                    # map ports to access on your laptop
       - "1521:1521"           # Port for tnslistener (database connection)
     entrypoint:
       - bash
       - /entrypoint.sh
-      # - "8080:8080"         # Port for Enterprise Manager
 
+# 
 # builds our graphql app
 # basicaly `docker run -it -p 3000:3000 /bin/bash `
   web:          
     build: ./web
     image: node-oracledb
-    # volumes:
-      # - ../src:/src
-    # depends_on:
-    #   - db
+    depends_on:
+      - db
     working_dir: /src
-    # command:
-      # - npm
-      # - install
-    # entrypoint:
-      # - npm
-      # - start
-    ports:                
+    environment:
+      - DB=db             # host will be "db" rather than "localhost"
+    ports:                # ^ see https://forums.docker.com/t/localhost-and-docker-compose-networking-issue/23100/2
      - "3000:3000"        # port our graphql server runs on 

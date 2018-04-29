@@ -6,12 +6,21 @@ import {
 
 import joinMonster from 'join-monster'
 
-import knex from './database'
+// import knex from './database'
 import User from './User'
 import { nodeField } from './Node'
-import dbCall from '../data/fetch'
 
-const options = { dialect: 'pg' }
+const dbConfig={
+    user: "graphql",
+    password: "oracle",
+    connectString: "localhost/xe"
+}
+var knex = require('knex')({
+    dialect: 'oracledb',
+    client: "oracledb",
+    connection: dbConfig
+});
+const options = { dialect: 'oracle' }
 
 export default new GraphQLObjectType({
   description: 'global query object',
@@ -35,10 +44,10 @@ export default new GraphQLObjectType({
         if (args.id) return `${usersTable}.id = ${args.id}`
       },
       resolve: (parent, args, context, resolveInfo) => {
-        if (knex.client.config.client !== 'pg') {
-          throw new Error('This schema requires PostgreSQL. A data dump is provided in /data.')
-        }
-        return joinMonster(resolveInfo, context, sql => dbCall(sql, knex, context), options)
+        return joinMonster(resolveInfo, context, sql => {
+          console.log(sql)
+          return knex.raw(sql)
+        })
       }
     }
   })

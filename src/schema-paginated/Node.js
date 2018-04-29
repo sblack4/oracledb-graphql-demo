@@ -8,7 +8,7 @@ import joinMonster from 'join-monster'
 import knex from './database'
 import dbCall from '../data/fetch'
 
-const options = { dialect: 'pg' }
+const options = { dialect: 'oracle' }
 
 // create the node type and interface
 const { nodeInterface, nodeField } = nodeDefinitions(

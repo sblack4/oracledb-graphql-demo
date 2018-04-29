@@ -1,13 +1,25 @@
-import path from 'path'
+// import path from 'path'
 
-const dataFilePath = path.join(__dirname, '../data/demo-data.sl3')
-const pgUrl = process.env.DATABASE_URL
-const connection = pgUrl || { filename: dataFilePath }
+// const dataFilePath = path.join(__dirname, '../data/demo-data.sl3')
+// const pgUrl = process.env.DATABASE_URL
+// const connection = pgUrl || { filename: dataFilePath }
 
-// knex is a convenient library that can connect to various SQL databases
-// you can use any library you wish
+// // knex is a convenient library that can connect to various SQL databases
+// // you can use any library you wish
+// export default require('knex')({
+//   client: pgUrl ? 'pg' : 'sqlite3',
+//   connection,
+//   useNullAsDefault: true
+// })
+
+const dbConfig={
+    user: "graphql",
+    password: "oracle",
+    connectString: "localhost/xe"
+}
+
 export default require('knex')({
-  client: pgUrl ? 'pg' : 'sqlite3',
-  connection,
-  useNullAsDefault: true
-})
+    dialect: 'oracledb',
+    client: "oracledb",
+    connection: dbConfig
+});
