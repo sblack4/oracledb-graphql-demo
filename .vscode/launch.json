@@ -52,13 +52,20 @@
         {
             "type": "node",
             "request": "launch",
-            "name": "npm run start",
+            "name": "Launch docs via NPM",
             "runtimeExecutable": "npm",
+            "cwd": "${workspaceFolder}/docs",
+            "stopOnEntry": true,
             "runtimeArgs": [
-                "run",
-                "start"
-            ],
-            "port": 9229
+                "run", 
+                "debug"
+            ]
+        },
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "Launch Program",
+            "program": "${workspaceFolder}/server.js"
         }
     ]
 }
