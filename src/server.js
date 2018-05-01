@@ -3,7 +3,7 @@ import Koa from 'koa'
 import KoaRouter from 'koa-router'
 import graphqlHTTP from 'koa-graphql'
 // module we created that lets you serve a custom build of GraphiQL
-import graphiql from 'koa-graphiql'
+import graphiql from 'koa-custom-graphiql'
 import koaStatic from 'koa-static'
 import koaConvert from 'koa-convert'
 import koaCors from 'kcors'

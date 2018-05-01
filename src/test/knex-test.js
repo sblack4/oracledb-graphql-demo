@@ -1,4 +1,4 @@
-
+var assert = require('assert')
 
 const dbConfig={
     user: "graphql",
@@ -21,6 +21,16 @@ knex.select().from('accounts')
         console.log(err)
     })
 
-    knex.raw('select * from "accounts"')
-        .then(o => console.log(o))
-        .catch(e => console.log(e))
+knex.raw('select * from "accounts"')
+    .then(o => console.log(o))
+    .catch(e => console.log(e))
+
+describe('knex', function() {
+    it('should allow for raw sql', function(done) {
+
+    })
+
+    it('should extend fucntionality with an ORM', function(done) {
+
+    })
+})
