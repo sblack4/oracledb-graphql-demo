@@ -18,5 +18,6 @@ const dbConfig={
 export default require('knex')({
     dialect: 'oracledb',
     client: "oracledb",
+    wrapIdentifier: (str) => str.replace('"', ''),
     connection: dbConfig
 });
