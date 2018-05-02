@@ -2,49 +2,46 @@
   "id": "table-of-contents",
   "chapters": [
     {
-      "title": "1. Main Chapter",
-      "chapters": [
+      "title": "Overview",
+      "entries": [
         {
-          "title": "1.1 Subchapter",
-          "entries": [
-            {
-              "entry": "./lesson_one.md"
-            }
-          ],
-          "chapters": [
-            {
-              "title": "1.1.1 Sub-subchapter",
-              "entries": [
-                {
-                  "entry": "./lesson_two.md"
-                },
-                {
-                  "entry": "./lesson_three.md"
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "title": "1.2 Subchapter",
-          "entries": [
-            {
-              "entry": "./lesson_four.md"
-            }
-          ]
+          "entry": "./overview.md"
         }
       ]
     },
     {
-      "title": "2. Main Chapter",
-      "chapters": [
+      "title": "Running the Demo",
+      "entries": [
         {
-          "title": "2.1 Subchapter",
-          "entries": [
-            {
-              "entry": "./lesson_five.md"
-            }
-          ]
+          "entry": "./running.md"
+        }, {
+          "entry": "./cloud.md"
+        }, {
+          "entry": "./docker.md"
+        }
+      ]
+    },
+    {
+      "title": "Why GraphQL & Oracle DB",
+      "entries": [
+        {
+          "entry": "./graphql-and-oracledb.md"
+        }
+      ]
+    },
+    {
+      "title": "What is Graphql",
+      "entries": [
+        {
+          "entry": "./what-is-graphql.md"
+        }
+      ]
+    },
+    {
+      "title": "Why is Graphql",
+      "entries": [
+        {
+          "entry": "./lesson_six.md"
         }
       ]
     },
