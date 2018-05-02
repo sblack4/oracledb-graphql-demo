@@ -86,8 +86,8 @@ export const pageQuery = graphql`
   query IndexQuery {
     allMarkdown: allMarkdownRemark(
       limit: 2000
-      sort: { fields: [frontmatter___date], order: DESC }
-    ) {
+    ) 
+    {
       edges {
         node {
           fields {
@@ -97,18 +97,14 @@ export const pageQuery = graphql`
           timeToRead
           frontmatter {
             title
-            tags
-            cover
-            date
           }
         }
       }
     }
     posts: allMarkdownRemark(
       limit: 2000
-      filter: { frontmatter: { type: { eq: "post" } } }
-      sort: { fields: [frontmatter___date], order: DESC }
-    ) {
+    ) 
+    {
       edges {
         node {
           fields {
@@ -118,9 +114,6 @@ export const pageQuery = graphql`
           timeToRead
           frontmatter {
             title
-            tags
-            cover
-            date
           }
         }
       }

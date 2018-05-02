@@ -48,5 +48,7 @@ module.exports = {
   themeColor: "#c62828", // Used for setting manifest and progress theme colors.
   backgroundColor: "#ff000", // Used for setting manifest background color.
   // TODO: Move this literally anywhere better.
-  toCChapters: ["", "Overview", "Chapter 2"] // Used to generate the Table Of Contents. Index 0 should be blank.
+  // Used to generate the Table Of Contents. 
+  // Index 0 should be blank.
+  toCChapters: ["", "Overview", "Running the Demo", "Why GraphQL & Oracle DB", "Learn More", "Summary"] 
 };

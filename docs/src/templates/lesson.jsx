@@ -9,15 +9,26 @@ import TableOfContents from '../components/Layout/TableOfContents'
 
 export default class LessonTemplate extends React.Component {
   render() {
+    console.log("--- LessonTemplate --")
+    console.log(this.props)
     const { slug } = this.props.pathContext
     const postNode = this.props.data.postBySlug
     const post = postNode.frontmatter
+    const TOCArray = this.props.data.tableOfContents.chapters
+    console.log(TOCArray)
     if (!post.id) {
       post.id = slug
     }
     if (!post.id) {
       post.category_id = config.postDefaultCategoryID
     }
+    const TOC = (TOCArray) ? (
+          <ToCContainer>
+            <TableOfContents
+              chapters={TOCArray}
+            />
+          </ToCContainer>
+    ) : "";
     return (
       <div>
         <Helmet>
@@ -28,11 +39,7 @@ export default class LessonTemplate extends React.Component {
           <HeaderContainer>
             <SiteHeader location={this.props.location} />
           </HeaderContainer>
-          <ToCContainer>
-            <TableOfContents
-              chapters={this.props.data.tableOfContents.chapters}
-            />
-          </ToCContainer>
+          {TOC}
           <BodyContainer>
             <div>
               <h1>{post.title}</h1>
@@ -110,10 +117,6 @@ export const pageQuery = graphql`
       excerpt
       frontmatter {
         title
-        cover
-        date
-        category
-        tags
       }
     }
     tableOfContents: lessonsJson {
@@ -121,7 +124,6 @@ export const pageQuery = graphql`
         title
         entries {
           entry {
-            id
             childMarkdownRemark {
               fields {
                 slug

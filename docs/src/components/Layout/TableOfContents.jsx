@@ -4,7 +4,25 @@ import styled from 'styled-components'
 
 /* eslint react/no-array-index-key: "off" */
 
-const Links = ({ entries }) => (
+// const Links = ({ entries }) => (
+//   <StyledLinkList>
+//     {this.props.entries.map(({ entry }, key) => (
+//       <EntryListItem key={key}>
+//         <Link to={entry.childMarkdownRemark.fields.slug}>
+//           <EntryTitle>{entry.childMarkdownRemark.frontmatter.title}</EntryTitle>
+//         </Link>
+//       </EntryListItem>
+//     ))}
+//   </StyledLinkList>
+// )
+
+class Links extends React.Component{
+  // { entries }) => (
+    render(){
+      const entries = this.props.entries
+      console.debug("--- Links ---")
+      console.debug(entries)
+      return(
   <StyledLinkList>
     {entries.map(({ entry }, key) => (
       <EntryListItem key={key}>
@@ -14,16 +32,55 @@ const Links = ({ entries }) => (
       </EntryListItem>
     ))}
   </StyledLinkList>
-)
+      )
+    }
+  }
 
-const ChapterList = ({ chapters, entries, title, level = 0 }) => (
+// const ChapterList = ({ chapters, entries, title, level = 0 }) => (
+//   <StyledChapterList>
+//     {title && (
+//       <ChapterListItem key={`${title}${level}`}>
+//         <ChapterTitle level={level}>{title}</ChapterTitle>
+//       </ChapterListItem>
+//     )}
+//     <ChapterListItem>{entries && <Links entries={entries} />}</ChapterListItem>
+//     <ChapterListItem>
+//       {chapters &&
+//         chapters.map((chapter, index) => (
+//           <ChapterList {...chapter} level={level + 1} key={`${index}`} />
+//         ))}
+//     </ChapterListItem>
+//   </StyledChapterList>
+// )
+
+class ChapterList extends React.Component {
+  // ({ chapters, entries, title, level = 0 }) => 
+  render(){
+    const title=this.props.title
+    const level=this.props.level
+    const entries=this.props.entries
+    const chapters=this.props.chapters
+    console.debug("--- ChapterList ---")
+    console.debug(this.props)
+  return (
   <StyledChapterList>
     {title && (
       <ChapterListItem key={`${title}${level}`}>
         <ChapterTitle level={level}>{title}</ChapterTitle>
       </ChapterListItem>
     )}
-    <ChapterListItem>{entries && <Links entries={entries} />}</ChapterListItem>
+    <ChapterListItem>
+      {/* {entries && <Links entries={entries} />} */}
+  <StyledLinkList>
+    {entries.map(({ entry }, key) => (
+      <EntryListItem key={key}>
+        <Link to={entry.childMarkdownRemark.fields.slug}>
+          <EntryTitle>{entry.childMarkdownRemark.frontmatter.title}</EntryTitle>
+        </Link>
+      </EntryListItem>
+    ))}
+  </StyledLinkList>
+    </ChapterListItem>
     <ChapterListItem>
       {chapters &&
         chapters.map((chapter, index) => (
@@ -31,13 +88,26 @@ const ChapterList = ({ chapters, entries, title, level = 0 }) => (
         ))}
     </ChapterListItem>
   </StyledChapterList>
-)
+)}
+}
+// const TableOfContents = ({ chapters }) => (
+//   <TOCWrapper>
+//     {chapters.map((chapter, index) => <ChapterList {...chapter} key={index} />)}
+//   </TOCWrapper>
+// )
 
-const TableOfContents = ({ chapters }) => (
+class TableOfContents extends React.Component {
+  render() {
+    const chapters = this.props.chapters
+    console.debug("--- TOC ---")
+    console.debug(chapters)
+    return (
   <TOCWrapper>
-    {chapters.map((chapter, index) => <ChapterList {...chapter} key={index} />)}
+    {chapters && chapters.map((chapter, index) => <ChapterList {...chapter} key={index} />)}
   </TOCWrapper>
-)
+    )
+  }
+}
 
 export default TableOfContents
 
