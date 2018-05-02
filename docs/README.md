@@ -2,8 +2,13 @@
 Huge thanks to [@ericwindmill](https://github.com/ericwindmill) for making the starter 
 
 ## About 
+[https://unofficialoraclecloudhub.github.io/oracledb-graphql-demo/](https://unofficialoraclecloudhub.github.io/oracledb-graphql-demo/)
 
-
+This site walks you thought the 
+- what of oracledb <-> graphql
+- why of oracledb <-> graphql
+- how of oracledb <-> graphql
+- where to learn more
 
 
 *Original README.md Below*

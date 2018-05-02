@@ -7,6 +7,18 @@
         {
             "type": "node",
             "request": "launch",
+            "name": "gatsby develop",
+            "runtimeExecutable":"node",
+            "program": "${workspaceFolder}\\docs\\node_modules\\gatsby-cli\\lib\\index.js",
+            "cwd": "${workspaceFolder}\\docs",
+            "args": [
+                "develop",
+                "--verbose"
+            ]
+        },
+        {
+            "type": "node",
+            "request": "launch",
             "name": "ts-node ${file}",
             "runtimeExecutable": "ts-node",
             "program": "${file}", 

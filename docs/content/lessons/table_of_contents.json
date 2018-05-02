@@ -5,7 +5,8 @@
       "title": "Overview",
       "entries": [
         {
-          "entry": "./overview.md"
+          "id": "overview",
+          "entry": "./01-overview.md"
         }
       ]
     },
@@ -13,11 +14,11 @@
       "title": "Running the Demo",
       "entries": [
         {
-          "entry": "./running.md"
+          "entry": "./02-running.md"
         }, {
-          "entry": "./cloud.md"
+          "entry": "./03-cloud.md"
         }, {
-          "entry": "./docker.md"
+          "entry": "./04-docker.md"
         }
       ]
     },
@@ -25,31 +26,29 @@
       "title": "Why GraphQL & Oracle DB",
       "entries": [
         {
-          "entry": "./graphql-and-oracledb.md"
+          "entry": "./05-oracledb-and-graphql.md"
+        }, 
+        {
+          "entry": "./06-about-graphql.md"
+        }, 
+        {
+          "entry": "./07-about-oracledb.md"
         }
       ]
     },
     {
-      "title": "What is Graphql",
+      "title": "Learn More",
       "entries": [
         {
-          "entry": "./what-is-graphql.md"
+          "entry": "./learn-more.md"
         }
       ]
     },
     {
-      "title": "Why is Graphql",
+      "title": "Summary",
       "entries": [
         {
-          "entry": "./lesson_six.md"
-        }
-      ]
-    },
-    {
-      "title": "3. Main Chapter",
-      "entries": [
-        {
-          "entry": "./lesson_six.md"
+          "entry": "./summary.md"
         }
       ]
     }

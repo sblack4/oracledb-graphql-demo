@@ -8,12 +8,11 @@ module.exports = {
     siteUrl: config.siteUrl + pathPrefix,
     rssMetadata: {
       site_url: config.siteUrl + pathPrefix,
-      feed_url: config.siteUrl + pathPrefix + config.siteRss,
+      // feed_url: config.siteUrl + pathPrefix + config.siteRss,
       title: config.siteTitle,
       description: config.siteDescription,
       image_url: `${config.siteUrl + pathPrefix}/logos/hub-logo.svg`,
       author: config.userName
-      // copyright: config.copyright
     }
   },
   plugins: [
@@ -51,12 +50,12 @@ module.exports = {
         ]
       }
     },
-    {
-      resolve: "gatsby-plugin-google-analytics",
-      options: {
-        trackingId: config.googleAnalyticsID
-      }
-    },
+    // {
+    //   resolve: "gatsby-plugin-google-analytics",
+    //   options: {
+    //     trackingId: config.googleAnalyticsID
+    //   }
+    // },
     {
       resolve: "gatsby-plugin-nprogress",
       options: {
@@ -65,7 +64,7 @@ module.exports = {
     },
     "gatsby-plugin-sharp",
     "gatsby-plugin-catch-links",
-    "gatsby-plugin-twitter",
+    // "gatsby-plugin-twitter",
     "gatsby-plugin-sitemap",
     "gatsby-transformer-json",
     {

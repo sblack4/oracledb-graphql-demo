@@ -100,6 +100,8 @@ const ToCContainer = styled.div`
 `
 
 /* eslint no-undef: "off" */
+// MUST MATCH THE table_of_contents.json 
+// in the folder ../../content/lessons
 export const pageQuery = graphql`
   query LessonBySlug($slug: String!) {
     postBySlug: markdownRemark(fields: { slug: { eq: $slug } }) {
@@ -126,38 +128,6 @@ export const pageQuery = graphql`
               }
               frontmatter {
                 title
-              }
-            }
-          }
-        }
-        chapters {
-          title
-          entries {
-            entry {
-              id
-              childMarkdownRemark {
-                fields {
-                  slug
-                }
-                frontmatter {
-                  title
-                }
-              }
-            }
-          }
-          chapters {
-            title
-            entries {
-              entry {
-                id
-                childMarkdownRemark {
-                  fields {
-                    slug
-                  }
-                  frontmatter {
-                    title
-                  }
-                }
               }
             }
           }

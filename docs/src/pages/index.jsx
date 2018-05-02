@@ -46,7 +46,7 @@ class Index extends React.Component {
               </a>&nbsp;
               page for information on the author and the related webcast 
             </p>
-            <CtaButton to={'/lesson-one'}>Get Started</CtaButton>
+            <CtaButton to={'/overview'}>Get Started</CtaButton>
 
           </BodyContainer>
         </main>
