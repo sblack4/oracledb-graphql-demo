@@ -11,6 +11,8 @@ main() {
   echo USING THIS DOCKER 
   echo $docker_exec
   echo 
+  echo This script basically just calls docker-compose 
+  echo if your scripts are not built
 
   proxy=${HTTP_PROXY:-""}
   echo PROXY is: $proxy
@@ -36,12 +38,11 @@ builddb() {
 
   echo --- BUILDING DATABASE DOCKER IMAGE ---
 
-  {
-    docker pull sath89/oracle-12c
-  } || {
-    # docker build ./dbase --build-arg http_proxy="$1" --build-arg https_proxy="$1"
-    echo DB image failed... 
-  }
+  if [ -z "$1" ]; then
+    docker build ./dbase
+  else 
+    docker build ./dbase --build-arg http_proxy="$1" --build-arg https_proxy="$1"
+  fi 
 
   echo --- ORACLEDB DONE ---
 }

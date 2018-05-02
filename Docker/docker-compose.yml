@@ -1,17 +1,16 @@
-#
 # docker-compose 
 # https://docs.docker.com/compose/
-# run with `docker-compose up`
-#
-
+# run with:
+#   `docker-compose build`
+#   `docker-compose up`
 # extra comments have been added
 # for those, like me, who are new to docker
 
 version: '3'    # docker-compose version
 services:       # service = container
 
-#
-# build our own oracle xe 12c on ubuntu
+
+# build our own oracle xe 12c on ubuntu!!!
 # basically `docker run -it -p 1521:1521 sath89/oracle-12c /bin/bash /entrypoint.sh`
 # from https://github.com/MaksymBilenko/docker-oracle-12c 
 # see https://github.com/tgriesser/knex/blob/ece2da12cac2906d7ef88e930937e0d3690982af/scripts/oracle-tests-Dockerfile 
@@ -28,9 +27,7 @@ services:       # service = container
       - bash
       - /entrypoint.sh
 
-# 
 # builds our graphql app
-# basicaly `docker run -it -p 3000:3000 /bin/bash `
   web:          
     build: ./web
     image: sblack4/node-oracledb
