@@ -40,7 +40,7 @@ export default new GraphQLObjectType({
       },
       // this function generates the WHERE condition
       where: (usersTable, args, context) => { // eslint-disable-line no-unused-vars
-        return `${usersTable}.id = ${args.id}`
+        return `${usersTable}.ID = ${args.id}`
       },
       resolve: (parent, args, context, resolveInfo) => {
         return joinMonster(resolveInfo, context, sql => {

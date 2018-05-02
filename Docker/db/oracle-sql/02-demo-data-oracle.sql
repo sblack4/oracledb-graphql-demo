@@ -308,23 +308,3 @@ Insert into GRAPHQL.SPONSORS (GENERATION,FIRST_NAME,LAST_NAME,NUM_LEGS,CREATED_A
 Insert into GRAPHQL.SPONSORS (GENERATION,FIRST_NAME,LAST_NAME,NUM_LEGS,CREATED_AT) values (2,'erlich','bachman',2,'2017-02-22 08:35:39');
 Insert into GRAPHQL.SPONSORS (GENERATION,FIRST_NAME,LAST_NAME,NUM_LEGS,CREATED_AT) values (2,'matt','bachman',2,'2017-02-22 08:35:39');
 Insert into GRAPHQL.SPONSORS (GENERATION,FIRST_NAME,LAST_NAME,NUM_LEGS,CREATED_AT) values (1,'matt','daemon',2,'2017-02-22 08:35:39');
---------------------------------------------------------
---  Constraints for Table ACCOUNTS
---------------------------------------------------------
-
-  ALTER TABLE "GRAPHQL"."ACCOUNTS" MODIFY ("CREATED_AT" NOT NULL ENABLE);
---------------------------------------------------------
---  Constraints for Table COMMENTS
---------------------------------------------------------
-
-  ALTER TABLE "GRAPHQL"."COMMENTS" MODIFY ("CREATED_AT" NOT NULL ENABLE);
---------------------------------------------------------
---  Constraints for Table POSTS
---------------------------------------------------------
-
-  ALTER TABLE "GRAPHQL"."POSTS" MODIFY ("CREATED_AT" NOT NULL ENABLE);
---------------------------------------------------------
---  Constraints for Table RELATIONSHIPS
---------------------------------------------------------
-
-  ALTER TABLE "GRAPHQL"."RELATIONSHIPS" MODIFY ("CREATED_AT" NOT NULL ENABLE);

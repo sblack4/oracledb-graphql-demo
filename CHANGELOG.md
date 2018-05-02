@@ -35,6 +35,9 @@ returns a list of IDs, as does the below query in the graphisql broswer!
 }
 ```
 
+## 5/1/2018 - change grphql schema to be oracle-compatable -.-
+
+
 ### TODO
 - write lessons in our gatsby docs
   - find someone who is willing to listen to me pontificate about computer stuff
@@ -44,3 +47,4 @@ returns a list of IDs, as does the below query in the graphisql broswer!
 - write some simple tests
 - get the nodejs working in the docker image
 - double-check the docker images
+

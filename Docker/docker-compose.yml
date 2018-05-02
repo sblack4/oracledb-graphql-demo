@@ -19,6 +19,9 @@ services:       # service = container
     image: sath89/oracle-12c
     environment:
       - WEB_CONSOLE=false     # disables enterprise manager
+      - IMPORT_FROM_VOLUME=true
+    # volumes: 
+      # - "../src/data/oracledb:/docker-entrypoint-initdb.d"
     ports:                    # map ports to access on your laptop
       - "1521:1521"           # Port for tnslistener (database connection)
     entrypoint:
@@ -30,11 +33,19 @@ services:       # service = container
 # basicaly `docker run -it -p 3000:3000 /bin/bash `
   web:          
     build: ./web
-    image: node-oracledb
+    image: sblack4/node-oracledb
     depends_on:
       - db
+    volumes: 
+      - "../src:/src"
     working_dir: /src
     environment:
       - DB=db             # host will be "db" rather than "localhost"
-    ports:                # ^ see https://forums.docker.com/t/localhost-and-docker-compose-networking-issue/23100/2
+    # command:              # ^ see https://forums.docker.com/t/localhost-and-docker-compose-networking-issue/23100/2
+      # - npm 
+      # - install   
+    entrypoint:
+      - bash
+      - /entrypoint.sh
+    ports:                
      - "3000:3000"        # port our graphql server runs on 

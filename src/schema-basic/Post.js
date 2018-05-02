@@ -14,29 +14,31 @@ export default new GraphQLObjectType({
   description: 'A post from a user',
   name: 'Post',
   // another table in SQL to map to 
-  sqlTable: 'posts',
-  uniqueKey: 'id',
+  sqlTable: 'POSTS',
+  uniqueKey: 'ID',
   interfaces: () => [ Authored ],
   fields: () => ({
     id: {
       // SQL column assumed to be "id"
-      type: GraphQLInt
+      type: GraphQLInt,
+      sqlColumn: 'id'
     },
     body: {
       description: 'The content of the post',
       // assumed to be "body"
-      type: GraphQLString
+      type: GraphQLString,
+      sqlColumn: 'BODY'
     },
     author: {
       description: 'The user that created the post',
       // a back reference to its User
       type: User,
       // this is a one-to-one
-      sqlJoin: (postTable, userTable) => `${postTable}.author_id = ${userTable}.id`
+      sqlJoin: (postTable, userTable) => `${postTable}.AUTHOR_ID = ${userTable}.ID`
     },
     authorId: {
       type: GraphQLInt,
-      sqlColumn: 'author_id'
+      sqlColumn: 'AUTHOR_ID'
     },
     comments: {
       description: 'The comments on this post',
@@ -45,9 +47,9 @@ export default new GraphQLObjectType({
       // sqlJoin: (postTable, commentTable) => `${postTable}.id = ${commentTable}.post_id AND ${commentTable}.archived = (0 = 1)`,
       sqlBatch: {
         // which column to match up to the users
-        thisKey: 'post_id',
+        thisKey: 'POST_ID',
         // the other column to compare to
-        parentKey: 'id'
+        parentKey: 'ID'
       },
       // only get the comments where archived is `false`. sqlite3 has no FALSE keyword. `0 = 1` is a workaround to be compatible
       where: table => `${table}.archived = (0 = 1)`
@@ -63,7 +65,7 @@ export default new GraphQLObjectType({
     },
     createdAt: {
       type: GraphQLString,
-      sqlColumn: 'created_at'
+      sqlColumn: 'CREATED_AT'
     }
   })
 })

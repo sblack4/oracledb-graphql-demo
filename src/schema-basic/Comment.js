@@ -14,27 +14,28 @@ export default new GraphQLObjectType({
   description: 'Comments on posts',
   name: 'Comment',
   // another SQL table to map to
-  sqlTable: 'comments',
-  uniqueKey: 'id',
+  sqlTable: 'COMMENTS',
+  uniqueKey: 'ID',
   interfaces: () => [ Authored ],
   fields: () => ({
     id: {
-      // assumed SQL column to be "id"
-      type: GraphQLInt
+      type: GraphQLInt,
+      sqlColumn: 'ID' // explicitly set to avoid problems with quoted identifiers 
     },
     body: {
       description: 'The content of the comment',
       // assumed to be "body"
-      type: GraphQLString
+      type: GraphQLString,
+      sqlColumn: 'BODY'
     },
     likers: {
       description: 'Users who liked this comment',
       type: new GraphQLList(User),
       junction: {
-        sqlTable: 'likes',
+        sqlTable: 'LIKES',
         sqlJoins: [
-          (commentTable, likeTable) => `${commentTable}.id = ${likeTable}.comment_id`,
-          (likeTable, accountTable) => `${likeTable}.account_id = ${accountTable}.id`
+          (commentTable, likeTable) => `${commentTable}.ID = ${likeTable}.COMMENT_ID`,
+          (likeTable, accountTable) => `${likeTable}.ACCOUNT_ID = ${accountTable}.ID`
         ]
       }
     },
@@ -43,28 +44,28 @@ export default new GraphQLObjectType({
       // a back reference to its Post
       type: Post,
       // how to join these tables
-      sqlJoin: (commentTable, postTable) => `${commentTable}.post_id = ${postTable}.id`
+      sqlJoin: (commentTable, postTable) => `${commentTable}.POST_ID = ${postTable}.ID`
     },
     author: {
       description: 'The user who wrote the comment',
       // and one to its User
       type: User,
-      sqlJoin: (commentTable, userTable) => `${commentTable}.author_id = ${userTable}.id`
+      sqlJoin: (commentTable, userTable) => `${commentTable}.AUTHOR_ID = ${userTable}.ID`
     },
     authorId: {
       type: GraphQLInt,
-      sqlcolumn: 'author_id'
+      sqlcolumn: 'AUTHOR_ID'
     },
     archived: {
       type: GraphQLBoolean
     },
     postId: {
       type: GraphQLInt,
-      sqlColumn: 'post_id'
+      sqlColumn: 'POST_ID'
     },
     createdAt: {
       type: GraphQLString,
-      sqlColumn: 'created_at'
+      sqlColumn: 'CREATED_AT'
     }
   })
 })

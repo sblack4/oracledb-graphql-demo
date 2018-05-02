@@ -35,11 +35,12 @@ main() {
 builddb() {
 
   echo --- BUILDING DATABASE DOCKER IMAGE ---
-  echo
+
   {
     docker pull sath89/oracle-12c
   } || {
-    docker build ./dbase --build-arg http_proxy="$1" --build-arg https_proxy="$1"
+    # docker build ./dbase --build-arg http_proxy="$1" --build-arg https_proxy="$1"
+    echo DB image failed... 
   }
 
   echo --- ORACLEDB DONE ---
@@ -55,8 +56,8 @@ buildnode() {
   # to copy src dir
   # docker doesn't support symlinks!
   echo copying src to docker context
-  [ -d src ] && rm -rf src
-  cp -r "$SRC_PATH" ./web
+  # [ -d src ] && rm -rf src
+  # cp -r "$SRC_PATH" ./web
   echo $(ls)
 
   if [ -z "$1" ]; then
@@ -72,6 +73,7 @@ buildnode() {
 # run both containers 
 runcontainers() {
   echo -- RUNNING BOTH ---
+
   docker-compose up
 
   echo --- DOCKER-COMPOSE DONE ---

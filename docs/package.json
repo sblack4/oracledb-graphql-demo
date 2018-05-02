@@ -60,6 +60,7 @@
   "license": "MIT",
   "main": "n/a",
   "scripts": {
+    "test": "modha",
     "develop": "gatsby develop",
     "dev": "npm run develop",
     "serve": "gatsby serve",

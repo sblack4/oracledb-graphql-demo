@@ -6,7 +6,14 @@ const dbConfig={
     connectString: "localhost/xe"
 }
 
-const knex = require('knex')({
+const dbConfigWrappedIdentifier={
+    user: "graphql",
+    password: "oracle",
+    wrapIdentifier: (value, origImpl, queryContext) => origImpl(value.replace('"', '')),
+    connectString: "localhost/xe"
+}
+
+var knex = require('knex')({
     dialect: 'oracledb',
     client: "oracledb",
     connection: dbConfig
@@ -14,7 +21,24 @@ const knex = require('knex')({
 
 
 
-describe('knex', function() {
+describe('knex-basic', function() {
+
+    it('should allow for raw sql', function() {
+        return knex.raw('select * from accounts')
+    })
+
+    it('should extend fucntionality with an ORM', function() {
+        return knex.select().from('accounts')
+    })
+})
+
+var knex = require('knex')({
+    dialect: 'oracledb',
+    client: "oracledb",
+    connection: dbConfigWrappedIdentifier
+})
+
+describe('knex-wrapped', function() {
 
     it('should allow for raw sql', function() {
         return knex.raw('select * from accounts')
