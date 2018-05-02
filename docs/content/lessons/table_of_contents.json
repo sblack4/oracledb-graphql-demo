@@ -22,16 +22,16 @@
       ]
     },
     {
-      "title": "Why GraphQL & Oracle DB",
+      "title": "GraphQL & Oracle DB?",
       "entries": [
-        {
-          "entry": "./oracledb-and-graphql.md"
-        }, 
         {
           "entry": "./about-graphql.md"
         }, 
         {
           "entry": "./about-oracle-db.md"
+        },
+        {
+          "entry": "./oracledb-and-graphql.md"
         }
       ]
     },
@@ -48,6 +48,9 @@
       "entries": [
         {
           "entry": "./summary.md"
+        }, 
+        {
+          "entry": "./references.md"
         }
       ]
     }

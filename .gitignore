@@ -1,4 +1,7 @@
+# general javascript
 node_modules
 npm-debug.log
 
-Docker/web/src
+
+# incase an office app is open
+~*

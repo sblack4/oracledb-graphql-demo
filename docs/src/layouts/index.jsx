@@ -5,6 +5,7 @@ import config from '../../data/SiteConfig'
 import './css/index.css'
 import './css/prism-okaidia.css'
 import theme from './theme'
+import 'prismjs/themes/prism-solarizedlight.css'
 
 export default class MainLayout extends React.Component {
   getLocalTitle() {
