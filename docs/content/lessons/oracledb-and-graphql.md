@@ -1,5 +1,5 @@
 ---
-title: "Oracle and Graphql"
+title: "OracleDB and GraphQL"
 ---
 
 

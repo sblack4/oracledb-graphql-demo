@@ -62,3 +62,20 @@ a:hover {
 }
 
 
+ /* @sblack4 */
+/* Thanks https://codepen.io/priapurnama/pen/PwJKva */
+
+ .popimage {
+    cursor: pointer;
+    display: inline-block;
+    line-height: 1;
+    margin: 0 .5em 0 0;
+    padding: 1em;
+    -moz-transition: box-shadow 0.25s;
+    -o-transition: box-shadow 0.25s;
+    -webkit-transition: box-shadow 0.25s;
+    transition: box-shadow 0.25s;
+  }
+  .popimage:hover {
+    box-shadow: 0 1px 20px #999;
+  }

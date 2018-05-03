@@ -1,6 +1,3 @@
-[submodule "Docker/dbase"]
-	path = Docker/dbase
-	url = https://github.com/MaksymBilenko/docker-oracle-12c.git
 [submodule "docs/public"]
 	path = docs/public
 	url = https://github.com/unofficialoraclecloudhub/oracledb-graphql-demo.git

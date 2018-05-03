@@ -29,16 +29,13 @@ class UserLinks extends Component {
   render() {
     return (
       <Container className="user-links">
-        <UserIcon href="https://github.com/sblack4">
+        <UserIcon href="https://github.com/unofficialoraclecloudhub/oracledb-graphql-demo">
           <FaGithubAlt style={iconStyle} />
         </UserIcon>
         <UserIcon href="https://twitter.com/Genseb7">
           <FaTwitter style={iconStyle} />
         </UserIcon>
-        <UserIcon href="https://www.messenger.com/t/steven.black.92167">
-          <MdMessage style={iconStyle} />
-        </UserIcon>
-        <UserIcon href="mailto:sblack.rocks@gmail.com">
+        <UserIcon href="mailto:steven.black@oracle.com">
           <MdEmail style={iconStyle} />
         </UserIcon>
       </Container>

@@ -1,9 +1,11 @@
 ---
 title: "Overview"
 ---
-💨 The TL;DR of these 📖s
 
-<img src="/oracle-graphql-together.png" width="100%" />
+I'm here to give you the TL;DR of these docs 📖s
+Here's what the following pages will tell you in as few bullets as possible
+
+<img src="oracle-graphql-together.png" width="100%" />
 
 
 
@@ -11,7 +13,7 @@ title: "Overview"
 Yup, in the ☁️ 
 [cloud](/running-cloud)
 or locally with 🐳 
-[docker](/running-docker)
+[docker](/running-docker). See [running](/running)
 <br/>
 <br/>
 
@@ -19,6 +21,7 @@ or locally with 🐳
 - 😎 Facebook, Twitter, Intuit, Drupal... [[1](https://dev-blog.apollodata.com/why-graphql-is-the-future-3bec28193807)]  
 - 🚤 Same API, less code  
 - 🚦 Reduce network traffic  (faster, cheaper web sites!)
+- Just a specification, YOU get to choose the implementation
 <br/>
 <br/>
 
@@ -29,8 +32,8 @@ or locally with 🐳
 <br/>
 
 ### 🙊 AWESOME! How can I get started???
-Don't fret, the GraphQL and Oracle Database communities are great! ❤️   
-Check out the [learn more](/learn-more) page for my pick of resources
+Don't fret, the GraphQL and Oracle Database communities are great! ❤️ 
+Head to [Running](/running) and get started now. If that isn't enough check out the [learn more](/learn-more) page for my pick of resources
 <br/>
 <br/>
 

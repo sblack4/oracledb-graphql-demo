@@ -5,7 +5,7 @@ import config from '../../data/SiteConfig'
 import './css/index.css'
 import './css/prism-okaidia.css'
 import theme from './theme'
-import 'prismjs/themes/prism-solarizedlight.css'
+// import 'prismjs/themes/prism-dark.css'
 
 export default class MainLayout extends React.Component {
   getLocalTitle() {
@@ -45,8 +45,8 @@ export default class MainLayout extends React.Component {
 
   render() {
     const { children } = this.props
-    console.log("--- MainLayout ---")
-    console.log(children)
+    // console.log("--- MainLayout ---")
+    // console.log(children)
     return (
       <div>
         <Helmet>

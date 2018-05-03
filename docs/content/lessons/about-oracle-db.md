@@ -3,4 +3,62 @@ title: "About Oracle DB"
 ---
 
 
-## Hello World
+#### Our Apps RDBS Schema
+This schema might look slightly different than the one in
+[About GraphLQ](/about-graphql) but don't be alarmed! This is just how the database sees the data
+> from [02-demo-data-oracle.sql]()
+```sql
+  CREATE TABLE "GRAPHQL"."ACCOUNTS" 
+   (	
+    "ID" NUMBER(3,0), 
+	"EMAIL_ADDRESS" VARCHAR2(26 BYTE), 
+	"FIRST_NAME" VARCHAR2(26 BYTE), 
+	"LAST_NAME" VARCHAR2(26 BYTE), 
+	"NUM_LEGS" NUMBER(3,0), 
+	"CREATED_AT" NUMBER(15,0) DEFAULT 0
+   );
+  
+  CREATE TABLE "GRAPHQL"."COMMENTS" 
+   (	
+    "ID" NUMBER(4,0), 
+	"BODY" VARCHAR2(128 BYTE), 
+	"POST_ID" NUMBER(4,0), 
+	"AUTHOR_ID" NUMBER(3,0), 
+	"ARCHIVED" NUMBER(3,0), 
+	"CREATED_AT" NUMBER(15,0) DEFAULT 0
+   );
+
+  CREATE TABLE "GRAPHQL"."LIKES" 
+   (	
+    "ACCOUNT_ID" NUMBER(3,0), 
+	"COMMENT_ID" NUMBER(4,0), 
+	"CREATED_AT" NUMBER(15,0)
+   );
+
+  CREATE TABLE "GRAPHQL"."POSTS" 
+   (	
+    "ID" NUMBER(4,0), 
+	"BODY" VARCHAR2(1024 BYTE), 
+	"AUTHOR_ID" NUMBER(3,0), 
+	"ARCHIVED" NUMBER(3,0), 
+	"CREATED_AT" NUMBER(15,0) DEFAULT 0
+   );
+
+  CREATE TABLE "GRAPHQL"."RELATIONSHIPS" 
+   (	
+    "FOLLOWER_ID" NUMBER(3,0), 
+	"FOLLOWEE_ID" NUMBER(3,0), 
+	"CLOSENESS" VARCHAR2(26 BYTE), 
+	"CREATED_AT" NUMBER(15,0) DEFAULT 0
+   );
+
+  CREATE TABLE "GRAPHQL"."SPONSORS" 
+   (	
+    "GENERATION" NUMBER(3,0), 
+	"FIRST_NAME" VARCHAR2(26 BYTE), 
+	"LAST_NAME" VARCHAR2(26 BYTE), 
+	"NUM_LEGS" NUMBER(3,0), 
+	"CREATED_AT" VARCHAR2(19 BYTE)
+   );
+
+```

@@ -7,8 +7,8 @@ import styled from 'styled-components'
 class Links extends React.Component {
   render() {
     const entries = this.props.entries
-    console.debug("--- Links ---")
-    console.debug(entries)
+    // console.debug("--- Links ---")
+    // console.debug(entries)
     return (
       <StyledLinkList>
         {entries.map(({ entry }, key) => (
@@ -29,8 +29,8 @@ class ChapterList extends React.Component {
     const level = this.props.level
     const entries = this.props.entries
     const chapters = this.props.chapters
-    console.debug("--- ChapterList ---")
-    console.debug(this.props)
+    // console.debug("--- ChapterList ---")
+    // console.debug(this.props)
     return (
       <StyledChapterList>
         {title && (
@@ -63,8 +63,8 @@ class ChapterList extends React.Component {
 class TableOfContents extends React.Component {
   render() {
     const chapters = this.props.chapters
-    console.debug("--- TOC ---")
-    console.debug(chapters)
+    // console.debug("--- TOC ---")
+    // console.debug(chapters)
     return (
       <TOCWrapper>
         {chapters && chapters.map((chapter, index) => <ChapterList {...chapter} key={index} />)}

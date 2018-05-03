@@ -1,22 +1,21 @@
 ---
-title: "About Graphql"
+title: "About GraphQL"
 ---
 
 <img alt="graphql logo" src="graphql-logo.png" width="80%" style="display:block;margin:auto;"/>
 
 ### What can GraphQL do for me? 
->
+
 > Ask not what you can do for your APIs. Ask what your APIs can do for you. 
->
 
-<blockquote>
-<p>
- Ask not what you can do for your APIs. Ask what your APIs can do for you. 
- </p>
-</blockquote>
 
-#### Our App's Schema
-```
+#### Our App's GraphQL Schema
+If you're used to RDBMS's this schema will look unusual, 
+albeit the schema makes sense! 
+
+GraphQL's succint syntax allows for a level of expressiveness that language designers strive for and programmers love (which might be one reason it's catching on so quickly)
+
+```graphql
 type User {
     id: ID! @unique
     email: String!
