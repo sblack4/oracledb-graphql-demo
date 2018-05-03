@@ -5,13 +5,17 @@ title: "Running the Demo"
 🏃 lucky you, you can run this demo any way you'd like! 
 
 <div>
-    <img src="running.gif" alt="my son running after a duck" width="30%" style="display:block;margin:auto;" />
+    <img src="running.gif" title="my son running after a duck" alt="my son running after a duck" width="30%" style="display:block;margin:auto;" />
 </div>
 
 #### Directory 📂
-What's in this GitHub repo? 
+First, what's in this GitHub repo/what are we running?  
+Here's the (abbreviated) results of one of my favorite commands...
 ```bash
-$ tree -d -I node_modules
+tree -d -I node_modules
+```
+that should show the general landscape of [this Github Repository](https://github.com/unofficialoraclecloudhub/oracledb-graphql-demo)
+```bash
 .
 ├── Docker                  # * all the files and binaries to build
 │   ├── db                  # Docker image for Oracle DB 
@@ -46,11 +50,14 @@ I've provided the [Docker](https://www.docker.com/) images you'll need to run th
 of our GitHub repo. More information can be found on the [running in docker](/running-docker) page
 
 
-#### Cloud ☁️
+#### Cloud ☁️ *(coming soon)*
 See [running in the cloud](/running-cloud)
 
 Both of our services can also be run in the cloud! If you're interested check out the 
 [running in the cloud](/running-cloud) page. 
 The cloud simplifies everything; you don't need to install anything, everything is patched and up-to-date, and the whole workshop can be done from your browser! 
 
+
+#### Once you have it running
+Head to [About Graphql](/about-graphql) and put your thinking cap on! 
 

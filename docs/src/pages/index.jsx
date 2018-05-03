@@ -25,7 +25,8 @@ class Index extends React.Component {
             </Hero>
           </IndexHeadContainer>
           <BodyContainer>
-            <h2>worlds top database, flexible APIs, and docker</h2>
+            <h3>explore the worlds top database, flexible APIs, and docker</h3>
+            <img src="graphisql-oracle-app.png" width="100%"/>
             <p>
               Get started with &nbsp;
               <a target="_blank" href="https://www.howtographql.com/">

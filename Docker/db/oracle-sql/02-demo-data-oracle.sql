@@ -5,7 +5,7 @@
 --  DDL for Table ACCOUNTS
 --------------------------------------------------------
 
-  CREATE TABLE "GRAPHQL"."ACCOUNTS" 
+  CREATE TABLE "GRAPHQL".ACCOUNTS 
    (	"ID" NUMBER(3,0), 
 	"EMAIL_ADDRESS" VARCHAR2(26 BYTE), 
 	"FIRST_NAME" VARCHAR2(26 BYTE), 
@@ -23,7 +23,7 @@
 --  DDL for Table COMMENTS
 --------------------------------------------------------
 
-  CREATE TABLE "GRAPHQL"."COMMENTS" 
+  CREATE TABLE "GRAPHQL".COMMENTS
    (	"ID" NUMBER(4,0), 
 	"BODY" VARCHAR2(128 BYTE), 
 	"POST_ID" NUMBER(4,0), 
@@ -41,7 +41,7 @@
 --  DDL for Table LIKES
 --------------------------------------------------------
 
-  CREATE TABLE "GRAPHQL"."LIKES" 
+  CREATE TABLE "GRAPHQL".LIKES 
    (	"ACCOUNT_ID" NUMBER(3,0), 
 	"COMMENT_ID" NUMBER(4,0), 
 	"CREATED_AT" NUMBER(15,0)
@@ -56,7 +56,7 @@
 --  DDL for Table POSTS
 --------------------------------------------------------
 
-  CREATE TABLE "GRAPHQL"."POSTS" 
+  CREATE TABLE "GRAPHQL".POSTS 
    (	"ID" NUMBER(4,0), 
 	"BODY" VARCHAR2(1024 BYTE), 
 	"AUTHOR_ID" NUMBER(3,0), 
@@ -73,7 +73,7 @@
 --  DDL for Table RELATIONSHIPS
 --------------------------------------------------------
 
-  CREATE TABLE "GRAPHQL"."RELATIONSHIPS" 
+  CREATE TABLE "GRAPHQL".RELATIONSHIPS 
    (	"FOLLOWER_ID" NUMBER(3,0), 
 	"FOLLOWEE_ID" NUMBER(3,0), 
 	"CLOSENESS" VARCHAR2(26 BYTE), 
@@ -89,7 +89,7 @@
 --  DDL for Table SPONSORS
 --------------------------------------------------------
 
-  CREATE TABLE "GRAPHQL"."SPONSORS" 
+  CREATE TABLE "GRAPHQL".SPONSORS 
    (	"GENERATION" NUMBER(3,0), 
 	"FIRST_NAME" VARCHAR2(26 BYTE), 
 	"LAST_NAME" VARCHAR2(26 BYTE), 

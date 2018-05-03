@@ -3,10 +3,22 @@ title: "About Oracle DB"
 ---
 
 
+<a href="https://livesql.oracle.com" target="_blank">
+<img alt="oracle database logo" src="oracle-database-logo.png" width="80%" style="display:block;margin:auto;"/>
+</a>
+
 #### Our Apps RDBS Schema
 This schema might look slightly different than the one in
-[About GraphLQ](/about-graphql) but don't be alarmed! This is just how the database sees the data
-> from [02-demo-data-oracle.sql]()
+[About GraphLQ](/about-graphql) but don't be alarmed! This is just how the database sees the data 
+*but* this defines the *same schema*. The only difference here is the language behind the definitions. 
+Oracle Database uses `SQL` which is the gold-standard of data definition and manipulation languages. 
+
+`SQL` has an interesting history. It was originally designed by IBM to facilitate interaction with relational data,
+and named *SEQUEL* (*Structured English Query Language*). It wasn't until Relational Software, Inc (now Oracle) developed their 
+database (Oracle Database) that the language took off! [[4](https://en.wikipedia.org/wiki/SQL#History)]
+
+
+> from [02-demo-data-oracle.sql](https://github.com/unofficialoraclecloudhub/oracledb-graphql-demo/blob/master/Docker/db/oracle-sql/02-demo-data-oracle.sql)
 ```sql
   CREATE TABLE "GRAPHQL"."ACCOUNTS" 
    (	
@@ -62,3 +74,11 @@ This schema might look slightly different than the one in
    );
 
 ```
+
+
+#### APIs with OracleDB
+
+OracleDB puts no limitations on the type of API you can put on top of it! Actually, Oracle is 
+one step ahead of you and built [Oracle REST Data Services (ORDS)](http://www.oracle.com/technetwork/developer-tools/rest-data-services/overview/index.html) 
+to generate modern APIs for your database. 
+

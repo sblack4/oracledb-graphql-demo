@@ -14,7 +14,11 @@
             "args": [
                 "develop",
                 "--verbose"
-            ]
+            ],
+            "env": {
+                "DEBUG": "*"
+            }, 
+            "outputCapture": "std"
         },
         {
             "type": "node",

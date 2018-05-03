@@ -46,16 +46,22 @@ class About extends React.Component {
           <p>
             This microsite hosts the materials for and a walkthrough of GraphQL+OracleDB. This was Originally compiled
           as research I [<a src="https://github.com/sblack4">@sblack4</a>&nbsp;
-            on Github] was doing for a Developer Talk - 
-            <a src="" ></a>
-            [@Oracle My Employer]. Opinions &amp; views expressed are soley
-            my own and not that of my Employer 😁
+            on Github] was doing for the 
+            <a src="https://t.co/XcjjTWZ6Qu" >May 4, 2018 Oracle Friday Standup</a>.
+            Opinions &amp; views expressed are soley my own and not those of my Employer [<a src="https://github.com/oracle">@Oracle</a>] 😁
         </p>
           <CenterImageDiv>
             <a href="https://t.co/XcjjTWZ6Qu">
               <PopImage className="popimage" src="dbcs-graphql-devtalk-sblack4-oracle.png" width="80%" />
             </a>
           </CenterImageDiv>
+          <p>
+            I've tried to make the material here accurate and self-contained, but if you have comments, suggestions, or improvements 
+            please <a href="https://github.com/unofficialoraclecloudhub/oracledb-graphql-demo/issues">Subtmit an Issue</a> or 
+            <a href="https://github.com/unofficialoraclecloudhub/oracledb-graphql-demo/pulls">Make a Pull Request</a>! If you're new to open-source 
+            check out <a href="https://github.com/jlord/git-it-electron">git-it</a> for learning how to collaborate with GitHub, the 
+            <a href="https://opensource.guide/how-to-contribute/">opensource.guide/how-to-contribute</a> guide, or submit an issue! I don't bite  😝  
+          </p>
         </div>
       </BodyContainer>
       </div>

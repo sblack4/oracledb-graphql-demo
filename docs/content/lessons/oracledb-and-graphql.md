@@ -3,5 +3,7 @@ title: "OracleDB and GraphQL"
 ---
 
 
+#### Why OracleDB & GraphQL together?
 
-## Hello World
+Before we can answer this, let's compare GraphQL to REST
+

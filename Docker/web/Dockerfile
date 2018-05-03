@@ -17,20 +17,13 @@ FROM store/oracle/database-instantclient:12.2.0.1
 
 # get linux binaries 
 # from https://nodejs.org/en/blog/release/v6.11.1/
-RUN yum install -y wget 
-RUN cd opt
 # RUN wget https://nodejs.org/dist/v6.11.1/node-v6.11.1-linux-x64.tar.xz
-COPY node* .
+COPY node* /opt
 
-# install them
-RUN yum -y install tar* gcc* gcc-c++ unzip libaio* make curl dos2unix \
-    && tar -xJf node-v6.11.1-linux-x64.tar.xz -C /usr/local --strip-components=1 --no-same-owner \
-    && yum clean all
-
-ENV PATH=/opt/node-v6.11.1-linux-x64/bin:$PATH
-ENV NODE_PATH=/opt/node-v6.11.1-linux-x64/lib/node_modules/
-
+# everything else is done in this bash script
 ADD entrypoint.sh /entrypoint.sh
+
+ENV HTTP_PROXY=http://www-proxy.us.oracle.com:80
 
 # # * copy our built webapp
 # VOLUME ./src /src
@@ -49,4 +42,4 @@ ADD entrypoint.sh /entrypoint.sh
 EXPOSE 3000
 
 # # * start it!
-# ENTRYPOINT [ "npm", "start"] 
+ENTRYPOINT [ "bash", "/entrypoint.sh"] 

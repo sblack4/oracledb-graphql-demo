@@ -2,12 +2,24 @@
 title: "About GraphQL"
 ---
 
+<a href="https://graphql.org/" target="_blank">
 <img alt="graphql logo" src="graphql-logo.png" width="80%" style="display:block;margin:auto;"/>
+</a>
 
-### What can GraphQL do for me? 
+<blockquote style="font-size:2em;">
+<em style="padding-left:2em;">  "Ask not what you can do for your APIs. Ask what your APIs can do for you." 
+</em>
+</blockquote>
 
-> Ask not what you can do for your APIs. Ask what your APIs can do for you. 
+### What GraphQL *is*
+- An API Specification (like `REST`)
+- A Query Language (like `SQL`)
+- A tool to solve problems
 
+### What GraphQL *isn't* 
+- A piece of software 
+- Blockchain
+- AI 
 
 #### Our App's GraphQL Schema
 If you're used to RDBMS's this schema will look unusual, 

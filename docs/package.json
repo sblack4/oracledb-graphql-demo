@@ -66,6 +66,7 @@
     "test": "modha",
     "develop": "gatsby develop",
     "dev": "npm run develop",
+    "debug": "set DEBUG=* && node.exe --inspect-brk=6359 node_modules\\gatsby-cli\\lib\\index.js develop --verbose",
     "serve": "gatsby serve",
     "build": "gatsby build",
     "build:pp": "gatsby build --prefix-paths",
