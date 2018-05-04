@@ -44,20 +44,20 @@ that should show the general landscape of [this Github Repository](https://githu
 - *** All of the fun GraphQL Stuff
 
 #### Docker 🐳
-See [running with docker](/running-docker)
+See [running with docker](running-with-docker)
 
 I've provided the [Docker](https://www.docker.com/) images you'll need to run this demo 😊 in the [oracledb-graphql-demo/Docker](https://github.com/unofficialoraclecloudhub/oracledb-graphql-demo/tree/master/Docker) page (* Above)
-of our GitHub repo. More information can be found on the [running in docker](/running-docker) page
+of our GitHub repo. More information can be found on the [running in docker](running-with-docker) page
 
 
 #### Cloud ☁️ *(coming soon)*
-See [running in the cloud](/running-cloud)
+See [running in the cloud](running-in-the-cloud)
 
 Both of our services can also be run in the cloud! If you're interested check out the 
-[running in the cloud](/running-cloud) page. 
+[running in the cloud](running-in-the-cloud) page. 
 The cloud simplifies everything; you don't need to install anything, everything is patched and up-to-date, and the whole workshop can be done from your browser! 
 
 
 #### Once you have it running
-Head to [About Graphql](/about-graphql) and put your thinking cap on! 
+Head to [About Graphql](about-graph-ql) and put your thinking cap on! 
 

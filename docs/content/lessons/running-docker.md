@@ -26,11 +26,11 @@ Set the HTTP_PROXY `env` variable & use the bash script to build your containers
 bash build-images.sh
 ```
 
-You should see something like the below...
+For each of the commands below you should see something like the following...
 
 ##### `docker-compose build`
 ```bash
-gense@LAPTOP-IK26DBRF ~/Git/oracledb-graphql-demo/Docker (master)
+sblack4@BATTLESTATION ~/Git/oracledb-graphql-demo/Docker (master)
 λ docker-compose build
 db uses an image, skipping
 Building web
@@ -68,7 +68,7 @@ Successfully tagged sblack4/node-oracledb:latest
 
 ##### `docker-compose up`
 ```bash
-gense@LAPTOP-IK26DBRF ~/Git/oracledb-graphql-demo/Docker (master)
+sblack4@BATTLESTATION ~/Git/oracledb-graphql-demo/Docker (master)
 λ docker-compose up
 Recreating docker_db_1 ... done
 Recreating docker_web_1 ... done
@@ -92,7 +92,11 @@ Creating docker_web_1 ... done
 
 Running `docker ps` should show us two containers running 
 ```bash
-
+sblack4@BATTLESTATION ~/Git/oracledb-graphql-demo (master)
+λ docker ps
+CONTAINER ID        IMAGE                   COMMAND                 CREATED             STATUS              PORTS                              NAMES
+fd29290b8123        sblack4/node-oracledb   "bash /entrypoint.sh"   2 hours ago         Up 2 hours          0.0.0.0:3000->3000/tcp             docker_web_1
+124e30988ef1        sath89/oracle-12c       "bash /entrypoint.sh"   4 hours ago         Up 4 hours          0.0.0.0:1521->1521/tcp, 8080/tcp   docker_db_1
 ```
 
 
@@ -101,10 +105,11 @@ You're ready!
 
 Head to [localhost:3000/graphql](http://localhost:3000/graphql) to explore compare SQL and GraqhQL!
 
-![]()
+<img src="graphisql-oracle-app.png" width="100%" style="display:block;margin:auto;"/>
 
 Connect [SQL Developer](http://www.oracle.com/technetwork/developer-tools/sql-developer/overview/index.html) to 
 the Oracle Database using the below credentials. The password for `sys` and `graphql` is `oracle`
 
-![](graphql-sql-developer.PNG)
+![graphisql ui](graphql-sql-developer.PNG)
 
+Head to [About GraphQL](about-graph-ql)

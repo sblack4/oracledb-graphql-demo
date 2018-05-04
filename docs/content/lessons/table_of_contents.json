@@ -31,7 +31,7 @@
           "entry": "./about-oracle-db.md"
         },
         {
-          "entry": "./oracledb-and-graphql.md"
+          "entry": "./graphql-rest-sql.md"
         }
       ]
     },

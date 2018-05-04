@@ -17,9 +17,9 @@ title: "Overview"
 
 ### ❓ Can I run this myself?
 Yup, in the ☁️ 
-[cloud](/running-cloud)
+[cloud](running-in-the-cloud)
 or locally with 🐳 
-[docker](/running-docker). See [running](/running)
+[docker](running-with-docker). See [running](running-the-demo)
 <br/>
 <br/>
 
@@ -39,9 +39,9 @@ or locally with 🐳
 
 ### 🙊 AWESOME! How can I get started???
 Don't fret, the GraphQL and Oracle Database communities are great! ❤️ 
-- Head to [Running](/running) and get started now. 
-- If that isn't enough check out the [learn more](/learn-more) page for my pick of resources
-- Or jump directly to the "What" of the presentation, [About GraphQL](/about-graphql)
+- Head to [Running](running-the-demo) and get started now. 
+- If that isn't enough check out the [learn more](learn-more) page for my pick of resources
+- Or jump directly to the "What" of the presentation, [About GraphQL](about-graph-ql)
 <br/>
 <br/>
 
