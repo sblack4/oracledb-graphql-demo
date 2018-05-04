@@ -112,4 +112,4 @@ the Oracle Database using the below credentials. The password for `sys` and `gra
 
 ![graphisql ui](graphql-sql-developer.PNG)
 
-Head to [About GraphQL](about-graph-ql)
+Head to [About GraphQL](about-graph-ql) to start exploring GraphQL on Oracle Database!

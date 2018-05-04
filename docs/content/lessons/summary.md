@@ -8,7 +8,8 @@ title: 'Summary'
 - Specification
 - Built for web-application APIs
 
-##### vs REST 
+##### GraphQL vs REST 
+- 
 The two aren't mutually exclusive. You could implement a two-tiered API with GraphQL on top of REST; 
 - Front-End powered by GraphQL
 - Back-end driven by REST applications
@@ -19,4 +20,7 @@ The two aren't mutually exclusive. You could implement a two-tiered API with Gra
 
 
 #### Oracle Database
-- 
+- *Fast*
+- The "O.G." of Relational Databases
+- Easily generate APIs 
+

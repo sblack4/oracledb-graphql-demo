@@ -38,6 +38,11 @@ GraphQL's succint syntax allows for a level of expressiveness that language desi
 programmers love (which might be one reason it's catching on so quickly). The format is purposely very
 similar to [JSON](https://en.wikipedia.org/wiki/JSON) which is the *lingua franca* of web APIs. 
 
+<div style="text-align:center;margin-bottom:-1em;">
+
+  <b>Our Schema as the GraphsiQL App sees it</b>
+</div>
+
 ```graphql
 type User {
     id: ID! @unique
@@ -82,6 +87,10 @@ type AuthoredInterface {
     authorId: Int!
 }
 ```
+<blockquote style="font-size:1.5em;margin-top:-1.8em;text-align:center;">
+  <em style="padding-left:2em;">^ Beautiful syntax highlighting courtesy of </em>
+  <a href="http://prismjs.com/">prismjs</a>
+</blockquote>
 
 ### GraphQL Query Language
 
@@ -92,6 +101,9 @@ There is an almost identical app running at [https://join-monster.herokuapp.com/
 doesn't use OracleDB as a backend but still showcases the same schema and modified GraphsiQL interface. [[5](https://github.com/stems/join-monster-demo)]
 
 <img src="graphisql-oracle-app.png" width="100%" style="display:block;margin:auto;"/>
+<blockquote style="font-size:1.8em;text-align:center;">
+  <em style="padding-left:1.5em;">^ <a href="https://github.com/acarl005/graphsiql">GraphsiQL</a> an in-browser GraphQL IDE</em>
+</blockquote>
 
 GraphQL allows you to do all the operations routinely used by traditional REST APIs
 
@@ -111,7 +123,12 @@ Let's `SELECT` full name (generating it two different ways) and the body of any 
  }
 }
 ```
+<blockquote style="font-size:1.5em;margin-top:-1.8em;text-align:center;">
+  <em style="padding-left:2em;">^ GraphQL Query</em>
+</blockquote>
+
 And GraphQL returns JSON!
+
 ```json
 {
   "data": {
@@ -131,6 +148,9 @@ And GraphQL returns JSON!
   }
 }
 ```
+<blockquote style="font-size:1.5em;margin-top:-1.8em;text-align:center;">
+  <em style="padding-left:2em;">^ GraphQL API Response</em>
+</blockquote>
 
 #### Variables and Aliases and Fragments, Oh My!
 Let's combine them in a pretty complex little query... we want all the information as above for two users, but 
@@ -138,6 +158,9 @@ Variables are self explanatory and aliases are just as the name suggests.the JSO
 Take a quick look at the below photo and notice the "QUERY VARIABLES" tray. This may be collapsed on your GraphsiQL browser. 
 
 <img src="graphsiql-query-variables.png" width="100%" style="display:block;margin:auto;"/>
+<blockquote style="font-size:1.5em;text-align:center;">
+  <em style="padding-left:2em;">^ GraphsiQL with QUERY VARIABLES tray expanded</em>
+</blockquote>
 
 And the Query as text for your COPY+PASTE'ing convenience 
 
@@ -158,13 +181,21 @@ query MyQuery($foo: Int!, $bar: Int!) {
   }
 }
 ```
+<blockquote style="font-size:1.5em;margin-top:-1.8em;text-align:center;">
+  <em style="padding-left:2em;">Query</em>
+</blockquote>
+
 Query Variables definition 
+
 ```json
 {
   "foo": 1,
   "bar": 2
 }
 ```
+<blockquote style="font-size:1.5em;margin-top:-1.8em;text-align:center;">
+  <em style="padding-left:2em;">Variables</em>
+</blockquote>
 
 Wow! the Result. Aliases and Variables are indispensable in SQL. I could get use to this "Fragments" too!  
 Notice that the keys for our users changed - now they are "numberOne" and "numberTwo"
@@ -200,6 +231,9 @@ Notice that the keys for our users changed - now they are "numberOne" and "numbe
   }
 }
 ```
+<blockquote style="font-size:1.5em;margin-top:-1.8em;text-align:center;">
+  <em style="padding-left:2em;">Response</em>
+</blockquote>
 
 #### Mutations 
 If a GraphQL Query is analagous to a SQL `SELECT` satement than think of a Mutation as an `UPDATE`
@@ -215,7 +249,12 @@ Introspection to get Schema definitions
   }
 }
 ```
-Which is super useful for developers unframiliar with your API
+<blockquote style="font-size:1.5em;margin-top:-1.8em;text-align:center;">
+  <em style="padding-left:2em;">Query</em>
+</blockquote>
+
+Which is super useful for developers unframiliar with your API! This way we can programattically explore the API - 
+no more integration nightmares! 
 ```json
 {
   "data": {
@@ -233,6 +272,9 @@ Which is super useful for developers unframiliar with your API
   }
 }
 ```
+<blockquote style="font-size:1.5em;margin-top:-1.8em;text-align:center;">
+  <em style="padding-left:2em;">Response</em>
+</blockquote>
 
 
 ### Is that it? (no!)

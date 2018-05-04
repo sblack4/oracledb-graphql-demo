@@ -3,12 +3,17 @@ title: "Running in the Cloud"
 --- 
 
 
+<div style="text-align:center;">
+
 🔧 🔩 🔨
 
 Under Construction 
+-
+I promise to have a <em>"Zero Footprint"</em> demo up shortly
+This has only been tested running with Docker
 
 🔧 🔩 🔨
-
+</div>
 
 <a href="https://cloud.oracle.com/home" target="_blank">
   <img alt="graphql logo" src="oracle-cloud-logo.png" width="80%" style="display:block;margin:auto;"/>

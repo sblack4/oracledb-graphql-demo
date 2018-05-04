@@ -5,6 +5,9 @@ title: "Overview"
 
 <img src="oracle-graphql-together.png" width="100%" />
 <img src="graphisql-oracle-app.png" width="100%"/>
+<blockquote style="font-size:1.8em;text-align:center;">
+  <em style="padding-left:2em;">^ <a href="https://github.com/acarl005/graphsiql">GraphsiQL</a> an in-browser GraphQL IDE</em>
+</blockquote>
 <!-- <a href="https://livesql.oracle.com" target="_blank">
 <img alt="oracle database logo" src="graphisql-oracle-app.png" width="80%" style="display:block;margin:auto;"/>
 </a> -->

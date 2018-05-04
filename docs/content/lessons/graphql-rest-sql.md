@@ -12,13 +12,18 @@ Before we can answer this, let's compare the specifications we've introduced tod
 So **HOW** does GraphQL present these putative benefits? Let's investigate a few...
 
 #### Network Traffic
-Compare the below two diagrams. They should give some visual intuition for why a GraphQL API is faster and involves less network
-traffic than the traditional REST API
+Imagine we impemented our schema with two APIs; one REST and one GraphQL. Our REST resource will be the "User" object. 
 
-The GraphQL API allows all of the disparate data to be returned *with a single API call*. The traditional REST API specification 
-calls for a different endpoint for each resource!
-Imagine you want to make a page that shows your friends (or followers) list. 
 ```bash
+
+```
+
+The traditional REST API specification calls for a different endpoint for each resource!
+Imagine you want to make a page that shows your friends (or followers) list. 
+
+```bash
+# our example API call with REST 
+
 # our example domain name
 # is mysillysevername.com
 # curl is a common command line utility for HTTP operations
@@ -32,7 +37,7 @@ curl -X GET mysillyservername.com/users/<id>/followers   # get user posts
 That's three requests, and if our REST API doesn't offer sparse fieldsets (where you specify the fields you want in the url) then we're underfetching and overfetching. 
 
 #### "Overfetching" or "Underfetching"
-
+The GraphQL API allows all of the disparate data to be returned *with a single API call*. 
 With our REST API (^above) we *don't get enough data* in one request so we have to make three. In each of those three our server returns *too much data* because the server just returns all the resource data 
 for that REST endpoint! 
 
@@ -41,6 +46,8 @@ It sure would be nice if we had a query language that could give us *just the ri
  
 **Enter GraphQL**
 ```graphql
+# our example API call with GraphQL 
+
 query {
   users {
     id
@@ -77,5 +84,6 @@ Just as there is no "best" way to store data there is no "best" language to defi
 ### Integrating APIs
 
 Have a lot of APIs? 
+<img src="graphql-v-rest-cloud-arch.png" width="100%" />
 
 ### Rapid Application Development 
