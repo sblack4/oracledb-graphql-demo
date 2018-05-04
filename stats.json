@@ -9,20 +9,20 @@
       "component---src-layouts-index-jsx-5418223bf5069f7d1b70.js.map"
     ],
     "path---learn-more": [
-      "path---learn-more-3ac6516a185dc74691ee.js",
-      "path---learn-more-3ac6516a185dc74691ee.js.map"
+      "path---learn-more-3017da25a122047c7e6a.js",
+      "path---learn-more-3017da25a122047c7e6a.js.map"
     ],
     "component---src-templates-lesson-jsx": [
       "component---src-templates-lesson-jsx-32baff2f763448999ffd.js",
       "component---src-templates-lesson-jsx-32baff2f763448999ffd.js.map"
     ],
     "path---summary": [
-      "path---summary-b4c935e0673f3b3694d2.js",
-      "path---summary-b4c935e0673f3b3694d2.js.map"
+      "path---summary-0be679f35fa414ee79e6.js",
+      "path---summary-0be679f35fa414ee79e6.js.map"
     ],
     "path---index": [
-      "path---index-2bb5725d9f8fe97f9bb4.js",
-      "path---index-2bb5725d9f8fe97f9bb4.js.map"
+      "path---index-52f69611e1eb279f9996.js",
+      "path---index-52f69611e1eb279f9996.js.map"
     ],
     "component---src-pages-about-jsx": [
       "component---src-pages-about-jsx-420e8e72cfcf4ff7c4f0.js",
@@ -33,50 +33,50 @@
       "commons-403258ad126d5c26671b.js.map"
     ],
     "path---running-with-docker": [
-      "path---running-with-docker-6f590098cca55339b575.js",
-      "path---running-with-docker-6f590098cca55339b575.js.map"
+      "path---running-with-docker-38c45eb02e4b707273de.js",
+      "path---running-with-docker-38c45eb02e4b707273de.js.map"
     ],
     "path---references": [
-      "path---references-4468dde12448da8b0f23.js",
-      "path---references-4468dde12448da8b0f23.js.map"
+      "path---references-0703d87d4f6413e39f7a.js",
+      "path---references-0703d87d4f6413e39f7a.js.map"
     ],
     "path---overview": [
-      "path---overview-44fd61137abf673f0332.js",
-      "path---overview-44fd61137abf673f0332.js.map"
+      "path---overview-cbfb6820cbd54dfcb7ab.js",
+      "path---overview-cbfb6820cbd54dfcb7ab.js.map"
     ],
     "path---about-oracle-db": [
-      "path---about-oracle-db-ab1d268f5539c0668abf.js",
-      "path---about-oracle-db-ab1d268f5539c0668abf.js.map"
+      "path---about-oracle-db-2dd8153dbac58f8403d2.js",
+      "path---about-oracle-db-2dd8153dbac58f8403d2.js.map"
     ],
     "path---running-the-demo": [
-      "path---running-the-demo-6ae4b755da75f6a64c07.js",
-      "path---running-the-demo-6ae4b755da75f6a64c07.js.map"
+      "path---running-the-demo-102282cc498bcca04f2d.js",
+      "path---running-the-demo-102282cc498bcca04f2d.js.map"
     ],
     "component---src-pages-index-jsx": [
       "component---src-pages-index-jsx-50dd84a2f84d383bf6d5.js",
       "component---src-pages-index-jsx-50dd84a2f84d383bf6d5.js.map"
     ],
+    "path---graph-ql-rest-sql": [
+      "path---graph-ql-rest-sql-79cbb4e5fcff75c68aca.js",
+      "path---graph-ql-rest-sql-79cbb4e5fcff75c68aca.js.map"
+    ],
     "app": [
-      "app-85a9de26a856d27b77e2.js",
+      "app-71abbddbe47f1296fdef.js",
       "build-js-styles.css",
-      "app-85a9de26a856d27b77e2.js.map",
+      "app-71abbddbe47f1296fdef.js.map",
       "build-js-styles.css.map"
     ],
-    "path---oracle-db-and-graph-ql": [
-      "path---oracle-db-and-graph-ql-f6d44b70c2017fa32f67.js",
-      "path---oracle-db-and-graph-ql-f6d44b70c2017fa32f67.js.map"
-    ],
     "path---running-in-the-cloud": [
-      "path---running-in-the-cloud-2d387bdccf81fd47320b.js",
-      "path---running-in-the-cloud-2d387bdccf81fd47320b.js.map"
+      "path---running-in-the-cloud-09fdf6561292d9523aae.js",
+      "path---running-in-the-cloud-09fdf6561292d9523aae.js.map"
     ],
     "path---about": [
       "path---about-a0e39f21c11f6a62c5ab.js",
       "path---about-a0e39f21c11f6a62c5ab.js.map"
     ],
     "path---about-graph-ql": [
-      "path---about-graph-ql-56c2badf0b31944a3936.js",
-      "path---about-graph-ql-56c2badf0b31944a3936.js.map"
+      "path---about-graph-ql-6ef12426f3450263d496.js",
+      "path---about-graph-ql-6ef12426f3450263d496.js.map"
     ]
   }
 }
