@@ -26,7 +26,7 @@ class Index extends React.Component {
           </IndexHeadContainer>
           <BodyContainer>
             <h3>explore the worlds top database, flexible APIs, and docker</h3>
-            <img src="graphisql-oracle-app.png" width="100%"/>
+            <img src="graphisql-oracle-app.png" className="img-shadow" width="100%"/>
             <p>
               Get started with &nbsp;
               <a target="_blank" href="https://www.howtographql.com/">
@@ -57,6 +57,7 @@ class Index extends React.Component {
 }
 
 export default Index
+
 
 const IndexHeadContainer = styled.div`
   background: ${props => props.theme.brand};

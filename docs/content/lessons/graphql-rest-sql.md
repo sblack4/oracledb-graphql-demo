@@ -17,12 +17,39 @@ traffic than the traditional REST API
 
 The GraphQL API allows all of the disparate data to be returned *with a single API call*. The traditional REST API specification 
 calls for a different endpoint for each resource!
+Imagine you want to make a page that shows your friends (or followers) list. 
+```bash
+# our example domain name
+# is mysillysevername.com
+# curl is a common command line utility for HTTP operations
+# like GET, PUT, DELETE which form the foundation of REST
 
-<a href="https://www.howtographql.com/basics/1-graphql-is-the-better-rest/" target="_blank">
-  <img src="graphql-vs-rest.png" width="98%" />
-</a>
+curl -X GET mysillyservername.com/users/<id>             # get user information
+curl -X GET mysillyservername.com/users/<id>/posts       # get user posts
+curl -X GET mysillyservername.com/users/<id>/followers   # get user posts
+
+```
+That's three requests, and if our REST API doesn't offer sparse fieldsets (where you specify the fields you want in the url) then we're underfetching and overfetching. 
 
 #### "Overfetching" or "Underfetching"
+
+With our REST API (^above) we *don't get enough data* in one request so we have to make three. In each of those three our server returns *too much data* because the server just returns all the resource data 
+for that REST endpoint! 
+
+It sure would be nice if we had a query language that could give us *just the right amount of data*, be
+*of similar what we're using* (largely javascript), and versiile enough to alloq *super simple nested queries*
+ 
+**Enter GraphQL**
+```graphql
+query {
+  users {
+    id
+    following{
+      fullName
+    }
+  }
+}
+```
 
 The REST API specification is closely tied to the HTTP verbs (GET, PUT, etc) and the structure of the data. 
 That can lead to unweildly APIs where your REST Resource (an API endpoint for a particular thing in REST parlance) can 
@@ -30,7 +57,7 @@ only proivde
 
 Instead of returning *too much data* or *too little data* you can recieve *just the data you need*!
 
-[[[6](https://www.w3.org/2001/sw/wiki/REST)], [[7](https://www.w3.org/2001/sw/wiki/REST)]]
+[[[6](https://www.w3.org/2001/sw/wiki/REST)],[[7](https://www.oreilly.com/learning/building-a-simple-graphql-server-with-neo4j)]]
 
 ### GraphQL vs SQL 
 Both are Query Languages - So what's the difference? 
@@ -49,7 +76,6 @@ Just as there is no "best" way to store data there is no "best" language to defi
 
 ### Integrating APIs
 
+Have a lot of APIs? 
 
 ### Rapid Application Development 
-
-

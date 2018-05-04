@@ -44,11 +44,14 @@ class About extends React.Component {
         </h1>
         <div>
           <p>
-            This microsite hosts the materials for and a walkthrough of GraphQL+OracleDB. This was Originally compiled
-          as research I [<a src="https://github.com/sblack4">@sblack4</a>&nbsp;
-            on Github] was doing for the 
-            <a src="https://t.co/XcjjTWZ6Qu" >May 4, 2018 Oracle Friday Standup</a>.
+            This microsite hosts the materials for and a walkthrough of GraphQL+OracleDB and is for informational purposes only. This was Originally compiled
+          as research I [Steven, <a src="https://github.com/sblack4">@sblack4</a>&nbsp; Github] was doing for the 
+            <a src="https://t.co/XcjjTWZ6Qu" >May 4, 2018 Oracle Friday Standup</a>. If you'd like to watch or watch the recording it should be up within a week of the airing.
             Opinions &amp; views expressed are soley my own and not those of my Employer [<a src="https://github.com/oracle">@Oracle</a>] 😁
+            <p>
+            If you'd like to find out more about the Oracle Cloud Solution Hubs don't be too shy to contact me. We're growing pretty fast, with campuses 
+            in Reston, Austin, India, and soon Burlington &amps; Santa Clara!  
+            </p>
         </p>
           <CenterImageDiv>
             <a href="https://t.co/XcjjTWZ6Qu">

@@ -2,4 +2,21 @@
 title: 'Summary'
 ---
 
-Spicy jalapeno cupidatat chicken ut filet mignon sausage ut boudin nulla reprehenderit strip steak proident cillum incididunt short loin cow. Pig in pastrami, leberkas eiusmod enim bresaola do. Filet mignon officia quis kevin pork, swine strip steak excepteur hamburger chicken pork chop boudin shankle. Velit chicken pig in cupim kielbasa jerky. Bresaola excepteur veniam, andouille magna brisket aliquip nostrud jerky.
+
+#### GraphQL 
+- Query Language
+- Specification
+- Built for web-application APIs
+
+##### vs REST 
+The two aren't mutually exclusive. You could implement a two-tiered API with GraphQL on top of REST; 
+- Front-End powered by GraphQL
+- Back-end driven by REST applications
+
+**GraphQL** gives your front-end application developers a framework that was built for them. GraphQL; 
+- Was developed by Facebook in 2012 and under development for 3 years before they *started* to talk about it in 2015 [8] 
+(since GraphQL is so similar to JSON and as simple to learn as SQL) and gives them the performance boosts 
+
+
+#### Oracle Database
+- 

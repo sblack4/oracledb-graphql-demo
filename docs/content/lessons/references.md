@@ -4,6 +4,7 @@ title: "References"
 
 
 ### Citations from my Presentation 
+Thank you guys! keep up the cool work!
 - [1] https://dev-blog.apollodata.com/why-graphql-is-the-future-3bec28193807
 - [2] http://www.businessinsider.com/the-cia-made-larry-ellison-a-billionaire-2014-9?international=true&r=US&IR=T
 - [3] https://db-engines.com/en/ranking
@@ -11,6 +12,7 @@ title: "References"
 - [5] https://github.com/stems/join-monster-demo 
 - [6] https://www.howtographql.com/basics/0-introduction/ 
 - [7] https://en.wikipedia.org/wiki/SQL 
+- [8] https://code.facebook.com/posts/1691455094417024/graphql-a-data-query-language/ 
 
 ### Images 
 - https://graphql.org/ 
